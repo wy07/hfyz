@@ -1,40 +1,48 @@
+import { ComponentsModule } from './../components/components.module';
+import { UserDataProvider } from './../providers/user-data/user-data';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import { RestangularModule, Restangular } from 'ngx-restangular';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HttpService } from '../providers/http-service/http-service';
+
+export function RestangularConfigFactory (RestangularProvider, userDataProvider) {
+    RestangularProvider.setBaseUrl('http://192.168.2.155:7004');
+    RestangularProvider.setPlainByDefault(true);
+    RestangularProvider.addFullRequestInterceptor((element, operation, path, url, headers, params, httpConfig)=> {
+        if (path !== 'login' && userDataProvider.getToken() !== '') {
+            headers['Authorization'] = 'Bearer ' + userDataProvider.getToken().token;
+        }
+    });
+}
 
 @NgModule({
   declarations: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    MyApp
   ],
   imports: [
+    ComponentsModule,
+
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    RestangularModule.forRoot([UserDataProvider], RestangularConfigFactory),
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    MyApp
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+
+    UserDataProvider,
+    HttpService,
   ]
 })
 export class AppModule {}
