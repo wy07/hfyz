@@ -1,3 +1,4 @@
+import { BaseComponent } from './../../components/base/base';
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 
@@ -6,10 +7,14 @@ import { NavController, IonicPage } from 'ionic-angular';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage extends BaseComponent {
 
-  constructor(public navCtrl: NavController) {
+  ionViewDidLoad() {
+    console.log(this.navCtrl);
+  }
 
+  goToInfoQueryPage () {
+    this.app.getRootNav().push('InfoQueryPage');
   }
 
 }

@@ -1,4 +1,12 @@
 page-home {
+
+ .toolbar .searchbar-md {
+   padding: 0px;
+   .searchbar-input {
+     line-height: 2.5rem;
+   }
+ }
+  
   ion-slides {
     height: auto;
 

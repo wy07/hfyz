@@ -10,6 +10,8 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpService } from '../providers/http-service/http-service';
+import { ScrollableTabsDirective } from '../directives/scrollable-tabs/scrollable-tabs';
+import { EventbusProvider } from '../providers/eventbus/eventbus';
 
 export function RestangularConfigFactory (RestangularProvider, userDataProvider) {
     RestangularProvider.setBaseUrl('http://192.168.2.155:7004');
@@ -23,14 +25,15 @@ export function RestangularConfigFactory (RestangularProvider, userDataProvider)
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
+    ScrollableTabsDirective
   ],
   imports: [
     ComponentsModule,
 
     BrowserModule,
     RestangularModule.forRoot([UserDataProvider], RestangularConfigFactory),
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {tabsHideOnSubPages: true}),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,6 +46,7 @@ export function RestangularConfigFactory (RestangularProvider, userDataProvider)
 
     UserDataProvider,
     HttpService,
+    EventbusProvider,
   ]
 })
 export class AppModule {}
