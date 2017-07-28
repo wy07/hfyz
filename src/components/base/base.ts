@@ -1,6 +1,7 @@
+import { EventbusProvider } from './../../providers/eventbus/eventbus';
 import { UserDataProvider } from './../../providers/user-data/user-data';
 import { HttpService } from './../../providers/http-service/http-service';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, App } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
@@ -20,8 +21,10 @@ export class BaseComponent {
     public navCtrl: NavController,
     public navParams: NavParams,
     public formBuilder: FormBuilder,
+    public app: App,
 
     public httpService: HttpService,
+    public eventbusProvider: EventbusProvider,
     public userData: UserDataProvider
     ) {
   }

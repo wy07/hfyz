@@ -35,7 +35,7 @@ export class LoginPage extends BaseComponent {
     try {
       let res = await this.httpService.login(this.loginForm.value.phone, this.loginForm.value.password);
       this.userData.setToken(res.token);
-      this.navCtrl.push('TabsPage');
+      this.navCtrl.setRoot('TabsPage');
     } catch (error) {
       console.log(JSON.stringify(error));
     }

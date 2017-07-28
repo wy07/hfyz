@@ -1,3 +1,4 @@
+import { BaseComponent } from './../../components/base/base';
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 
@@ -13,13 +14,14 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
   selector: 'page-business-process',
   templateUrl: 'business-process.html',
 })
-export class BusinessProcessPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+export class BusinessProcessPage extends BaseComponent {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BusinessProcessPage');
+  }
+
+  goToCreateBusinessPage () {
+    this.navCtrl.push('CreateBusinessPage');
   }
 
 }
