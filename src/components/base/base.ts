@@ -1,9 +1,12 @@
-import { EventbusProvider } from './../../providers/eventbus/eventbus';
-import { UserDataProvider } from './../../providers/user-data/user-data';
-import { HttpService } from './../../providers/http-service/http-service';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 import { NavController, NavParams, App } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { BackgroundMode } from '@ionic-native/background-mode';
+
+import { EventbusProvider } from './../../providers/eventbus/eventbus';
+import { UserDataProvider } from './../../providers/user-data/user-data';
+import { HttpService } from './../../providers/http-service/http-service';
 
 /**
  * Generated class for the BaseComponent component.
@@ -22,6 +25,8 @@ export class BaseComponent {
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public app: App,
+    public localNotifications: LocalNotifications,
+    public backgroundMode: BackgroundMode,
 
     public httpService: HttpService,
     public eventbusProvider: EventbusProvider,

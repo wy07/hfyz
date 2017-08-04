@@ -17,7 +17,15 @@
 
 <ion-content>
 
-  <ion-list>
+  <ion-fab bottom right>
+    <button ion-fab>业务</button>
+      <ion-fab-list side="top">
+        <button ion-fab>电子运单</button>
+        <button ion-fab (click)="goToRectification()">企业整改</button>
+      </ion-fab-list>
+    </ion-fab>
+
+   <ion-list>
     <div class="info">
       2017-06-22 15:00
       <span>待审核</span>
@@ -57,6 +65,6 @@
       <h2>整改审批</h2>
       <p>审批详情xxxxxxxxxxxxx</p>
     </ion-item>
-  </ion-list>
+  </ion-list> 
 
 </ion-content>

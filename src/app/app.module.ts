@@ -9,6 +9,8 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { BackgroundMode } from '@ionic-native/background-mode';
 import { HttpService } from '../providers/http-service/http-service';
 import { ScrollableTabsDirective } from '../directives/scrollable-tabs/scrollable-tabs';
 import { EventbusProvider } from '../providers/eventbus/eventbus';
@@ -18,7 +20,7 @@ export function RestangularConfigFactory (RestangularProvider, userDataProvider)
     RestangularProvider.setPlainByDefault(true);
     RestangularProvider.addFullRequestInterceptor((element, operation, path, url, headers, params, httpConfig)=> {
         if (path !== 'login' && userDataProvider.getToken() !== '') {
-            headers['Authorization'] = 'Bearer ' + userDataProvider.getToken().token;
+            headers['Authorization'] = 'Bearer ' + userDataProvider.getToken();
         }
     });
 }
@@ -42,6 +44,8 @@ export function RestangularConfigFactory (RestangularProvider, userDataProvider)
   providers: [
     StatusBar,
     SplashScreen,
+    LocalNotifications,
+    BackgroundMode,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
 
     UserDataProvider,
