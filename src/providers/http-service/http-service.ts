@@ -17,9 +17,27 @@ export class HttpService {
 
   /**
    * 登录
-   * url: login/
+   * url: /login
    */
   login(phone: string, password: string) {
     return this.restangular.all('login').post({phone: phone, password: password}).toPromise();
+  }
+
+  /**
+   * 获取企业整改列表
+   * url: /rectification-orders
+   */
+  getRectification(companyId: number, status: string, max: number, offset: number) {
+    return this.restangular.all('rectification-orders')
+      .customGET("", {companyId: companyId, status: status, max: max, offset: offset}).toPromise();
+  }
+
+  /**
+   * 获取企业整改详情
+   * url: /rectification-orders/:id
+   */
+  getRectificationDetail(id: number) {
+    return this.restangular.one('rectification-orders', id)
+      .customGET("", {id: id}).toPromise();
   }
 }
