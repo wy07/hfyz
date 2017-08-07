@@ -12,17 +12,26 @@ import 'rxjs/add/operator/map';
 export class UserDataProvider {
 
   TOKEN: string;
+  PERMISSION: string;
 
   constructor(public http: Http) {
     console.log('Hello UserDataProvider Provider');
   }
 
-  setToken(token): void {
+  setToken(token: string): void {
     this.TOKEN = token;
   }
 
   getToken(): string {
     return this.TOKEN;
+  }
+
+  setPermission(permission: string): void {
+    this.PERMISSION = permission;
+  }
+
+  getPermission(): Array<string> {
+    return this.PERMISSION.split(';');
   }
 
 }

@@ -1,3 +1,4 @@
+import { Company } from './../../models/company.model';
 import { Restangular } from 'ngx-restangular';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
@@ -27,9 +28,14 @@ export class HttpService {
    * 获取企业整改列表
    * url: /rectification-orders
    */
-  getRectification(companyId: number, status: string, max: number, offset: number) {
-    return this.restangular.all('rectification-orders')
-      .customGET("", {companyId: companyId, status: status, max: max, offset: offset}).toPromise();
+  getRectification(company: Company, status: string, max: number, offset: number) {
+    if (company) {
+      return this.restangular.all('rectification-orders')
+        .customGET("", {companyId: company.id, status: status, max: max, offset: offset}).toPromise();
+    } else {
+      return this.restangular.all('rectification-orders')
+        .customGET("", {status: status, max: max, offset: offset}).toPromise();
+    }
   }
 
   /**
@@ -39,5 +45,32 @@ export class HttpService {
   getRectificationDetail(id: number) {
     return this.restangular.one('rectification-orders', id)
       .customGET("", {id: id}).toPromise();
+  }
+
+  /**
+   * 搜索公司列表
+   * url: /companys
+   */
+  searchCompanys(query: string) {
+    return this.restangular.all('companys')
+      .customGET("", {query: query}).toPromise();
+  }
+
+  /**
+   * 提交企业反馈
+   * url: /rectification-orders/:id/feedback
+   */
+  rectificaionFeedback(id: number, feedback: string) {
+    return this.restangular.one('rectification-orders', id)
+      .customPOST({id: id, feedback: feedback}, 'feedback').toPromise();
+  }
+
+  /**
+   * 确认企业反馈
+   * url: /rectification-orders/:id/confirm
+   */
+  rectificaionConfirm(id: number) {
+    return this.restangular.one('rectification-orders', id)
+      .customPOST({id: id}, 'confirm').toPromise();
   }
 }

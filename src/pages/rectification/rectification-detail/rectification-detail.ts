@@ -20,18 +20,39 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 })
 export class RectificationDetailPage extends BaseComponent {
 
+  rectificationId: number;
   rectification: Rectification;
+  feedback: string;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RectificationDetailPage');
     console.log('navParams ---> '+this.navParams.get("id"));
-    this.getDetail(this.navParams.get("id"));
+    this.rectificationId = this.navParams.get("id");
+    this.getDetail();
   }
 
-  async getDetail(id: number) {
+  async getDetail() {
     try {
-      let res = await this.httpService.getRectificationDetail(id);
+      let res = await this.httpService.getRectificationDetail(this.rectificationId);
       this.rectification = res.data;
+    } catch (error) {
+      console.log(JSON.stringify(error));
+    }
+  }
+
+  async submitFeedback () {
+    try {
+      await this.httpService.rectificaionFeedback(this.rectificationId, this.feedback);
+      this.app.getRootNav().pop();
+    } catch (error) {
+      console.log(JSON.stringify(error));
+    }
+  }
+
+  async confirmFeedback () {
+    try {
+      await this.httpService.rectificaionConfirm(this.rectificationId);
+      this.getDetail();
     } catch (error) {
       console.log(JSON.stringify(error));
     }

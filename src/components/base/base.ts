@@ -1,5 +1,5 @@
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import { NavController, NavParams, App } from 'ionic-angular';
+import { NavController, NavParams, App, ViewController, Events } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { BackgroundMode } from '@ionic-native/background-mode';
@@ -27,6 +27,8 @@ export class BaseComponent {
     public app: App,
     public localNotifications: LocalNotifications,
     public backgroundMode: BackgroundMode,
+    public viewCtrl: ViewController,
+    public events: Events,
 
     public httpService: HttpService,
     public eventbusProvider: EventbusProvider,

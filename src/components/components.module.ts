@@ -1,13 +1,14 @@
+import { SearchCompanyComponent } from './search-company/search-company';
 import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
 
 import { BaseComponent } from './base/base';
-import { RectificationComponent } from './rectification/rectification';
+import { RectificationCardComponent } from './rectification-card/rectification-card';
 
 @NgModule({
     imports: [IonicModule],
-    exports: [BaseComponent, RectificationComponent],
-    declarations: [BaseComponent, RectificationComponent],
-    entryComponents: [BaseComponent, RectificationComponent]
+    exports: [BaseComponent, RectificationCardComponent, SearchCompanyComponent],
+    declarations: [BaseComponent, RectificationCardComponent, SearchCompanyComponent],
+    entryComponents: [BaseComponent, RectificationCardComponent, SearchCompanyComponent]
 })
 export class ComponentsModule { }
