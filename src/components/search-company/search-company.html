@@ -1,0 +1,20 @@
+<!-- Generated template for the SearchCompanyComponent component -->
+<ion-header>
+  <ion-navbar>
+    <ion-searchbar [showCancelButton]="true" placeholder="请输入查询条件"
+      [(ngModel)]="input" (ionInput)="onInput($event)" debounce="500">
+    </ion-searchbar>
+    <ion-buttons end>
+      <button ion-button clear (click)="dismiss()">取消</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <button ion-item *ngFor="let company of companys" (click)="selected(company)">
+      {{company.name}}
+    </button>
+  </ion-list>
+</ion-content>

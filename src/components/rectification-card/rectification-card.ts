@@ -9,9 +9,9 @@ import { Component, Input } from '@angular/core';
  */
 @Component({
   selector: 'rectification-component',
-  templateUrl: 'rectification.html'
+  templateUrl: 'rectification-card.html'
 })
-export class RectificationComponent {
+export class RectificationCardComponent {
 
   @Input() rectification: Rectification;
 

@@ -1,3 +1,4 @@
+import { DirectivesModule } from './../directives/directives.module';
 import { ComponentsModule } from './../components/components.module';
 import { UserDataProvider } from './../providers/user-data/user-data';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -32,6 +33,7 @@ export function RestangularConfigFactory (RestangularProvider, userDataProvider)
   ],
   imports: [
     ComponentsModule,
+    DirectivesModule,
 
     BrowserModule,
     RestangularModule.forRoot([UserDataProvider], RestangularConfigFactory),

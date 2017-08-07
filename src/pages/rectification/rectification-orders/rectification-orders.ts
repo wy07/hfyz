@@ -1,6 +1,7 @@
+import { Company } from './../../../models/company.model';
 import { BaseComponent } from './../../../components/base/base';
 import { Rectification } from './../../../models/rectification.model';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 
 /**
@@ -15,16 +16,29 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
   selector: 'page-rectification-orders',
   templateUrl: 'rectification-orders.html',
 })
-export class RectificationOrdersPage extends BaseComponent {
+export class RectificationOrdersPage extends BaseComponent implements OnDestroy {
 
   max: number = 10;
   offset: number = 0;
   total: number;
+  status: string;
+  selectedCompany: Company;
   orders: Array<Rectification>;
+  refreshHandle: (company: Company) => void;
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RectificationOrdersPage');
+    this.status = this.navParams.data;
+    this.selectedCompany = this.navCtrl.parent.viewCtrl.instance.selectedCompany;
+    this.subscribeRefreshEvents();
     this.doRefresh();
+  }
+
+  subscribeRefreshEvents () {
+    this.refreshHandle = (company: Company) => {
+      this.selectedCompany = company;
+      this.doRefresh();
+    };
+    this.events.subscribe('rectification:refresh', this.refreshHandle);
   }
 
   doRefresh (refresher?) {
@@ -40,7 +54,7 @@ export class RectificationOrdersPage extends BaseComponent {
 
   async getRectificationOrders () {
     try {
-      let res = await this.httpService.getRectification(1, "DFK", this.max, this.offset);
+      let res = await this.httpService.getRectification(this.selectedCompany, this.status, this.max, this.offset);
       this.total  = res.total;
       this.offset += res.orders.length;
       return res.orders;
@@ -60,7 +74,15 @@ export class RectificationOrdersPage extends BaseComponent {
   }
 
   goToRectificationDetail (order: Rectification) {
-    this.navCtrl.push('RectificationDetailPage', {id: order.id});
+    this.app.getRootNav().push('RectificationDetailPage', {id: order.id});
+  }
+
+  unSubscribeRefreshEvents () {
+      this.events.unsubscribe('rectification:refresh', this.refreshHandle);
+  }
+
+  ngOnDestroy () {
+    this.unSubscribeRefreshEvents();
   }
 
 }

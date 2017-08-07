@@ -24,8 +24,8 @@ export class BusinessProcessPage extends BaseComponent {
     this.navCtrl.push('CreateBusinessPage');
   }
 
-  goToRectification () {
-    this.app.getRootNav().push('RectificationOrdersPage');
+  goToRectificationPage () {
+    this.app.getRootNav().push('RectificationPage');
   }
 
 }
