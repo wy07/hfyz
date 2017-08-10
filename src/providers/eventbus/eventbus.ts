@@ -14,7 +14,7 @@ declare var vertx: any;
 export class EventbusProvider {
 
   eb = null;
-  eventBusUrl = "http://192.168.2.117:8001/eventbus";
+  eventBusUrl = "http://192.168.2.116:8001/eventbus";
 
   register (numberPlate: string, callback) {
     if (typeof(this.eb) === 'undefined' || !this.eb) {

@@ -73,4 +73,13 @@ export class HttpService {
     return this.restangular.one('rectification-orders', id)
       .customPOST({id: id}, 'confirm').toPromise();
   }
+
+  /**
+   * 获取运单列表
+   * url: /waybills
+   */
+  getWaybills(status: string, max: number, offset: number) {
+    return this.restangular.all('waybills')
+        .customGET("", {status: status, max: max, offset: offset}).toPromise();
+  }
 }

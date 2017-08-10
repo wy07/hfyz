@@ -28,4 +28,8 @@ export class BusinessProcessPage extends BaseComponent {
     this.app.getRootNav().push('RectificationPage');
   }
 
+  navigateToWaybillPage () {
+    this.app.getRootNav().push('WaybillPage');
+  }
+
 }
