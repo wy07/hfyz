@@ -1,0 +1,14 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-searchbar [showCancelButton]="true" placeholder="请输入查询条件">
+    </ion-searchbar>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-tabs tabsPlacement="top">
+    <ion-tab [root]="tab.page" [rootParams]="tab.params" tabTitle="{{tab.title}}" *ngFor="let tab of tabs"></ion-tab>
+  </ion-tabs>
+</ion-content>
