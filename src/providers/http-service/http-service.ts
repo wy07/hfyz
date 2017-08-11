@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class HttpService {
 
-  constructor(public restangular: Restangular) {
+  constructor(public restangular: Restangular, public http: Http) {
   }
 
   /**
@@ -81,5 +81,38 @@ export class HttpService {
   getWaybills(status: string, max: number, offset: number) {
     return this.restangular.all('waybills')
         .customGET("", {status: status, max: max, offset: offset}).toPromise();
+  }
+
+  /**
+   * 获取车辆列表
+   * url: /vehicles
+   */
+  getVehicles() {
+    return this.restangular.all('vehicles').customGET("").toPromise();
+  }
+
+  /**
+   * 获取司机列表
+   * url: /vehicles
+   */
+  getDrivers() {
+    return this.restangular.all('drivers').customGET("").toPromise();
+  }
+
+  /**
+   * 获取押运员列表
+   * url: /vehicles
+   */
+  getEscorts() {
+    return this.restangular.all('escorts').customGET("").toPromise();
+  }
+
+  /**
+   * 获取省市区信息
+   * url: /waybills
+   */
+  getCityPickerData() {
+    return this.http.get('./assets/city-data.json')
+      .map(res => res.json()).toPromise();
   }
 }
