@@ -1,3 +1,4 @@
+import { SearchTrackComponent } from './search-track/search-track';
 import { WaybillCardComponent } from './waybill-card/waybill-card';
 import { SearchCompanyComponent } from './search-company/search-company';
 import { NgModule } from '@angular/core';
@@ -12,19 +13,22 @@ import { RectificationCardComponent } from './rectification-card/rectification-c
         BaseComponent,
         RectificationCardComponent,
         SearchCompanyComponent,
-        WaybillCardComponent
+        WaybillCardComponent,
+        SearchTrackComponent
     ],
     declarations: [
         BaseComponent,
         RectificationCardComponent,
         SearchCompanyComponent,
-        WaybillCardComponent
+        WaybillCardComponent,
+        SearchTrackComponent
     ],
     entryComponents: [
         BaseComponent,
         RectificationCardComponent,
         SearchCompanyComponent,
-        WaybillCardComponent
+        WaybillCardComponent,
+        SearchTrackComponent
     ]
 })
 export class ComponentsModule { }

@@ -93,7 +93,7 @@ export class HttpService {
 
   /**
    * 获取司机列表
-   * url: /vehicles
+   * url: /drivers
    */
   getDrivers() {
     return this.restangular.all('drivers').customGET("").toPromise();
@@ -101,18 +101,42 @@ export class HttpService {
 
   /**
    * 获取押运员列表
-   * url: /vehicles
+   * url: /escorts
    */
   getEscorts() {
     return this.restangular.all('escorts').customGET("").toPromise();
   }
 
   /**
+   * 获取托运单位列表
+   * url: /consignCompanys
+   */
+  getConsignCompanys() {
+    return this.restangular.all('consignCompanys').customGET("").toPromise();
+  }
+
+  /**
+   * 获取途径列表
+   * url: /ways
+   */
+  getWays(departArea: string, arriveArea: string) {
+    return this.restangular.all('ways').customGET("", {departArea: departArea, arriveArea: arriveArea})
+      .toPromise();
+  }
+
+  /**
    * 获取省市区信息
-   * url: /waybills
    */
   getCityPickerData() {
     return this.http.get('./assets/city-data.json')
       .map(res => res.json()).toPromise();
+  }
+
+  /**
+   * 创建货运单
+   * url: /create-freight-waybill
+   */
+  createFreightWaybill(params: any) {
+    return this.restangular.all('create-freight-waybill').post(params).toPromise();
   }
 }

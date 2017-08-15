@@ -16,6 +16,7 @@ import { BackgroundMode } from '@ionic-native/background-mode';
 import { HttpService } from '../providers/http-service/http-service';
 import { ScrollableTabsDirective } from '../directives/scrollable-tabs/scrollable-tabs';
 import { EventbusProvider } from '../providers/eventbus/eventbus';
+import { MapProvider } from '../providers/map/map';
 
 export function RestangularConfigFactory (RestangularProvider, userDataProvider) {
     RestangularProvider.setBaseUrl('http://192.168.2.155:7004');
@@ -55,6 +56,7 @@ export function RestangularConfigFactory (RestangularProvider, userDataProvider)
     UserDataProvider,
     HttpService,
     EventbusProvider,
+    MapProvider,
   ]
 })
 export class AppModule {}
