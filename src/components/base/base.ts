@@ -1,3 +1,4 @@
+import { MapProvider } from './../../providers/map/map';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { NavController, NavParams, App, ViewController, Events } from 'ionic-angular';
 import { Component } from '@angular/core';
@@ -32,7 +33,8 @@ export class BaseComponent {
 
     public httpService: HttpService,
     public eventbusProvider: EventbusProvider,
-    public userData: UserDataProvider
+    public userData: UserDataProvider,
+    public mapProvider: MapProvider
     ) {
   }
 

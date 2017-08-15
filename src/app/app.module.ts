@@ -5,6 +5,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { RestangularModule, Restangular } from 'ngx-restangular';
+import { CityPickerModule } from  "ionic2-city-picker";
 
 import { MyApp } from './app.component';
 
@@ -15,6 +16,7 @@ import { BackgroundMode } from '@ionic-native/background-mode';
 import { HttpService } from '../providers/http-service/http-service';
 import { ScrollableTabsDirective } from '../directives/scrollable-tabs/scrollable-tabs';
 import { EventbusProvider } from '../providers/eventbus/eventbus';
+import { MapProvider } from '../providers/map/map';
 
 export function RestangularConfigFactory (RestangularProvider, userDataProvider) {
     RestangularProvider.setBaseUrl('http://192.168.2.155:7004');
@@ -34,6 +36,7 @@ export function RestangularConfigFactory (RestangularProvider, userDataProvider)
   imports: [
     ComponentsModule,
     DirectivesModule,
+    CityPickerModule,
 
     BrowserModule,
     RestangularModule.forRoot([UserDataProvider], RestangularConfigFactory),
@@ -53,6 +56,7 @@ export function RestangularConfigFactory (RestangularProvider, userDataProvider)
     UserDataProvider,
     HttpService,
     EventbusProvider,
+    MapProvider,
   ]
 })
 export class AppModule {}
