@@ -11,6 +11,7 @@ declare var MInfoWindow: any;
 declare var MImgIcon: any;
 declare var MSize: any;
 declare var MPixel: any;
+declare var MPolyline: any;
 
 @Injectable()
 export class MapProvider {
@@ -32,6 +33,11 @@ export class MapProvider {
       });
 
    });
+  }
+
+  reload () {
+    this.pointMap.clear();
+    this.map.clearOverlay(true);
   }
 
   play (data) {
@@ -67,6 +73,40 @@ export class MapProvider {
     this.pointMap.forEach(function(value) {
         that.play(value.data);
     });
+  }
+
+  track (points: Array<any>) {
+    let MPoints = [];
+    let startPoint = points[0].geoPoint.split(",");
+    let endPoint   = points[points.length - 1].geoPoint.split(",");
+
+    this.map.centerAndZoom(new MPoint(parseFloat(startPoint[0]), parseFloat(startPoint[1])), 16);
+
+    for (let point of points) {
+      let geoPoint = point.geoPoint.split(",");
+      MPoints.push(new MPoint(parseFloat(geoPoint[0]), parseFloat(geoPoint[1])));
+    }
+    let polyline = new MPolyline(MPoints);
+    polyline.setColor('blue');//设置折线颜色
+
+    let marker = new MMarker(
+      new MPoint(parseFloat(endPoint[0]), parseFloat(endPoint[1])),
+      {
+        icon: new MImgIcon('assets/img/car01.png', {
+          size: new MSize(32, 45)
+        })
+      }
+  );
+    this.map.addOverlay(marker);
+    this.map.addOverlay(polyline);
+  }
+
+  zoomIn () {
+    this.map.zoomIn();
+  }
+
+  zoomOut () {
+    this.map.zoomOut();
   }
 
   infoWindowHtml (realTimeData) {

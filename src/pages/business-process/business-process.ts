@@ -1,3 +1,5 @@
+import { FreightWaybill } from './../../models/freightWaybill.model';
+import { Rectification } from './../../models/rectification.model';
 import { BaseComponent } from './../../components/base/base';
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
@@ -16,20 +18,40 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 })
 export class BusinessProcessPage extends BaseComponent {
 
+  orders: Array<Rectification>;
+  waybills: Array<FreightWaybill>;
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BusinessProcessPage');
+    this.doRefresh();
   }
 
-  goToCreateBusinessPage () {
-    this.navCtrl.push('CreateBusinessPage');
+  doRefresh (refresher?) {
+    this.getUpcomingTasks().then(() => {
+      if (refresher) refresher.complete();
+    }, err => {
+      if (refresher) refresher.complete();
+    });
   }
 
-  goToRectificationPage () {
-    this.app.getRootNav().push('RectificationPage');
+  async getUpcomingTasks () {
+    try {
+      let res = await this.httpService.getUpcomingTasks();
+      [this.orders, this.waybills] = [res.orders, res.waybills];
+    } catch (error) {
+      console.log(JSON.stringify(error));
+    }
   }
 
-  navigateToWaybillPage () {
-    this.app.getRootNav().push('WaybillPage');
+  navigateToRectificationDetail (order: Rectification) {
+    this.navCtrl.push('RectificationDetailPage', {id: order.id});
+  }
+
+  navigateToCreateFreightWaybillPage () {
+    this.navCtrl.push('CreateFreightWaybillPage');
+  }
+
+  navigateToFunctionListPage () {
+    this.navCtrl.push('FunctionListPage');
   }
 
 }

@@ -13,8 +13,4 @@ export class HomePage extends BaseComponent {
     console.log(this.navCtrl);
   }
 
-  goToInfoQueryPage () {
-    this.app.getRootNav().push('InfoQueryPage');
-  }
-
 }
