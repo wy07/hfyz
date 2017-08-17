@@ -25,6 +25,15 @@ export class HttpService {
   }
 
   /**
+   * 获取待办任务列表
+   * url: /upcoming-tasks
+   */
+  getUpcomingTasks() {
+    return this.restangular.all('upcoming-tasks')
+        .customGET("").toPromise();
+  }
+
+  /**
    * 获取企业整改列表
    * url: /rectification-orders
    */
@@ -48,12 +57,21 @@ export class HttpService {
   }
 
   /**
-   * 搜索公司列表
+   * 获取公司列表
    * url: /companys
    */
-  searchCompanys(query: string) {
+  searchCompanys() {
     return this.restangular.all('companys')
-      .customGET("", {query: query}).toPromise();
+      .customGET("").toPromise();
+  }
+
+  /**
+   * 根据公司获取车辆列表
+   * url: /companys/:id/vehicles
+   */
+  searchVehicles(id: number) {
+    return this.restangular.one('companys', {id: id})
+      .customGET("vehicles").toPromise();
   }
 
   /**
@@ -138,5 +156,15 @@ export class HttpService {
    */
   createFreightWaybill(params: any) {
     return this.restangular.all('create-freight-waybill').post(params).toPromise();
+  }
+
+  /**
+   * 获取历史轨迹数据
+   * url: /search-track
+   * params: query, startDate, endDate
+   */
+  searchTrack(params: any) {
+    return this.restangular.all('search-track').customGET("", params)
+      .toPromise();
   }
 }

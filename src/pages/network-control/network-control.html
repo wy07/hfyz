@@ -1,18 +1,32 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      联网联控
-    </ion-title>
-    <ion-buttons end>
-      <button ion-button clear (click)="openNativeMap()">地图</button>
-    </ion-buttons>
+      <ion-searchbar [showCancelButton]="true" placeholder="车辆查询" (click)="searchCompany()">
+        </ion-searchbar>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
     <div id="map" #map></div>
     
-    <ion-fab bottom right>
-      <button ion-fab>轨迹</button>
-    </ion-fab>
+    <!-- <ion-fab bottom right>
+      <button ion-fab (click)="searchTrack()">轨迹</button>
+    </ion-fab> -->
+
+    <div class="buttons top">
+      <button ion-button color="white" (click)="searchTrack()">
+        <ion-icon name="stats"></ion-icon>
+      </button>
+      <button ion-button color="white" (click)="navigateToInfoQueryPage()">
+        <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </div>
+
+    <div class="buttons bottom">
+        <button ion-button color="white" (click)="mapZoomIn()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+        <button ion-button color="white" (click)="mapZoomOut()">
+          <ion-icon name="remove"></ion-icon>
+        </button>
+      </div>
 </ion-content>

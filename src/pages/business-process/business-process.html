@@ -7,64 +7,30 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>业务办理</ion-title>
-    <ion-buttons end>
-      <button ion-button clear (click)="goToCreateBusinessPage()">创建</button>
-    </ion-buttons>
+    <ion-title>待办任务</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
 
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="下拉刷新" refreshingText="刷新中..."></ion-refresher-content>
+  </ion-refresher>
+
+  <rectification-component [rectification]="order" *ngFor="let order of orders"
+    (click)="navigateToRectificationDetail(order)"></rectification-component>
+
+  <waybill-card [waybill]="waybill" *ngFor="let waybill of waybills"></waybill-card>
+    
   <ion-fab bottom right>
-    <button ion-fab>业务</button>
-      <ion-fab-list side="top">
-        <button ion-fab (click)="navigateToWaybillPage()">电子运单</button>
-        <button ion-fab (click)="goToRectificationPage()">企业整改</button>
-      </ion-fab-list>
-    </ion-fab>
+    <button ion-fab (click)="navigateToFunctionListPage()">业务</button>
+  </ion-fab>
 
-   <ion-list>
-    <div class="info">
-      2017-06-22 15:00
-      <span>待审核</span>
-    </div>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/img/avatar_1.png">
-      </ion-avatar>
-      <h2>电子运单</h2>
-      <p>运单详情xxxxxxxxxxxxx</p>
-    </ion-item>
-  </ion-list>
-
-  <ion-list>
-    <div class="info">
-      2017-06-22 15:00
-      <span>待审核</span>
-    </div>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/img/avatar_2.png">
-      </ion-avatar>
-      <h2>企业整改</h2>
-      <p>详情xxxxxxxxxxxxx</p>
-    </ion-item>
-  </ion-list>
-
-  <ion-list>
-    <div class="info">
-      2017-06-22 15:00
-      <span>待审核</span>
-    </div>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/img/avatar_1.png">
-      </ion-avatar>
-      <h2>整改审批</h2>
-      <p>审批详情xxxxxxxxxxxxx</p>
-    </ion-item>
-  </ion-list> 
+  <ion-fab top right edge>
+    <button ion-fab mini (click)="navigateToCreateFreightWaybillPage()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 
 </ion-content>

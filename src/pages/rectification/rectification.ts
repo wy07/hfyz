@@ -31,7 +31,7 @@ export class RectificationPage {
   }
 
   searchCompany () {
-    let searchCompanyModal = this.modalCtrl.create(SearchCompanyComponent);
+    let searchCompanyModal = this.modalCtrl.create(SearchCompanyComponent, {from: "RectificationPage"});
     searchCompanyModal.onDidDismiss((company: Company) => {
       console.log("company ---> "+ JSON.stringify(company));
       this.selectedCompany = company;
