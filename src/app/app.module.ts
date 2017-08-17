@@ -19,7 +19,7 @@ import { EventbusProvider } from '../providers/eventbus/eventbus';
 import { MapProvider } from '../providers/map/map';
 
 export function RestangularConfigFactory (RestangularProvider, userDataProvider) {
-    RestangularProvider.setBaseUrl('http://192.168.2.155:7004');
+    RestangularProvider.setBaseUrl('http://localhost:7004');
     RestangularProvider.setPlainByDefault(true);
     RestangularProvider.addFullRequestInterceptor((element, operation, path, url, headers, params, httpConfig)=> {
         if (path !== 'login' && userDataProvider.getToken() !== '') {
