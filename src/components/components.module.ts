@@ -1,3 +1,4 @@
+import { SearchVehicleComponent } from './search-vehicle/search-vehicle';
 import { SearchTrackComponent } from './search-track/search-track';
 import { WaybillCardComponent } from './waybill-card/waybill-card';
 import { SearchCompanyComponent } from './search-company/search-company';
@@ -14,21 +15,24 @@ import { RectificationCardComponent } from './rectification-card/rectification-c
         RectificationCardComponent,
         SearchCompanyComponent,
         WaybillCardComponent,
-        SearchTrackComponent
+        SearchTrackComponent,
+        SearchVehicleComponent
     ],
     declarations: [
         BaseComponent,
         RectificationCardComponent,
         SearchCompanyComponent,
         WaybillCardComponent,
-        SearchTrackComponent
+        SearchTrackComponent,
+        SearchVehicleComponent
     ],
     entryComponents: [
         BaseComponent,
         RectificationCardComponent,
         SearchCompanyComponent,
         WaybillCardComponent,
-        SearchTrackComponent
+        SearchTrackComponent,
+        SearchVehicleComponent
     ]
 })
 export class ComponentsModule { }
