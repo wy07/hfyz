@@ -39,7 +39,7 @@ export class NetworkControlPage extends BaseComponent {
       "gpsSpeed":88,
       "totalMileage":129806,
       "recSpeed":0,
-      "direction":77,
+      "direction":130,
       "altitude":0,
       "vehicleState":786451,
       "alarmState":0
