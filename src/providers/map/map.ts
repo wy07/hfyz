@@ -12,6 +12,7 @@ declare var MImgIcon: any;
 declare var MSize: any;
 declare var MPixel: any;
 declare var MPolyline: any;
+declare var MRichIcon: any;
 
 @Injectable()
 export class MapProvider {
@@ -49,8 +50,11 @@ export class MapProvider {
     //打点
     var point = new MPoint(parseFloat(geoPoint[0]), parseFloat(geoPoint[1]));
     var marker = new MMarker(point, {
-          icon: new MImgIcon('assets/img/car01.png', {
-            size: new MSize(32, 45)
+          icon: new MRichIcon(`<span style="background-image: url(assets/img/car01.png);
+          display: inline-block;width: 100%;height: 100%;
+          transform:rotate(${data.direction}deg);
+          -webkit-transform:rotate(${data.direction}deg); "></span>`, {
+            size: new MSize(45, 45)
         })
       }
     );
@@ -92,8 +96,11 @@ export class MapProvider {
     let marker = new MMarker(
       new MPoint(parseFloat(endPoint[0]), parseFloat(endPoint[1])),
       {
-        icon: new MImgIcon('assets/img/car01.png', {
-          size: new MSize(32, 45)
+        icon: new MRichIcon(`<span style="background-image: url(assets/img/car01.png);
+        display: inline-block;width: 100%;height: 100%;
+        transform:rotate(${points[points.length - 1].direction}deg);
+        -webkit-transform:rotate(${points[points.length - 1].direction}deg); "></span>`, {
+          size: new MSize(45, 45)
         })
       }
   );
