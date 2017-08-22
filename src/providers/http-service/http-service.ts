@@ -167,4 +167,19 @@ export class HttpService {
     return this.restangular.all('search-track').customGET("", params)
       .toPromise();
   }
+  /**
+   * 获取车辆列表
+   * url: /cars/search
+   */
+  getCars() {
+    return this.restangular.all('cars').customGET("search").toPromise();
+  }
+  /**
+   * 获取车辆详情
+   * url: /car/:frameNo
+   */
+  getCarDetail(frameNo: string) {
+    return this.restangular.one('car',frameNo)
+      .customGET("", {frameNo: frameNo}).toPromise();
+  }
 }

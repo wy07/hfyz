@@ -1,0 +1,51 @@
+<!--
+  Generated template for the CarInfoDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>车辆详情</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      车辆（挂车）号牌
+      <span item-right>{{car?.licenseNo}}</span>
+    </ion-item>
+    <ion-item>
+      道路运输证号
+      <span item-right>{{car?.transformLicenseNo}}</span>
+    </ion-item>
+    <ion-item>
+      业户名称
+      <span item-right>{{car?.ownerName}}</span>
+    </ion-item>
+    <ion-item>
+      车架号
+      <span item-right>{{car?.frameNo}}</span>
+    </ion-item>
+    <ion-item>
+      车辆类型
+      <span item-right>{{car?.carType}}</span>
+    </ion-item>
+    <ion-item>
+      车牌颜色
+      <span item-right>{{car?.carPlateColor}}</span>
+    </ion-item>
+    <ion-item>
+      车身颜色
+      <span item-right>{{car?.carColor}}</span>
+    </ion-item>
+    <ion-item>
+      有效期止
+      <span item-right>{{car?.endTime}}</span>
+    </ion-item>
+  </ion-list>
+</ion-content>
