@@ -43,7 +43,7 @@ export class FixPasswordPage extends BaseComponent {
       if (fix.result === "FAIL") {
         let toast = this.toastCtrl.create({
           message: '修改密码失败',
-          duration: 3000,
+          duration: 2500,
           position: "top"
         });
         toast.present(toast);
@@ -51,7 +51,7 @@ export class FixPasswordPage extends BaseComponent {
       } else {
         let toast = this.toastCtrl.create({
           message: '修改密码已成功，请注意保存新密码！',
-          duration: 3000,
+          duration: 2500,
           position: "top"
         });
         toast.present(toast);
