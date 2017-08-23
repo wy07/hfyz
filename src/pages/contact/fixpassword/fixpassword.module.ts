@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-
-import { ContactPage } from './contact';
+import {NgModule} from '@angular/core';
+import {IonicPageModule} from 'ionic-angular';
+import {FixPasswordPage} from "./fixpassword";
 
 @NgModule({
-    imports: [
-        IonicPageModule.forChild(ContactPage)
-    ],
-    declarations: [ContactPage],
-    entryComponents: [ContactPage]
+  imports: [
+    IonicPageModule.forChild(FixPasswordPage)
+  ],
+  declarations: [FixPasswordPage],
+  entryComponents: [FixPasswordPage]
 })
-export class ContactPageModule { }
+export class FixPsdPageModule {
+}

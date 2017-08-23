@@ -167,4 +167,22 @@ export class HttpService {
     return this.restangular.all('search-track').customGET("", params)
       .toPromise();
   }
+
+  /**
+   * 确认旧密码是否正确
+   * url: /confirm-old-pwd
+   * @param {string} old_pwd
+   */
+  confirmOldPwd(old_pwd: string) {
+    return this.restangular.all('confirm-old-pwd').post({old_pwd: old_pwd}).toPromise();
+  }
+
+  /**
+   * 修改新密码
+   * url: /fix-new-pwd
+   * @param {string} new_pwd
+   */
+  fixNewPwd(new_pwd: string) {
+    return this.restangular.all('fix-new-pwd').post({new_pwd: new_pwd}).toPromise();
+  }
 }
