@@ -20,7 +20,7 @@ export class FixPasswordPage extends BaseComponent {
   async confirmFixPwd() {
     try {
       let confirm = await this.httpService.confirmOldPwd(this.fixPwdForm.value.old_pwd);
-      if (confirm.result === "FAIL") {
+      if (confirm.result === "fail") {
         let toast = this.toastCtrl.create({
           message: '原始密码错误，请重新输入',
           duration: 3000,
@@ -40,7 +40,7 @@ export class FixPasswordPage extends BaseComponent {
       toast.present(toast);
     } else {
       let fix = await this.httpService.fixNewPwd(this.fixPwdForm.value.new_pwd);
-      if (fix.result === "FAIL") {
+      if (fix.result === "fail") {
         let toast = this.toastCtrl.create({
           message: '修改密码失败',
           duration: 2500,
