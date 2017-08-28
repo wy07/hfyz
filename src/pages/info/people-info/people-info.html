@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-searchbar [showCancelButton]="true" [(ngModel)]="name" placeholder="请输入姓名查询"
+                   [(ngModel)]="input" (ionInput)="onInput($event)" debounce="100">
+    </ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="下拉刷新" refreshingText="刷新中..."></ion-refresher-content>
+  </ion-refresher>
+  <ion-list >
+    <button ion-item  *ngFor="let people of searchPeoples" (click)="getDetail(people)">
+      <ion-avatar item-start>
+      <img src="assets/img/people.png">
+      </ion-avatar>
+      <h2>{{ people.name }}</h2>
+      <p>{{people.gender}}&nbsp;&nbsp;&nbsp;&nbsp;{{people.phoneNo}}</p>
+    </button>
+  </ion-list>
+</ion-content>
