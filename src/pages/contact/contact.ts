@@ -12,4 +12,7 @@ export class ContactPage {
 
   }
 
+  goToFixPage() {
+    this.navCtrl.push("FixPasswordPage");
+  }
 }
