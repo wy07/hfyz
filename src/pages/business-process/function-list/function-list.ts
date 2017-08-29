@@ -1,6 +1,6 @@
-import { BaseComponent } from './../../../components/base/base';
-import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import {BaseComponent} from './../../../components/base/base';
+import {Component} from '@angular/core';
+import {NavController, NavParams, IonicPage} from 'ionic-angular';
 
 /**
  * Generated class for the FunctionListPage page.
@@ -16,12 +16,21 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 })
 export class FunctionListPage extends BaseComponent {
 
-  navigateToRectificationPage () {
+  navigateToRectificationPage() {
     this.app.getRootNav().push('RectificationPage');
   }
 
-  navigateToWaybillPage () {
+  navigateToWaybillPage() {
     this.app.getRootNav().push('WaybillPage');
   }
+
+  navigateToCarPage() {
+    this.app.getRootNav().push('CarInfoPage');
+  }
+
+  navigateToPeoplePage() {
+    this.app.getRootNav().push('PeopleInfoPage');
+  }
+
 
 }

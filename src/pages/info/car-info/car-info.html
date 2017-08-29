@@ -1,0 +1,10 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>运营企业车辆信息</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-tabs tabsPlacement="top">
+    <ion-tab [root]="tab.page" [rootParams]="tab.params" tabTitle="{{tab.title}}" *ngFor="let tab of tabs"></ion-tab>
+  </ion-tabs>
+</ion-content>

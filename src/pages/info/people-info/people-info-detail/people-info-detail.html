@@ -1,0 +1,129 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>从业人员详情</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list *ngFor="let item of items;let indx=index" style="margin: 0px">
+    <ion-item>
+       <h2 *ngIf="item.type=='checkMember'">考核员</h2>
+       <h2 *ngIf="item.type=='coach'">教练员</h2>
+       <h2 *ngIf="item.type=='driver'">营运驾驶员</h2>
+       <h2 *ngIf="item.type=='manager'">危货押运、装卸管理员</h2>
+       <h2 *ngIf="item.type=='tec'">维修技术员</h2>
+       <h2 *ngIf="item.type=='waiter'">站场服务人员</h2>
+      <ion-icon name="ios-arrow-down" item-right *ngIf="temp=='show'+indx"  (click)="accordion(indx,'hihe')"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="temp!='show'+indx"  (click)="accordion(indx,'show')"></ion-icon>
+    </ion-item>
+
+    <ion-card *ngIf="temp=='show'+indx"  >
+        <ion-list *ngIf="item.type=='checkMember'">
+          <ion-item>身份证号<span item-right>{{item.data?.idCardNo||'无'}}</span></ion-item>
+          <ion-item>业户编码<span item-right>{{item.data?.companyCode||'无'}}</span></ion-item>
+          <ion-item>从业资格类别<span item-right>{{item.data?.workLicenseType||'无'}}</span></ion-item>
+          <ion-item>从业资格证号<span item-right>{{item.data?.workLicenseNo||'无'}}</span></ion-item>
+          <ion-item>从业资格证初领时间<span item-right>{{item.data?.workLicenseGetTime||'无'}}</span></ion-item>
+          <ion-item>从业资格证发放时间<span item-right>{{item.data?.workLicenseGrantTime||'无'}}</span></ion-item>
+          <ion-item>证件有效期至<span item-right>{{item.data?.endTime||'无'}}</span></ion-item>
+          <ion-item>发证机关<span item-right>{{item.data?.licenseGrantOrg||'无'}}</span></ion-item>
+          <ion-item>证照状态<span item-right>{{item.data?.licenseSituation||'无'}}</span></ion-item>
+          <ion-item>补换证次数<span item-right>{{item.data?.licenseChangeTimes||'无'}}</span></ion-item>
+          <ion-item>培训次数<span item-right>{{item.data?.trainTimes||'无'}}</span></ion-item>
+          <ion-item>考核类别<span item-right>{{item.data?.checkType||'无'}}</span></ion-item>
+        </ion-list>
+        <ion-list *ngIf="item.type=='coach'">
+          <ion-item>身份证号<span item-right>{{item.data?.idCardNo||'无'}}</span></ion-item>
+          <ion-item>业户编码<span item-right>{{item.data?.companyCode||'无'}}</span></ion-item>
+          <ion-item>从业资格类别<span item-right>{{item.data?.workLicenseType||'无'}}</span></ion-item>
+          <ion-item>从业资格证号<span item-right>{{item.data?.workLicenseNo||'无'}}</span></ion-item>
+          <ion-item>从业资格初领时间<span item-right>{{item.data?.workLicenseGetTime||'无'}}</span></ion-item>
+          <ion-item>从业资格发放时间<span item-right>{{item.data?.workLicenseGrantTime||'无'}}</span></ion-item>
+          <ion-item>证件有效期至<span item-right>{{item.data?.endTime||'无'}}</span></ion-item>
+          <ion-item>驾驶证号<span item-right>{{item.data?.driveLicenseNo||'无'}}</span></ion-item>
+          <ion-item>准驾类型<span item-right>{{item.data?.driveCarType||'无'}}</span></ion-item>
+          <ion-item>驾驶证初领时间<span item-right>{{item.data?.driveLicenseGetTime||'无'}}</span></ion-item>
+          <ion-item>发证机关<span item-right>{{item.data?.licenseGrantOrga||'无'}}</span></ion-item>
+          <ion-item>证照状态<span item-right>{{item.data?.licenseSituation||'无'}}</span></ion-item>
+          <ion-item>从业状态<span item-right>{{item.data?.workSituation||'无'}}</span></ion-item>
+          <ion-item>业户名称<span item-right>{{item.data?.ownerName||'无'}}</span></ion-item>
+          <ion-item>经营许可证字<span item-right>{{item.data?.businessPermitCharacter||'无'}}</span></ion-item>
+          <ion-item>经营许可证号<span item-right>{{item.data?.businessPermitNo||'无'}}</span></ion-item>
+          <ion-item>补换证次数<span item-right>{{item.data?.changeTimes||'无'}}</span></ion-item>
+          <ion-item>培训次数<span item-right>{{item.data?.trainTimes||'无'}}</span></ion-item>
+          <ion-item>稽查处理状态<span item-right>{{item.data?.inspectDealSituation||'无'}}</span></ion-item>
+          <ion-item>准教类型<span item-right>{{item.data?.teachType||'无'}}</span></ion-item>
+          <ion-item>准教车型<span item-right>{{item.data?.teachCarType||'无'}}</span></ion-item>
+          <ion-item>证照状态<span item-right>{{item.data?.driveLicenseSituation||'无'}}</span></ion-item>
+        </ion-list>
+        <ion-list *ngIf="item.type=='driver'">
+          <ion-item>身份证号<span item-right>{{item.data?.idCardNo||'无'}}</span></ion-item>
+          <ion-item>业户编码<span item-right>{{item.data?.companyCode||'无'}}</span></ion-item>
+          <ion-item>从业资格类别<span item-right>{{item.data?.workLicenseType||'无'}}</span></ion-item>
+          <ion-item>从业资格证号<span item-right>{{item.data?.workLicenseNo||'无'}}</span></ion-item>
+          <ion-item>从业资格初领时间<span item-right>{{item.data?.workLicenseGetTime||'无'}}</span></ion-item>
+          <ion-item>从业资格发放时间<span item-right>{{item.data?.workLicenseGrantTime||'无'}}</span></ion-item>
+          <ion-item>证件有效期至<span item-right>{{item.data?.endTime||'无'}}</span></ion-item>
+          <ion-item>驾驶证号<span item-right>{{item.data?.driveLicenseNo||'无'}}</span></ion-item>
+          <ion-item>准驾类型<span item-right>{{item.data?.driveCarType||'无'}}</span></ion-item>
+          <ion-item>驾驶证初领时间<span item-right>{{item.data?.driveLicenseGetTime||'无'}}</span></ion-item>
+          <ion-item>发证机关<span item-right>{{item.data?.licenseGrantOrg||'无'}}</span></ion-item>
+          <ion-item>证照状态<span item-right>{{item.data?.licenseSituation||'无'}}</span></ion-item>
+          <ion-item>从业状态<span item-right>{{item.data?.workSituation||'无'}}</span></ion-item>
+          <ion-item>业户名称<span item-right>{{item.data?.ownerName||'无'}}</span></ion-item>
+          <ion-item>经营许可证字<span item-right>{{item.data?.businessPermitCharacter||'无'}}</span></ion-item>
+          <ion-item>经营许可证号<span item-right>{{item.data?.businessPermitNo||'无'}}</span></ion-item>
+          <ion-item>补换证次数<span item-right>{{item.data?.changeTimes||'无'}}</span></ion-item>
+          <ion-item>培训次数<span item-right>{{item.data?.trainTimes||'无'}}</span></ion-item>
+          <ion-item>稽查处理状态<span item-right>{{item.data?.inspectDealSituation||'无'}}</span></ion-item>
+          <ion-item>交通事故次数<span item-right>{{item.data?.trafficAccidentRecordNo||'无'}}</span></ion-item>
+        </ion-list>
+        <ion-list *ngIf="item.type=='manager'">
+          <ion-item>身份证号<span item-right>{{item.data?.idCardNo||'无'}}</span></ion-item>
+          <ion-item>业户编码<span item-right>{{item.data?.companyCode||'无'}}</span></ion-item>
+          <ion-item>从业资格类别<span item-right>{{item.data?.workLicenseType||'无'}}</span></ion-item>
+          <ion-item>从业资格证号<span item-right>{{item.data?.workLicenseNo||'无'}}</span></ion-item>
+          <ion-item>从业资格初领时间<span item-right>{{item.data?.workLicenseGetTime||'无'}}</span></ion-item>
+          <ion-item>从业资格发放时间<span item-right>{{item.data?.workLicenseGrantTime||'无'}}</span></ion-item>
+          <ion-item>证件有效期至<span item-right>{{item.data?.endTime||'无'}}</span></ion-item>
+          <ion-item>发证机关<span item-right>{{item.data?.licenseGrantOrg||'无'}}</span></ion-item>
+          <ion-item>证照状态<span item-right>{{item.data?.licenseSituation||'无'}}</span></ion-item>
+          <ion-item>从业状态<span item-right>{{item.data?.workSituation||'无'}}</span></ion-item>
+          <ion-item>业户名称<span item-right>{{item.data?.ownerName||'无'}}</span></ion-item>
+          <ion-item>经营许可证字<span item-right>{{item.data?.businessPermitCharacter||'无'}}</span></ion-item>
+          <ion-item>经营许可证号<span item-right>{{item.data?.businessPermitNo||'无'}}</span></ion-item>
+          <ion-item>补换证次数<span item-right>{{item.data?.changeTimes||'无'}}</span></ion-item>
+          <ion-item>培训次数<span item-right>{{item.data?.trainTimes||'无'}}</span></ion-item>
+          <ion-item>稽查处理状态<span item-right>{{item.data?.inspectDealSituation||'无'}}</span></ion-item>
+          <ion-item>交通事故次数<span item-right>{{item.data?.trafficAccidentRecordNo||'无'}}</span></ion-item>
+        </ion-list>
+        <ion-list *ngIf="item.type=='tec'">
+          <ion-item>身份证号<span item-right>{{item.data?.idCardNo||'无'}}</span></ion-item>
+          <ion-item>业户编码<span item-right>{{item.data?.companyCode||'无'}}</span></ion-item>
+          <ion-item>从业资格类别<span item-right>{{item.data?.workLicenseType||'无'}}</span></ion-item>
+          <ion-item>从业资格证号<span item-right>{{item.data?.workLicenseNo||'无'}}</span></ion-item>
+          <ion-item>从业资格初领时间<span item-right>{{item.data?.workLicenseGetTime||'无'}}</span></ion-item>
+          <ion-item>从业资格发放时间<span item-right>{{item.data?.workLicenseGrantTime||'无'}}</span></ion-item>
+          <ion-item>证件有效期至<span item-right>{{item.data?.endTime||'无'}}</span></ion-item>
+          <ion-item>发证机关<span item-right>{{item.data?.licenseGrantOrganization||'无'}}</span></ion-item>
+          <ion-item>证照机关<span item-right>{{item.data?.licenseSituation||'无'}}</span></ion-item>
+          <ion-item>业户名称<span item-right>{{item.data?.ownerName||'无'}}</span></ion-item>
+          <ion-item>经营许可证字<span item-right>{{item.data?.businessPermitCharacter||'无'}}</span></ion-item>
+          <ion-item>经营许可证号<span item-right>{{item.data?.businessPermitNo||'无'}}</span></ion-item>
+          <ion-item>补换证次数<span item-right>{{item.data?.changeTimes||'无'}}</span></ion-item>
+          <ion-item>培训次数<span item-right>{{item.data?.trainTimes||'无'}}</span></ion-item>
+          <ion-item>稽查处理状态<span item-right>{{item.data?.inspectDealSituation||'无'}}</span></ion-item>
+          <ion-item>是否技术负责人<span item-right>{{item.data?.technologyDirector||'无'}}</span></ion-item>
+          <ion-item>专业技术等级<span item-right>{{item.data?.technologyLevel||'无'}}</span></ion-item>
+          <ion-item>专业技术证书发放时间<span item-right>{{item.data?.technologyLicenseGrantTime||'无'}}</span></ion-item>
+        </ion-list>
+        <ion-list *ngIf="item.type=='waiter'">
+          <ion-item>身份证号<span item-right>{{item.data?.idCardNo||'无'}}</span></ion-item>
+          <ion-item>岗位名称<span item-right>{{item.data?.jobName||'无'}}</span></ion-item>
+          <ion-item>岗位证编号<span item-right>{{item.data?.jobLicenseNo||'无'}}</span></ion-item>
+          <ion-item>发证日期<span item-right>{{item.data?.grantTime||'无'}}</span></ion-item>
+          <ion-item>上岗日期<span item-right>{{item.data?.beginWorkTime||'无'}}</span></ion-item>
+
+        </ion-list>
+    </ion-card>
+  </ion-list>
+</ion-content>

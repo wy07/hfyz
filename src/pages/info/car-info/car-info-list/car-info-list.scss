@@ -1,0 +1,11 @@
+page-car-info-list {
+  .info {
+    background-color: white;
+    padding: 8px 16px;
+    border-bottom: 1px color($colors, background) solid;
+
+    span {
+      float: right;
+    }
+  }
+}

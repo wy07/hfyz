@@ -1,15 +1,15 @@
-import { Company } from './../../models/company.model';
-import { Restangular } from 'ngx-restangular';
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {Company} from './../../models/company.model';
+import {Restangular} from 'ngx-restangular';
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
-  Generated class for the HttpServiceProvider provider.
+ Generated class for the HttpServiceProvider provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular DI.
-*/
+ See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+ for more info on providers and Angular DI.
+ */
 @Injectable()
 export class HttpService {
 
@@ -30,7 +30,7 @@ export class HttpService {
    */
   getUpcomingTasks() {
     return this.restangular.all('upcoming-tasks')
-        .customGET("").toPromise();
+      .customGET("").toPromise();
   }
 
   /**
@@ -98,7 +98,7 @@ export class HttpService {
    */
   getWaybills(status: string, max: number, offset: number) {
     return this.restangular.all('waybills')
-        .customGET("", {status: status, max: max, offset: offset}).toPromise();
+      .customGET("", {status: status, max: max, offset: offset}).toPromise();
   }
 
   /**
@@ -169,7 +169,39 @@ export class HttpService {
   }
 
   /**
-   * 确认旧密码是否正确
+   * 获取车辆列表
+   * url: /cars/search
+   */
+  getCars(carType: string) {
+    return this.restangular.all('cars').customGET("search", {carType: carType}).toPromise();
+  }
+
+  /**
+   * 获取车辆详情
+   * url: /car/:frameNo
+   */
+  getCarDetail(frameNo: string) {
+    return this.restangular.one('car', frameNo)
+      .customGET("", {frameNo: frameNo}).toPromise();
+  }
+
+  /**
+   * 获取从业人员列表
+   * url: /peoples/search
+   */
+  getPeoples() {
+    return this.restangular.all('peoples').customGET('search').toPromise();
+  }
+
+  /**
+   * 获取从业人员详情
+   * url:/people/:idCardNo
+   */
+  getPeopleDetail(idCardNo: string) {
+    return this.restangular.one('people', idCardNo).customGET('', {idCardNo: idCardNo}).toPromise();
+  }
+
+  /** 确认旧密码是否正确
    * url: /confirm-old-pwd
    * @param {string} old_pwd
    */
