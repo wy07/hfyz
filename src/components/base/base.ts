@@ -40,4 +40,23 @@ export class BaseComponent {
     ) {
   }
 
+  public SHOW_TOP : string = 'top';
+  public SHOW_MIDDLE : string = 'middle';
+  public SHOW_BOTTOM : string = 'bottom';
+
+  /**
+   * 显示Toast
+   * @param {string} message 显示的消息
+   * @param {number} duration 持续时间
+   * @param {string} position 出现位置，可接收的参数为"top", "middle", "bottom"
+   */
+  public showToast(message:string, duration:number, position:string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: duration,
+      position: position
+    });
+    toast.present(toast);
+  }
+
 }

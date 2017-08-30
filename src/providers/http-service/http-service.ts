@@ -20,8 +20,9 @@ export class HttpService {
    * 登录
    * url: /login
    */
-  login(phone: string, password: string) {
-    return this.restangular.all('login').post({phone: phone, password: password}).toPromise();
+  login(username: string, password: string) {
+    return this.restangular.all('login').post({username: username, password: password}).toPromise();
+    /*return this.restangular.all('login').post({username: username, password: password});*/
   }
 
   /**
