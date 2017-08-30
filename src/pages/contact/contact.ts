@@ -15,4 +15,8 @@ export class ContactPage {
   goToFixPage() {
     this.navCtrl.push("FixPasswordPage");
   }
+
+  goToPersonInfoPage() {
+    this.navCtrl.push("PersonInfoPage");
+  }
 }

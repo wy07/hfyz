@@ -9,7 +9,8 @@ import {FormGroup, Validators} from "@angular/forms";
   templateUrl: 'fixpassword.html'
 })
 export class FixPasswordPage extends BaseComponent {
-  fixPwdForm:FormGroup;
+  fixPwdForm: FormGroup;
+
   ngOnInit() {
     this.fixPwdForm = this.formBuilder.group({
       old_pwd: ['', Validators.compose([Validators.minLength(5), Validators.required])],
@@ -17,6 +18,7 @@ export class FixPasswordPage extends BaseComponent {
       confirm_pwd: ['', Validators.compose([Validators.minLength(5), Validators.required])]
     });
   }
+
   async confirmFixPwd() {
     try {
       let confirm = await this.httpService.confirmOldPwd(this.fixPwdForm.value.old_pwd);
