@@ -202,20 +202,14 @@ export class HttpService {
     return this.restangular.one('people', idCardNo).customGET('', {idCardNo: idCardNo}).toPromise();
   }
 
-  /** 确认旧密码是否正确
-   * url: /confirm-old-pwd
-   * @param {string} old_pwd
+  /**
+   * 修改密码
+   * @param oldPwd
+   * @param newPwd
+   * @returns {any}
    */
-  confirmOldPwd(old_pwd: string) {
-    return this.restangular.all('confirm-old-pwd').post({old_pwd: old_pwd}).toPromise();
+  changePwd(oldPwd, newPwd) {
+    return this.restangular.all('change-pwd').customPOST({originPwd: oldPwd, newPwd: newPwd});
   }
 
-  /**
-   * 修改新密码
-   * url: /fix-new-pwd
-   * @param {string} new_pwd
-   */
-  fixNewPwd(new_pwd: string) {
-    return this.restangular.all('fix-new-pwd').post({new_pwd: new_pwd}).toPromise();
-  }
 }

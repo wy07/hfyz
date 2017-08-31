@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="fixPwdForm">
+  <form [formGroup]="changePwdForm">
     <ion-list>
       <ion-item>
         <ion-label fixed>旧密码</ion-label>
@@ -25,5 +25,5 @@
       </ion-item>
     </ion-list>
   </form>
-  <button ion-button block (click)="confirmFixPwd()">确认修改</button>
+  <button ion-button block (click)="confirmChangePwd()">确认修改</button>
 </ion-content>

@@ -13,7 +13,7 @@ export class ContactPage {
   }
 
   goToFixPage() {
-    this.navCtrl.push("FixPasswordPage");
+    this.navCtrl.push("ChangePwdPage");
   }
 
   goToPersonInfoPage() {

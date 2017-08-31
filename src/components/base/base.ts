@@ -44,6 +44,8 @@ export class BaseComponent {
   public SHOW_MIDDLE : string = 'middle';
   public SHOW_BOTTOM : string = 'bottom';
 
+  public Strong_regular: any = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/;
+
   /**
    * 显示Toast
    * @param {string} message 显示的消息
@@ -57,6 +59,27 @@ export class BaseComponent {
       position: position
     });
     toast.present(toast);
+  }
+
+  /**
+   * 判断输入是否为空
+   * @param value
+   * @returns {boolean}
+   */
+  isBlank(value) {
+    if (value === null || value === '' || value === undefined) {
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * 判断密码是否符合规则
+   * @param value
+   * @returns {boolean}
+   */
+  isStrong(value) {
+    return this.Strong_regular.test(value);
   }
 
 }
