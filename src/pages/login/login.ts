@@ -26,8 +26,9 @@ export class LoginPage extends BaseComponent {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      phone: ['', Validators.compose([Validators.pattern('(1[3,4,5,7,8]\\d{9})'), Validators.required])],
-      password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+      /*phone: ['', Validators.compose([Validators.pattern('(1[3,4,5,7,8]\\d{9})'), Validators.required])],*/
+      username: ['admin', Validators.compose([Validators.minLength(5), Validators.required])],
+      password: ['admin123', Validators.compose([Validators.minLength(5), Validators.required])]
     });
   }
 
@@ -37,11 +38,17 @@ export class LoginPage extends BaseComponent {
 
   async login() {
     try {
-      let res = await this.httpService.login(this.loginForm.value.phone, this.loginForm.value.password);
-      this.userData.setToken(res.token);
-      this.navCtrl.setRoot('TabsPage');
+      let res = await this.httpService.login(this.loginForm.value.username, this.loginForm.value.password);
+      if (res.result === 'success') {
+        this.userData.setToken(res.token);
+        this.userData.setUserName(res.sub);
+        this.navCtrl.setRoot('TabsPage');
+        this.showToast('欢迎 ' + this.userData.getUserName() + '！', 3000, this.SHOW_TOP);
+        // console.log(res);
+      }
     } catch (error) {
       console.log(JSON.stringify(error));
+      this.showToast('您的用户名和密码不匹配，请重新输入！', 3000, this.SHOW_TOP);
     }
   }
 

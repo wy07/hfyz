@@ -1,5 +1,6 @@
 export interface FreightWaybill {
 
+  id:number;
   vehicleNo: string;// 车牌号
   frameNo: string;  // 车架号
   carPlateColor: string;  // 车辆颜色

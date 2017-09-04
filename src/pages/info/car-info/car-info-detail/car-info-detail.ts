@@ -15,21 +15,20 @@ import {BaseComponent} from "../../../../components/base/base";
   templateUrl: 'car-info-detail.html',
 })
 export class CarInfoDetailPage extends BaseComponent {
-  frameNo: string;
+  id: number;
   car: CarBasicInfo;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CarInfoDetailPage');
-    console.log('-------------------------');
-    console.log('frameNo ---> ' + this.navParams.get("frameNo"));
-    this.frameNo = this.navParams.get("frameNo");
+    console.log('id ---> ' + this.navParams.get("id"));
+    this.id = this.navParams.get("id");
     this.getDetail();
   }
 
   async getDetail() {
     try {
-      let res = await this.httpService.getCarDetail(this.frameNo);
-      this.car = res.data;
+      let res = await this.httpService.getCarDetail(this.id);
+      this.car = res.car;
     } catch (error) {
       console.log(JSON.stringify(error));
     }

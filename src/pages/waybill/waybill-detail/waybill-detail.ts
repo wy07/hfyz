@@ -14,23 +14,21 @@ import {BaseComponent} from "../../../components/base/base";
 })
 export class WaybillDetailPage extends BaseComponent {
   waybill: any;
-  vehicleNo: string;
+  id: number;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WaybillDetailPage');
-    this.vehicleNo = this.navParams.get('vehicleNo');
-    this.show(this.vehicleNo);
+    this.id = this.navParams.get('id');
+    this.show(this.id);
     console.log('----return---' + JSON.stringify(this.waybill));
 
   }
 
-  async show(id) {
-    try {
-      let res = await this.httpService.show(id);
-      this.waybill = res.data;
-    } catch (error) {
-      console.log(JSON.stringify(error));
-    }
+  show(id) {
+    this.httpService.show(id).subscribe(res => {
+      console.log('=====res====' + JSON.stringify(res));
+      this.waybill = res.freightWaybill;
+    });
   }
 
 }

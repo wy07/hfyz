@@ -20,8 +20,9 @@ export class HttpService {
    * 登录
    * url: /login
    */
-  login(phone: string, password: string) {
-    return this.restangular.all('login').post({phone: phone, password: password}).toPromise();
+  login(username: string, password: string) {
+    return this.restangular.all('login').post({username: username, password: password}).toPromise();
+    /*return this.restangular.all('login').post({username: username, password: password});*/
   }
 
   /**
@@ -191,9 +192,8 @@ export class HttpService {
    * 获取车辆详情
    * url: /car/:frameNo
    */
-  getCarDetail(frameNo: string) {
-    return this.restangular.one('car', frameNo)
-      .customGET("", {frameNo: frameNo}).toPromise();
+  getCarDetail(id: number) {
+    return this.restangular.one('cars', id).customGET('detail').toPromise();
   }
 
   /**
@@ -201,32 +201,25 @@ export class HttpService {
    * url: /peoples/search
    */
   getPeoples() {
-    return this.restangular.all('peoples').customGET('search').toPromise();
+    return this.restangular.all('people-basic-infos').customGET('list').toPromise();
   }
 
   /**
    * 获取从业人员详情
    * url:/people/:idCardNo
    */
-  getPeopleDetail(idCardNo: string) {
-    return this.restangular.one('people', idCardNo).customGET('', {idCardNo: idCardNo}).toPromise();
-  }
-
-  /** 确认旧密码是否正确
-   * url: /confirm-old-pwd
-   * @param {string} old_pwd
-   */
-  confirmOldPwd(old_pwd: string) {
-    return this.restangular.all('confirm-old-pwd').post({old_pwd: old_pwd}).toPromise();
+  getPeopleDetail(IDCardNo: string) {
+    return this.restangular.one('people-basic-infos').customGET('more', {IDCardNo: IDCardNo}).toPromise();
   }
 
   /**
-   * 修改新密码
-   * url: /fix-new-pwd
-   * @param {string} new_pwd
+   * 修改密码
+   * @param oldPwd
+   * @param newPwd
+   * @returns {any}
    */
-  fixNewPwd(new_pwd: string) {
-    return this.restangular.all('fix-new-pwd').post({new_pwd: new_pwd}).toPromise();
+  changePwd(oldPwd, newPwd) {
+    return this.restangular.all('change-pwd').customPOST({originPwd: oldPwd, newPwd: newPwd});
   }
 
   /**

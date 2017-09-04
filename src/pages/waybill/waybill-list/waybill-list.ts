@@ -46,8 +46,8 @@ export class WaybillListPage extends BaseComponent {
     try {
       let res = await this.httpService.getWaybills(this.status, this.max, this.offset);
       this.total = res.total;
-      this.offset += res.waybills.length;
-      return res.waybills;
+      this.offset += res.resultList.length;
+      return res.resultList;
     } catch (error) {
       console.log("err--->" + JSON.stringify(error));
     }
@@ -73,6 +73,6 @@ export class WaybillListPage extends BaseComponent {
   }
 
   goToWaybillDetail(waybill: FreightWaybill) {
-    this.app.getRootNav().push('WaybillDetailPage',{vehicleNo:waybill.vehicleNo});
+    this.app.getRootNav().push('WaybillDetailPage',{id:waybill.id});
   }
 }
