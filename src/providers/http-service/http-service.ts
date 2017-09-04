@@ -229,4 +229,24 @@ export class HttpService {
   show(id: number) {
     return this.restangular.one('freight-waybills', id).customGET('show', {});
   }
+
+  /**
+   * 获取法律法规
+   * url:/infoaudits/select
+   */
+  getLaws(type, max, offset) {
+    return this.restangular.one('infoaudits').customGET('select', {
+      type: type,
+      max: max,
+      offset: offset
+    }).toPromise();
+  }
+
+  /**
+   * 获取法律法规
+   * url:/infoaudits/:id/edit
+   */
+  getLawDetail(id) {
+    return this.restangular.one('infoaudits', id).customGET('edit').toPromise();
+  }
 }
