@@ -1,19 +1,21 @@
 <ion-list>
-    <div class="both-side">
-      <span>{{waybill?.ownerName}}</span>
-      <span class="right">{{waybill?.vehicleNo}}</span>
-    </div>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/img/avatar_1.png">
-      </ion-avatar>
-      <p>始发地: {{waybill?.departArea}}</p>
-      <p>目的地: {{waybill?.arriveArea}}</p>
-    </ion-item>
-    <div class="both-side">
+  <div class="both-side">
+    <span>{{waybill?.ownerName}}</span>
+    <span class="right">车牌号{{waybill?.vehicleNo}}</span>
+  </div>
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="assets/img/avatar_1.png">
+    </ion-avatar>
+    <p>类别: {{waybill?.dangerousType}}</p>
+    <p>危险品名称：{{waybill?.dangerousName}}</p>
+    <p>始发地: {{waybill?.departArea}}</p>
+    <p>目的地: {{waybill?.arriveArea}}</p>
+  </ion-item>
+  <div class="both-side">
       <span>
         {{waybill?.departTime}}
       </span>
-      <span class="right">{{waybill?.status}}</span>
-    </div>
-  </ion-list>
+    <span class="right">{{waybill?.status}}</span>
+  </div>
+</ion-list>

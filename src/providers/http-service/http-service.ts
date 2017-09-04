@@ -94,11 +94,22 @@ export class HttpService {
 
   /**
    * 获取运单列表
-   * url: /waybills
+   * url: /freight-waybills/search
    */
+  // getWaybills(vehicleNo, ownerName, dateBegin, dateEnd, max, offset) {
+  //   return this.restangular.all('freight-waybills').customGET('search', {
+  //     vehicleNo: vehicleNo,
+  //     ownerName: ownerName,
+  //     dateBegin: dateBegin,
+  //     dateEnd: dateEnd,
+  //     max: max,
+  //     offset: offset
+  //   })
+  // }
+
   getWaybills(status: string, max: number, offset: number) {
-    return this.restangular.all('waybills')
-      .customGET("", {status: status, max: max, offset: offset}).toPromise();
+    return this.restangular.all('freight-waybills')
+      .customGET("search", {status: status, max: max, offset: offset}).toPromise();
   }
 
   /**
@@ -216,5 +227,13 @@ export class HttpService {
    */
   fixNewPwd(new_pwd: string) {
     return this.restangular.all('fix-new-pwd').post({new_pwd: new_pwd}).toPromise();
+  }
+
+  /**
+   * 获取电子行程单详情
+   * url：/freight-waybills/id/show
+   */
+  show(id: number) {
+    return this.restangular.one('freight-waybills', id).customGET('show', {});
   }
 }
