@@ -14,6 +14,8 @@ export class UserDataProvider {
   TOKEN: string;
   PERMISSION: string;
 
+  private _UserName: string;
+
   constructor(public http: Http) {
     console.log('Hello UserDataProvider Provider');
   }
@@ -32,6 +34,14 @@ export class UserDataProvider {
 
   getPermission(): Array<string> {
     return this.PERMISSION.split(';');
+  }
+
+  getUserName(): string {
+    return this._UserName;
+  }
+
+  setUserName(username: string) {
+    this._UserName = username;
   }
 
 }
