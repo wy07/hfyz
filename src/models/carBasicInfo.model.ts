@@ -3,6 +3,7 @@
  *CarBasicInfo    营运车辆_基本信息_车辆信息
  */
 export class CarBasicInfo {
+  id: number;
   transformLicenseNo: string;  //道路运输证号
   licenseNo: string; //车辆（挂车）号牌
   ownerName: string; //业户名称

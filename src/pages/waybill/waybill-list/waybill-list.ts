@@ -1,7 +1,7 @@
-import { BaseComponent } from './../../../components/base/base';
-import { FreightWaybill } from './../../../models/freightWaybill.model';
-import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import {BaseComponent} from './../../../components/base/base';
+import {FreightWaybill} from './../../../models/freightWaybill.model';
+import {Component} from '@angular/core';
+import {NavController, NavParams, IonicPage} from 'ionic-angular';
 
 /**
  * Generated class for the WaybillListPage page.
@@ -16,12 +16,13 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
   templateUrl: 'waybill-list.html',
 })
 export class WaybillListPage extends BaseComponent {
-
+  input: string;
   max: number = 10;
   offset: number = 0;
   total: number;
   status: string;
   waybills: Array<FreightWaybill>;
+  searchWaybills: Array<FreightWaybill>;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WaybillListPage');
@@ -29,25 +30,26 @@ export class WaybillListPage extends BaseComponent {
     this.doRefresh();
   }
 
-  doRefresh (refresher?) {
+  doRefresh(refresher?) {
     this.waybills = [];
     this.offset = 0;
     this.getWaybills().then((waybills: Array<FreightWaybill>) => {
       this.waybills = waybills;
+      this.searchWaybills = this.waybills;
       if (refresher) refresher.complete();
     }, err => {
       if (refresher) refresher.complete();
     });
   }
 
-  async getWaybills () {
+  async getWaybills() {
     try {
       let res = await this.httpService.getWaybills(this.status, this.max, this.offset);
-      this.total  = res.total;
-      this.offset += res.waybills.length;
-      return res.waybills;
+      this.total = res.total;
+      this.offset += res.resultList.length;
+      return res.resultList;
     } catch (error) {
-      console.log("err--->"+JSON.stringify(error));
+      console.log("err--->" + JSON.stringify(error));
     }
   }
 
@@ -59,5 +61,18 @@ export class WaybillListPage extends BaseComponent {
     }, err => {
       infiniteScroll.complete();
     });
+  }
+
+  onInput() {
+    if (this.input === '') {
+      this.searchWaybills = this.waybills;
+      return;
+    }
+    this.searchWaybills = this.waybills.filter(
+      (waybill: FreightWaybill) => waybill.vehicleNo.indexOf(this.input) > -1);
+  }
+
+  goToWaybillDetail(waybill: FreightWaybill) {
+    this.app.getRootNav().push('WaybillDetailPage',{id:waybill.id});
   }
 }

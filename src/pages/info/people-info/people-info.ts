@@ -23,8 +23,8 @@ export class PeopleInfoPage extends BaseComponent {
   doRefresh(refresher?) {
     console.log('------------PeopleInfoPage doRefresh--------------');
     this.peopleList = [];
-    this.getPeoples().then((peopleList: Array<PeopleBasicInfo>) => {
-      this.peopleList = peopleList;
+    this.getPeoples().then((resultList: Array<PeopleBasicInfo>) => {
+      this.peopleList = resultList;
       this.searchPeoples=this.peopleList;
       if (refresher) refresher.complete();
     }, err => {
@@ -36,7 +36,7 @@ export class PeopleInfoPage extends BaseComponent {
     try {
       let res = await this.httpService.getPeoples();
       console.log('------------PeopleInfoPage getPeoples--------------');
-      return res.peopleList;
+      return res.resultList;
     } catch (error) {
       console.log("err--->" + JSON.stringify(error));
     }
@@ -53,7 +53,9 @@ export class PeopleInfoPage extends BaseComponent {
 
   async getDetail(people: PeopleBasicInfo) {
     try {
-      let res = await this.httpService.getPeopleDetail(people.idCardNo);
+      console.log('---IDCardNo---'+people.IDCardNo);
+      console.log('---JSON---'+JSON.stringify(people));
+      let res = await this.httpService.getPeopleDetail(people.IDCardNo);
       this.detailList = [
         {data: res.checkMember, type: 'checkMember'},
         {data: res.coach, type: 'coach'},
