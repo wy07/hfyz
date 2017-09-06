@@ -62,17 +62,21 @@ export class HttpService {
    * url: /companys
    */
   searchCompanys() {
-    return this.restangular.all('companys')
-      .customGET("").toPromise();
+      return this.restangular.all('owner-identitys').customGET('list', {}).toPromise();
+    // return this.restangular.all('platform-manages').customGET('list',{}).toPromise();
+    // return this.restangular.all('companys')
+    //   .customGET("").toPromise();
   }
 
   /**
    * 根据公司获取车辆列表
    * url: /companys/:id/vehicles
    */
-  searchVehicles(id: number) {
-    return this.restangular.one('companys', {id: id})
-      .customGET("vehicles").toPromise();
+  searchVehicles(companyCode: string) {
+    return this.restangular.one('companys', companyCode).customGET('cars').toPromise();
+    // return this.restangular.all('cars').customGET('search', {    });
+    // return this.restangular.one('companys', {id: id})
+    //   .customGET("vehicles").toPromise();
   }
 
   /**

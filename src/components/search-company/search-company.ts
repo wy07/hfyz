@@ -41,7 +41,7 @@ export class SearchCompanyComponent extends BaseComponent {
   async search () {
     try {
       let res = await this.httpService.searchCompanys();
-      this.companys = res.companys;
+      this.companys = res.ownerList.ownerList;
       this.filterCompanys = this.companys;
     } catch (error) {
       console.log(error);

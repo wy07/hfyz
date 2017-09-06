@@ -38,8 +38,8 @@ export class SearchVehicleComponent extends BaseComponent {
 
   async search () {
     try {
-      let res = await this.httpService.searchVehicles(this.company.id);
-      this.vehicles = res.vehicles;
+      let res = await this.httpService.searchVehicles(this.company.companyCode);
+      this.vehicles = res.cars;
       this.vehicles.map((vehicle: Vehicle) => {
         vehicle["checked"] = false;
       });
