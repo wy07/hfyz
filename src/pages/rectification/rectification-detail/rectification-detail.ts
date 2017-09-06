@@ -2,6 +2,7 @@ import { Rectification } from './../../../models/rectification.model';
 import { BaseComponent } from './../../../components/base/base';
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import {log} from "util";
 
 /**
  * Generated class for the RectificationDetailPage page.
@@ -18,26 +19,26 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
   selector: 'page-rectification-detail',
   templateUrl: 'rectification-detail.html',
 })
-export class RectificationDetailPage extends BaseComponent {
+export class RectificationDetailPage {
 
-  rectificationId: number;
+/*  rectificationId: number;
   rectification: Rectification;
-  feedback: string;
+  feedback: string;*/
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RectificationDetailPage');
-    console.log('navParams ---> '+this.navParams.get("id"));
+  /*ionViewDidLoad() {
+/!*    console.log('ionViewDidLoad RectificationDetailPage');
+    console.log('navParams ---> '+this.navParams.get("id"));*!/
     this.rectificationId = this.navParams.get("id");
     this.getDetail();
-  }
+  }*/
 
-  async getDetail() {
-    try {
+  /*async getDetail() {
+    /!*try {
       let res = await this.httpService.getRectificationDetail(this.rectificationId);
       this.rectification = res.data;
     } catch (error) {
       console.log(JSON.stringify(error));
-    }
+    }*!/
   }
 
   async submitFeedback () {
@@ -56,6 +57,13 @@ export class RectificationDetailPage extends BaseComponent {
     } catch (error) {
       console.log(JSON.stringify(error));
     }
+  }*/
+
+  private mDetailInfo: any[];      // 详情信息
+
+  constructor(private navParams: NavParams) {
+    this.mDetailInfo = navParams.get('info');
   }
+
 
 }
