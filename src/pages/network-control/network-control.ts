@@ -70,22 +70,24 @@ export class NetworkControlPage extends BaseComponent {
     let searchCompanyModal = this.modalCtrl.create(SearchCompanyComponent, {from: "NetworkControlPage"});
     searchCompanyModal.onDidDismiss((vehicleNos: Array<String>) => {
       if (vehicleNos) {
+        this.eventbusProvider.close();
         console.log(" ----- NetworkControlPage ---- " + JSON.stringify(vehicleNos));
         this.mapProvider.reload();
-        setTimeout(() => {
-          for(let v of this.result) {
-            this.mapProvider.refresh(v);
-          }
-        }, 2000);
-        // vehicleNos.forEach((vehicleNo: string) => {
-        //   this.registerEventbus(vehicleNo);
-        // });
+        // setTimeout(() => {
+        //   for(let v of this.result) {
+        //     this.mapProvider.refresh(v);
+        //   }
+        // }, 2000);
+        vehicleNos.forEach((vehicleNo: string) => {
+          this.registerEventbus(vehicleNo);
+        });
       }
     });
     searchCompanyModal.present();
   }
 
   registerEventbus (vehicleNo: string) {
+    console.log(" ----- registerEventbus ---- " + vehicleNo);
     this.eventbusProvider.register(vehicleNo, res => {
       console.log("eventbus ---> " + JSON.stringify(res));
       this.mapProvider.refresh(res.msg);

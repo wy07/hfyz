@@ -33,7 +33,7 @@ export class SearchVehicleComponent extends BaseComponent {
       return;
     }
     this.filterVehicles = this.vehicles.filter(
-      (vehicle: Vehicle) => vehicle.vehicleNo.indexOf(this.input) > -1);
+      (vehicle: Vehicle) => vehicle.licenseNo.indexOf(this.input) > -1);
   }
 
   async search () {
@@ -61,9 +61,10 @@ export class SearchVehicleComponent extends BaseComponent {
     console.log(JSON.stringify(this.vehicles));
     let vehicleNos = [];
     this.vehicles.forEach((vehicle: Vehicle) => {
-      if (vehicle["checked"]) vehicleNos.push(vehicle.vehicleNo);
+      if (vehicle["checked"]) vehicleNos.push(vehicle.licenseNo);
     });
     if (vehicleNos.length > 0) this.viewCtrl.dismiss(vehicleNos);
+    else  this.showToast('请先选择车辆 ', 2000, this.SHOW_TOP);
   }
 
 }
