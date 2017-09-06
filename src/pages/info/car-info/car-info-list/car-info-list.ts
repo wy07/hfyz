@@ -50,6 +50,6 @@ export class CarInfoListPage extends BaseComponent {
   }
 
   goToCarInfoDetail(car: CarBasicInfo) {
-    this.app.getRootNav().push('CarInfoDetailPage', {frameNo: car.frameNo});
+    this.app.getRootNav().push('CarInfoDetailPage', {id: car.id});
   }
 }

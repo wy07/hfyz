@@ -1,0 +1,44 @@
+<!--
+  电子行程单详情
+  Generated template for the WaybillDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>电子行程单详情</ion-title>
+  </ion-navbar>
+
+</ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item>车牌号<span item-right>{{waybill?.vehicleNo||'无'}}</span></ion-item>
+      <ion-item>车架号<span item-right>{{waybill?.frameNo||'无'}}</span></ion-item>
+      <ion-item>业户编码<span item-right>{{waybill?.companyCode||'无'}}</span></ion-item>
+      <ion-item>业户名称<span item-right>{{waybill?.ownerName||'无'}}</span></ion-item>
+      <ion-item>危险品名称<span item-right>{{waybill?.dangerousName||'无'}}</span></ion-item>
+      <ion-item>危险品分类<span item-right>{{waybill?.dangerousType.name||'无'}}</span></ion-item>
+      <ion-item>核定载重质量(kg)<span item-right>{{waybill?.ratifiedPayload||'无'}}</span></ion-item>
+      <ion-item>应急预案<span item-right>{{waybill?.emergencyPlan||'无'}}</span></ion-item>
+      <ion-item>运输价格<span item-right>{{waybill?.price||'无'}}元/车</span></ion-item>
+      <ion-item>是否经营性运输<span item-right>{{waybill?.operatedType||'无'}}</span></ion-item>
+      <ion-item>装载/卸载<span item-right>{{waybill?.loadedType||'无'}}</span></ion-item>
+      <ion-item>是否满载<span item-right>{{waybill?.fullLoaded||'无'}}</span></ion-item>
+      <ion-item>装载量<span item-right>{{waybill?.amount||'无'}}</span></ion-item>
+      <ion-item>运输距离<span item-right>{{waybill?.mile||'无'}}</span></ion-item>
+      <ion-item>运输出场时间<span item-right>{{waybill?.departTime||'无'}}</span></ion-item>
+      <ion-item>驾驶员姓名<span item-right>{{waybill?.driver.name||'无'}}</span></ion-item>
+      <ion-item>驾驶员从业资格证号<span item-right>{{waybill?.driver.wokeLicenseNo||'无'}}</span></ion-item>
+      <ion-item>驾驶员联系电话<span item-right>{{waybill?.driver.phone||'无'}}</span></ion-item>
+      <ion-item>押运员姓名<span item-right>{{waybill?.supercargo.name||'无'}}</span></ion-item>
+      <ion-item>押运员从业资格证号<span item-right>{{waybill?.supercargo.wokeLicenseNo||'无'}}</span></ion-item>
+      <ion-item>押运员联系电话<span item-right>{{waybill?.supercargo.phone||'无'}}</span></ion-item>
+      <ion-item>托运单位<span item-right>{{waybill?.consignCompany||'无'}}</span></ion-item>
+      <ion-item>托运会回场时间<span item-right>{{waybill?.backTime||'无'}}</span></ion-item>
+      <ion-item>出发地<span item-right>{{waybill?.arriveArea||'无'}}</span></ion-item>
+      <ion-item>目的地<span item-right>{{waybill?.arriveArea||'无'}}</span></ion-item>
+      <ion-item>途径地<span item-right>{{waybill?.viaLand||'无'}}</span></ion-item>
+    </ion-list>
+  </ion-content>

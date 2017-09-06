@@ -86,11 +86,22 @@ export class HttpService {
 
   /**
    * 获取运单列表
-   * url: /waybills
+   * url: /freight-waybills/search
    */
+  // getWaybills(vehicleNo, ownerName, dateBegin, dateEnd, max, offset) {
+  //   return this.restangular.all('freight-waybills').customGET('search', {
+  //     vehicleNo: vehicleNo,
+  //     ownerName: ownerName,
+  //     dateBegin: dateBegin,
+  //     dateEnd: dateEnd,
+  //     max: max,
+  //     offset: offset
+  //   })
+  // }
+
   getWaybills(status: string, max: number, offset: number) {
-    return this.restangular.all('waybills')
-      .customGET("", {status: status, max: max, offset: offset}).toPromise();
+    return this.restangular.all('freight-waybills')
+      .customGET("search", {status: status, max: max, offset: offset}).toPromise();
   }
 
   /**
@@ -172,9 +183,8 @@ export class HttpService {
    * 获取车辆详情
    * url: /car/:frameNo
    */
-  getCarDetail(frameNo: string) {
-    return this.restangular.one('car', frameNo)
-      .customGET("", {frameNo: frameNo}).toPromise();
+  getCarDetail(id: number) {
+    return this.restangular.one('cars', id).customGET('detail').toPromise();
   }
 
   /**
@@ -182,15 +192,15 @@ export class HttpService {
    * url: /peoples/search
    */
   getPeoples() {
-    return this.restangular.all('peoples').customGET('search').toPromise();
+    return this.restangular.all('people-basic-infos').customGET('list').toPromise();
   }
 
   /**
    * 获取从业人员详情
    * url:/people/:idCardNo
    */
-  getPeopleDetail(idCardNo: string) {
-    return this.restangular.one('people', idCardNo).customGET('', {idCardNo: idCardNo}).toPromise();
+  getPeopleDetail(IDCardNo: string) {
+    return this.restangular.one('people-basic-infos').customGET('more', {IDCardNo: IDCardNo}).toPromise();
   }
 
   /**
@@ -204,6 +214,7 @@ export class HttpService {
   }
 
   /**
+<<<<<<< HEAD
    * 登录
    * url: /login
    */
@@ -228,6 +239,34 @@ export class HttpService {
    */
   requestOrderDetail(id) {
     return this.restangular.one('hidden-rectification-orders', id).customGET('edit');
+  }
+
+   /**
+   * 获取电子行程单详情
+   * url：/freight-waybills/id/show
+   */
+  show(id: number) {
+    return this.restangular.one('freight-waybills', id).customGET('show', {});
+  }
+
+  /**
+   * 获取法律法规
+   * url:/infoaudits/select
+   */
+  getLaws(type, max, offset) {
+    return this.restangular.one('infoaudits').customGET('select', {
+      type: type,
+      max: max,
+      offset: offset
+    }).toPromise();
+  }
+
+  /**
+   * 获取法律法规
+   * url:/infoaudits/:id/edit
+   */
+  getLawDetail(id) {
+    return this.restangular.one('infoaudits', id).customGET('edit').toPromise();
   }
 
 }

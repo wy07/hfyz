@@ -13,39 +13,34 @@
 </ion-header>
 
 <ion-content padding>
-
   <ion-list>
-    <ion-item>
-      车辆（挂车）号牌
-      <span item-right>{{car?.licenseNo}}</span>
-    </ion-item>
-    <ion-item>
-      道路运输证号
-      <span item-right>{{car?.transformLicenseNo}}</span>
-    </ion-item>
-    <ion-item>
-      业户名称
-      <span item-right>{{car?.ownerName}}</span>
-    </ion-item>
-    <ion-item>
-      车架号
-      <span item-right>{{car?.frameNo}}</span>
-    </ion-item>
-    <ion-item>
-      车辆类型
-      <span item-right>{{car?.carType}}</span>
-    </ion-item>
-    <ion-item>
-      车牌颜色
-      <span item-right>{{car?.carPlateColor}}</span>
-    </ion-item>
-    <ion-item>
-      车身颜色
-      <span item-right>{{car?.carColor}}</span>
-    </ion-item>
-    <ion-item>
-      有效期止
-      <span item-right>{{car?.endTime}}</span>
-    </ion-item>
+    <ion-item>车牌号:<span item-right>{{car?.licenseNo||'无'}}</span></ion-item>
+    <ion-item>车架号:<span item-right>{{car?.frameNo||'无'}}</span></ion-item>
+    <ion-item>车牌颜色:<span item-right>{{car?.carPlateColor||'无'}}</span></ion-item>
+    <ion-item>厂牌:<span item-right>{{car?.licenseNo||'无'}}</span></ion-item>
+    <ion-item>型号:<span item-right>{{car?.brand||'无'}}</span></ion-item>
+    <ion-item>车辆类型:<span item-right>{{car?.carType||'无'}}</span></ion-item>
+    <ion-item>客车等级:<span item-right>{{car?.passengerLevel||'无'}}</span></ion-item>
+    <ion-item>车身颜色:<span item-right>{{car?.carColor||'无'}}</span></ion-item>
+    <ion-item>发动机号:<span item-right>{{car?.engNo||'无'}}</span></ion-item>
+    <ion-item>车辆识别VIP码:<span item-right>{{car?.carIdentityCode||'无'}}</span></ion-item>
+    <ion-item>核定载客位:<span item-right>{{car?.seatNo||'无'}}</span></ion-item>
+    <ion-item>车辆（挂车）吨位:<span item-right>{{car?.carTonnage||'无'}}</span></ion-item>
+    <ion-item>车辆箱位:<span item-right>{{car?.carBoxNo||'无'}}</span></ion-item>
+    <ion-item>罐体容积:<span item-right>{{car?.volume||'无'}}</span></ion-item>
+    <ion-item>燃料类型:<span item-right>{{car?.fuelType||'无'}}</span></ion-item>
+    <ion-item>发动机功率:<span item-right>{{car?.engPower||'无'}}</span></ion-item>
+    <ion-item>出厂日期:<span item-right>{{car?.leaveFactoryTime||'无'}}</span></ion-item>
+    <ion-item>购车日期:<span item-right>{{car?.buyCarTime||'无'}}</span></ion-item>
+    <ion-item>落户日期:<span item-right>{{car?.settleTime||'无'}}</span></ion-item>
+    <ion-item>更新时间:<span item-right>{{car?.modifyTime||'无'}}</span></ion-item>
+    <ion-item>车辆照片:<span item-right>{{car?.picture||'无'}}</span></ion-item>
+    <ion-item>轴距:<span item-right>{{car?.wheelbase||'无'}}</span></ion-item>
+    <ion-item>车长:<span item-right>{{car?.carLength||'无'}}</span></ion-item>
+    <ion-item>车高:<span item-right>{{car?.carHeight||'无'}}</span></ion-item>
+    <ion-item>车宽:<span item-right>{{car?.carWidth||'无'}}</span></ion-item>
+    <ion-item>车轴数:<span item-right>{{car?.carSmokeNo||'无'}}</span></ion-item>
+    <ion-item>后轴钢板弹簧片数:<span item-right>{{car?.leafSpringNo||'无'}}</span></ion-item>
+    <ion-item>准牵引总质量:<span item-right>{{car?.tractionTonnage||'无'}}</span></ion-item>
   </ion-list>
 </ion-content>

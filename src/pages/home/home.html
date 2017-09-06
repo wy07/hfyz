@@ -7,7 +7,7 @@
 <ion-content>
   <ion-slides>
     <ion-slide>
-      <img src="assets/img/banner_1.jpg" /> 
+      <img src="assets/img/banner_1.jpg" />
     </ion-slide>
   </ion-slides>
 
@@ -54,17 +54,9 @@
       法律法规
       <span item-right>更多</span>
     </ion-item-divider>
-    <button ion-item detail-none>
-      法律法规1
-      <span item-right>2017-01-02</span>
-    </button>
-    <button ion-item detail-none>
-      法律法规2
-      <span item-right>2017-01-02</span>
-    </button>
-    <button ion-item detail-none>
-      法律法规3
-      <span item-right>2017-01-02</span>
+    <button ion-item detail-none *ngFor="let law of laws" (click)="lawDetail(law)" >
+     {{law.title}}
+      <span item-right>{{law.dateCreated|date:'yyyy-MM-dd'}}</span>
     </button>
   </ion-list>
 

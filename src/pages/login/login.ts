@@ -27,8 +27,8 @@ export class LoginPage extends BaseComponent {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       /*phone: ['', Validators.compose([Validators.pattern('(1[3,4,5,7,8]\\d{9})'), Validators.required])],*/
-      username: ['', Validators.compose([Validators.minLength(5), Validators.required])],
-      password: ['', Validators.compose([Validators.minLength(5), Validators.required])]
+      username: ['admin', Validators.compose([Validators.minLength(5), Validators.required])],
+      password: ['admin123', Validators.compose([Validators.minLength(5), Validators.required])]
     });
   }
 

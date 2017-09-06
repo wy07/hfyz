@@ -6,7 +6,7 @@ export class PeopleBasicInfo {
   name: string;             //姓名
   gender: string;           //性别
   birthday: string;         //出生日期
-  idCardNo: string;         //身份证号码
+  IDCardNo: string;         //身份证号码
   picture: string;          //照片
   nation: string;           //民族
   nativePlace: string;      //籍贯
