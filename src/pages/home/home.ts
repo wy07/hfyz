@@ -28,7 +28,7 @@ export class HomePage extends BaseComponent {
 
   lawList(laws: any) {
     console.log('----' + JSON.stringify(laws));
-    this.app.getRootNav().push('LawListPage', {laws: laws});
+    this.app.getRootNav().push('LawListPage');
   }
 
   async getLaws() {
