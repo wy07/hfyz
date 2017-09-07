@@ -1,14 +1,55 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-searchbar [showCancelButton]="true" placeholder="请输入查询条件" (click)="searchCompany()">
-    </ion-searchbar>
+    <ion-searchbar placeholder="查询公司" debounce="1000" (ionInput)="onInput($event)"></ion-searchbar>
+
+    <!--<ion-buttons right padding="20dp">
+      <button ion-button (click)="statusMenu()">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>-->
+
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
-  <ion-tabs tabsPlacement="top">
-    <ion-tab [root]="tab.page" [rootParams]="tab.params" tabTitle="{{tab.title}}" *ngFor="let tab of tabs"></ion-tab>
-  </ion-tabs>
+
+  <ion-fab bottom right>
+    <button ion-fab color="vibrant" mini>
+      分类
+      <!--<ion-icon name="arrow-dropright"></ion-icon>-->
+    </button>
+    <ion-fab-list side="top">
+      <button ion-fab *ngFor="let status of mStatusList" (click)="selectQuery(status.value)">{{status.label}}</button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingText="刷新中..."></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider color="light">
+        查询结果：{{this.mTotal}} 条
+      </ion-item-divider>
+      <ion-item-sliding *ngFor="let order of mOrderList" (click)="goDetailPage(order.id)">
+        <ion-item>
+          <h2>{{order.enterpirse}}</h2>
+          <p>单据编号：{{order.billNo}}　　　状态：{{order.status}}</p>
+        </ion-item>
+        <ion-item-options side="right">
+          <button color="secondary" ion-button>编辑</button>
+          <button color="danger" ion-button>删除</button>
+          <button color="primary" ion-button>提交</button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-item-group>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 </ion-content>
