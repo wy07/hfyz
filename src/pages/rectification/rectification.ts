@@ -2,6 +2,7 @@
 import {BaseComponent} from './../../components/base/base';
 import {Component, ViewChild} from '@angular/core';
 import {IonicPage, Tabs} from 'ionic-angular';
+import {Rectification} from "../../models/rectification.model";
 
 /**
  * Generated class for the RectificationPage page.
@@ -21,7 +22,7 @@ export class RectificationPage extends BaseComponent {
   private mMaxRow: number;     // 最多一次请求的行数
   private mCurrSearch: string;     // 当前搜索的公司名称
 
-  private mOrderList: any[];      // 获取的整改信息数据
+  private mOrderList: Array<Rectification>;      // 获取的整改信息数据
   private mTotal: any;          // 查询的总条数
 
   private mCurrCount: number;      // 当前请求次数
@@ -125,15 +126,37 @@ export class RectificationPage extends BaseComponent {
   private goDetailPage(id: any) {
     this.httpService.requestOrderDetail(id).subscribe(
       res => {
-        /*console.log();*/
         if (res.result === 'success') {
           this.navCtrl.push("RectificationDetailPage", {
             info: res.hiddenRectificationOrder,
           });
         } else {
           this.showToast('获取数据失败！', 1000, this.SHOW_BOTTOM);
-          /*this._toastr.error('获取数据失败');*/
         }
+      }
+    );
+  }
+
+  private goEditPage(id: any) {
+    this.httpService.requestOrderDetail(id).subscribe(
+      res => {
+        if (res.result === 'success') {
+          this.navCtrl.push("RectificationEditPage", {
+            info: res.hiddenRectificationOrder
+          });
+        } else {
+          this.showToast('获取数据失败！', 1000, this.SHOW_BOTTOM);
+        }
+      }
+    );
+  }
+
+  onDelete(order: any) {
+    this.httpService.deleteRectification(order.id).subscribe(
+      res => {
+        console.log('-----'+JSON.stringify(res));
+        this.initData();
+        this.getOrderList(0, false);
       }
     );
   }

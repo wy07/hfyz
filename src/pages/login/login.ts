@@ -30,6 +30,8 @@ export class LoginPage extends BaseComponent {
       username: ['admin', Validators.compose([Validators.minLength(5), Validators.required])],
       password: ['admin123', Validators.compose([Validators.minLength(5), Validators.required])]
     });
+    // 调试阶段直接登陆即可
+    this.login();
   }
 
   ionViewDidLoad() {
@@ -43,12 +45,12 @@ export class LoginPage extends BaseComponent {
         this.userData.setToken(res.token);
         this.userData.setUserName(res.sub);
         this.navCtrl.setRoot('TabsPage');
-        this.showToast('欢迎 ' + this.userData.getUserName() + '！', 3000, this.SHOW_TOP);
+        this.showToast('欢迎 ' + this.userData.getUserName() + '！', 1500, this.SHOW_TOP);
         // console.log(res);
       }
     } catch (error) {
       console.log(JSON.stringify(error));
-      this.showToast('您的用户名和密码不匹配，请重新输入！', 3000, this.SHOW_TOP);
+      this.showToast('您的用户名和密码不匹配，请重新输入！', 1500, this.SHOW_BOTTOM);
     }
   }
 

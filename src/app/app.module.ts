@@ -4,7 +4,7 @@ import { UserDataProvider } from './../providers/user-data/user-data';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { RestangularModule, Restangular } from 'ngx-restangular';
+import { RestangularModule } from 'ngx-restangular';
 import { CityPickerModule } from  "ionic2-city-picker";
 
 import { MyApp } from './app.component';
@@ -17,6 +17,7 @@ import { HttpService } from '../providers/http-service/http-service';
 import { ScrollableTabsDirective } from '../directives/scrollable-tabs/scrollable-tabs';
 import { EventbusProvider } from '../providers/eventbus/eventbus';
 import { MapProvider } from '../providers/map/map';
+import {DatePipe} from "@angular/common";
 
 export function RestangularConfigFactory (RestangularProvider, userDataProvider) {
     /*RestangularProvider.setBaseUrl('http://localhost:7004');*/
@@ -27,6 +28,7 @@ export function RestangularConfigFactory (RestangularProvider, userDataProvider)
         if (path !== 'login' && userDataProvider.getToken() !== '') {
             headers['Authorization'] = 'Bearer ' + userDataProvider.getToken();
         }
+        console.log('Request Element: ' + JSON.stringify(element));
     });
 }
 
@@ -59,6 +61,8 @@ export function RestangularConfigFactory (RestangularProvider, userDataProvider)
     HttpService,
     EventbusProvider,
     MapProvider,
+
+    DatePipe
   ]
 })
 export class AppModule {}
