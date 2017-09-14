@@ -62,7 +62,7 @@ export class HttpService {
    * url: /companys
    */
   searchCompanys() {
-      return this.restangular.all('owner-identitys').customGET('list', {}).toPromise();
+    return this.restangular.all('owner-identitys').customGET('list', {}).toPromise();
     // return this.restangular.all('platform-manages').customGET('list',{}).toPromise();
     // return this.restangular.all('companys')
     //   .customGET("").toPromise();
@@ -179,9 +179,13 @@ export class HttpService {
    * url: /search-track
    * params: query, startDate, endDate
    */
-  searchTrack(params: any) {
-    return this.restangular.all('search-track').customGET("", params)
-      .toPromise();
+  searchTrack(licenseNo, startDate, endDate) {
+    return this.restangular.all('cars').customGET("history-info", {
+        licenseNo: licenseNo,
+        startDate: startDate,
+        endDate: endDate
+      }
+    );
   }
 
   /**

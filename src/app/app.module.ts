@@ -17,6 +17,7 @@ import { HttpService } from '../providers/http-service/http-service';
 import { ScrollableTabsDirective } from '../directives/scrollable-tabs/scrollable-tabs';
 import { EventbusProvider } from '../providers/eventbus/eventbus';
 import { MapProvider } from '../providers/map/map';
+import {DatePipe} from "@angular/common";
 
 export function RestangularConfigFactory (RestangularProvider, userDataProvider) {
     /*RestangularProvider.setBaseUrl('http://localhost:7004');*/
@@ -58,6 +59,7 @@ export function RestangularConfigFactory (RestangularProvider, userDataProvider)
     HttpService,
     EventbusProvider,
     MapProvider,
+    DatePipe
   ]
 })
 export class AppModule {}

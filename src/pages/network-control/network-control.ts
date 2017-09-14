@@ -57,7 +57,7 @@ export class NetworkControlPage extends BaseComponent {
   searchTrack () {
     let searchTrackModal = this.modalCtrl.create(SearchTrackComponent);
     searchTrackModal.onDidDismiss(points => {
-      console.log("------- searchTrackModal ------" + JSON.stringify(points));
+      // console.log("------- searchTrackModal ------" + JSON.stringify(points));
       if (points) {
         this.mapProvider.reload();
         this.mapProvider.track(points);

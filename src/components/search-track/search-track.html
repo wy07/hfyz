@@ -11,18 +11,18 @@
 
 <ion-content>
   <form [formGroup]="trackForm">
-    <ion-searchbar [showCancelButton]="true" placeholder="请输入查询条件" formControlName="query">
+    <ion-searchbar [showCancelButton]="true" [(ngModel)]="licenseNo" placeholder="请输入查询条件" formControlName="query">
     </ion-searchbar>
     <ion-list>
       <ion-item>
         <ion-label>开始时间</ion-label>
-        <ion-datetime displayFormat="YYYY-MM-DD" placeholder="请选择" doneText="确认" cancelText="取消"
+        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="startDate" placeholder="请选择" doneText="确认" cancelText="取消"
         formControlName="startDate"></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label>结束</ion-label>
-        <ion-datetime displayFormat="YYYY-MM-DD" placeholder="请选择" doneText="确认" cancelText="取消"
+        <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="endDate" placeholder="请选择" doneText="确认" cancelText="取消"
         formControlName="endDate"></ion-datetime>
       </ion-item>
     </ion-list>

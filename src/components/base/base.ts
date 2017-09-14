@@ -8,6 +8,7 @@ import { BackgroundMode } from '@ionic-native/background-mode';
 import { EventbusProvider } from './../../providers/eventbus/eventbus';
 import { UserDataProvider } from './../../providers/user-data/user-data';
 import { HttpService } from './../../providers/http-service/http-service';
+import {DatePipe} from "@angular/common";
 
 /**
  * Generated class for the BaseComponent component.
@@ -36,7 +37,8 @@ export class BaseComponent {
     public eventbusProvider: EventbusProvider,
     public userData: UserDataProvider,
     public mapProvider: MapProvider,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public datePipe: DatePipe
     ) {
   }
 
