@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>编辑</ion-title>
+    <ion-title>添加</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -10,37 +10,37 @@
 
     <ion-item>
       <ion-label fixed>业户名称</ion-label>
-      <ion-input readonly [(ngModel)]="mOldMessage.enterpirse" value="{{mOldMessage.enterpirse}}" (click)="searchCompany()"></ion-input>
+      <ion-input readonly [(ngModel)]="mNewInfo.enterpirse" placeholder="请输入公司名称" (click)="searchCompany()"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label fixed>检查人</ion-label>
-      <ion-input [(ngModel)]="mOldMessage.examiner" value="{{mOldMessage.examiner}}"></ion-input>
+      <ion-input [(ngModel)]="mNewInfo.examiner" placeholder="请输入检查人"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label fixed>检查地点</ion-label>
-      <ion-input [(ngModel)]="mOldMessage.insPosition" value="{{mOldMessage.insPosition}}"></ion-input>
+      <ion-input [(ngModel)]="mNewInfo.insPosition" placeholder="请输入检查地点"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label fixed>检查内容</ion-label>
-      <ion-textarea [(ngModel)]="mOldMessage.insDesc" rows="6" value="{{mOldMessage.insDesc}}"></ion-textarea>
+      <ion-textarea [(ngModel)]="mNewInfo.insDesc" rows="6" placeholder="无"></ion-textarea>
     </ion-item>
 
     <ion-item>
       <ion-label fixed>区域</ion-label>
-      <ion-input [(ngModel)]="mOldMessage.area" value="{{mOldMessage.area}}"></ion-input>
+      <ion-input [(ngModel)]="mNewInfo.area" placeholder="请输入区域"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label fixed>存在问题</ion-label>
-      <ion-textarea [(ngModel)]="mOldMessage.insQuestion" rows="6" value="{{mOldMessage.insQuestion}}" placeholder="无"></ion-textarea>
+      <ion-textarea [(ngModel)]="mNewInfo.insQuestion" rows="6" placeholder="无"></ion-textarea>
     </ion-item>
 
     <ion-item>
       <ion-label fixed>整改意见</ion-label>
-      <ion-textarea [(ngModel)]="mOldMessage.proPosal" rows="6" value="{{mOldMessage.proPosal}}" placeholder="无"></ion-textarea>
+      <ion-textarea [(ngModel)]="mNewInfo.proPosal" rows="6" placeholder="无"></ion-textarea>
     </ion-item>
 
     <ion-item no-lines>
@@ -51,7 +51,7 @@
 
     <ion-item>
       <ion-label>时间</ion-label>
-      <ion-datetime [(ngModel)]="InspectionDate.time" displayFormat="HH:mm:ss"
+      <ion-datetime [(ngModel)]="InspectionDate.time" displayFormat="HH:mm"
                     doneText="确定" cancelText="取消"></ion-datetime>
     </ion-item>
 
@@ -63,7 +63,7 @@
 
     <ion-item>
       <ion-label>时间</ion-label>
-      <ion-datetime [(ngModel)]="DealineDate.time" displayFormat="HH:mm:ss"
+      <ion-datetime [(ngModel)]="DealineDate.time" displayFormat="HH:mm"
                     doneText="确定" cancelText="取消"></ion-datetime>
     </ion-item>
 

@@ -1,14 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-searchbar placeholder="查询公司" debounce="1000" (ionInput)="onInput($event)"></ion-searchbar>
-
-    <!--<ion-buttons right padding="20dp">
-      <button ion-button (click)="statusMenu()">
-        <ion-icon name="menu"></ion-icon>
-      </button>
-    </ion-buttons>-->
-
+    <ion-searchbar placeholder="业户名称" debounce="1000" (click)="searchCompany()"></ion-searchbar>
   </ion-navbar>
 
 </ion-header>
@@ -23,6 +16,10 @@
     <ion-fab-list side="top">
       <button ion-fab *ngFor="let status of mStatusList" (click)="selectQuery(status.value)">{{status.label}}</button>
     </ion-fab-list>
+  </ion-fab>
+
+  <ion-fab top right>
+    <button ion-fab color="vibrant" mini (click)="goAddPage()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 
   <ion-refresher (ionRefresh)="doRefresh($event)">

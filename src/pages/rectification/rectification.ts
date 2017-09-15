@@ -3,6 +3,7 @@ import {BaseComponent} from './../../components/base/base';
 import {Component, ViewChild} from '@angular/core';
 import {IonicPage, Tabs} from 'ionic-angular';
 import {Rectification} from "../../models/rectification.model";
+import {SearchCompanyComponent} from "../../components/search-company/search-company";
 
 /**
  * Generated class for the RectificationPage page.
@@ -27,7 +28,6 @@ export class RectificationPage extends BaseComponent {
 
   private mCurrCount: number;      // 当前请求次数
   private isLoadOver: boolean;  // 是否加载完成标志
-
 
   private mStatusList: Array<{ label: string, value: string }> = [{label: '全部', value: ''}, {label: '起草', value: '0'},
     {label: '待审核', value: '1'}, {label: '待反馈', value: '2'}, {label: '已拒绝', value: '3'},
@@ -99,19 +99,19 @@ export class RectificationPage extends BaseComponent {
     }, 1000);
   }
 
-  /**
-   * 捕获搜索框输入内容
-   */
-  private onInput(event) {
-    if (!this.isBlank(event.target.value)) {
-      this.mCurrSearch = (event.target.value).trim();
-    } else {
-      this.mCurrSearch = '';
-    }
-    // 查看输入框是否有数据
-    this.initData();
-    this.getOrderList(0, false);
+  private searchCompany() {
+    let searchCompanyModal = this.modalCtrl.create(SearchCompanyComponent, {from: "RectificationPage"});
+    searchCompanyModal.onDidDismiss(res => {
+      if (res) {
+        this.mCurrSearch = res.ownerName;
+        console.log(res);
+        this.initData();
+        this.getOrderList(0, false);
+      }
+    });
+    searchCompanyModal.present();
   }
+
 
   /**
    * 根据状态过滤
@@ -151,14 +151,17 @@ export class RectificationPage extends BaseComponent {
     );
   }
 
-  onDelete(order: any) {
+  private onDelete(order: any) {
     this.httpService.deleteRectification(order.id).subscribe(
       res => {
-        console.log('-----'+JSON.stringify(res));
         this.initData();
         this.getOrderList(0, false);
       }
     );
+  }
+
+  private goAddPage() {
+    this.navCtrl.push('RectificationAddPage');
   }
 
 }

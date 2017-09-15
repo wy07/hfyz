@@ -1,6 +1,7 @@
-import { BaseComponent } from './../../../components/base/base';
-import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import {BaseComponent} from './../../../components/base/base';
+import {Component} from '@angular/core';
+import {IonicPage} from 'ionic-angular';
+import {SearchCompanyComponent} from "../../../components/search-company/search-company";
 
 @IonicPage()
 @Component({
@@ -9,7 +10,7 @@ import { IonicPage } from 'ionic-angular';
 })
 export class RectificationEditPage extends BaseComponent {
 
-  private mOldMessage: any;      // 当前信息
+  private mOldMessage: any; // 当前信息
 
   private InspectionDate = {
     date: '',
@@ -21,7 +22,7 @@ export class RectificationEditPage extends BaseComponent {
     time: ''
   };
 
-  ngOnInit() {
+  private ngOnInit() {
     this.mOldMessage = this.navParams.get('info');
     // 检查日期初始化
     let dateTmp = this.mOldMessage.inspectionDate.toString().split(' ');
@@ -47,31 +48,55 @@ export class RectificationEditPage extends BaseComponent {
       return false;
     }
     if (this.isBlank(this.mOldMessage.examiner)) {
-      this.showToast('请正确填写检查人姓名', 1000, this.SHOW_BOTTOM);
+      this.showToast('请正确填写检查人姓名！', 1000, this.SHOW_BOTTOM);
       return false;
     }
     if (this.isBlank(this.mOldMessage.insPosition)) {
-      this.showToast('请正确填写检查地点', 1000, this.SHOW_BOTTOM);
+      this.showToast('请正确填写检查地点！', 1000, this.SHOW_BOTTOM);
       return false;
     }
     if (this.isBlank(this.mOldMessage.insDesc)) {
-      this.showToast('请正确填写检查内容', 1000, this.SHOW_BOTTOM);
+      this.showToast('请正确填写检查内容！', 1000, this.SHOW_BOTTOM);
+      return false;
+    }
+    let insTemp = new Date(this.InspectionDate.date + ' ' + this.InspectionDate.time);
+    let dealTemp = new Date(this.DealineDate.date + ' ' + this.DealineDate.time);
+    if (insTemp.getTime() === dealTemp.getTime()) {
+      this.showToast('选择的日期不能相同！', 1000, this.SHOW_BOTTOM);
+      return false;
+    }
+    if (dealTemp < insTemp) {
+      this.showToast('请选择正确的日期！', 1000, this.SHOW_BOTTOM);
       return false;
     }
     return true;
   }
 
+  private searchCompany() {
+    let searchCompanyModal = this.modalCtrl.create(SearchCompanyComponent, {from: "RectificationEditPage"});
+    searchCompanyModal.onDidDismiss(res => {
+      if (res) {
+        this.mOldMessage.enterpirse = res.ownerName;
+      }
+    });
+    searchCompanyModal.present();
+  }
+
   private submitEdit() {
     if (this.validation()) {
-      this.mOldMessage.inspectionDate =
+      this.mOldMessage.inspection =
         this.datePipe.transform(new Date(this.InspectionDate.date + ' ' + this.InspectionDate.time), 'yyyy-MM-dd HH:mm');
-      this.mOldMessage.dealineDate =
+      this.mOldMessage.dealine =
         this.datePipe.transform(new Date(this.DealineDate.date + ' ' + this.DealineDate.time), 'yyyy-MM-dd HH:mm');
       delete this.mOldMessage.status;
       this.httpService.updateRectification(this.mOldMessage.id, this.mOldMessage).subscribe(
-
         res => {
-          console.log(res);
+          if (res.result === "success") {
+            this.showToast('更新成功！', 1500, this.SHOW_TOP);
+            this.navCtrl.pop();
+          } else {
+            this.showToast('更新失败，请重试！', 1500, this.SHOW_BOTTOM);
+          }
         }
       );
     }

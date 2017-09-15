@@ -228,6 +228,14 @@ export class HttpService {
     return this.restangular.one('hidden-rectification-orders', id).customDELETE('delete', {});
   }
 
+  addRectification(hiddenRectificationOrder) {
+    return this.restangular.all('hidden-rectification-orders').customPOST(hiddenRectificationOrder, 'save');
+  }
+
+  searchCompany(enterpirse) {
+    return this.restangular.all('hidden-rectification-orders').customGET('company-list', {enterpirse: enterpirse});
+  }
+
    /**
    * 获取电子行程单详情
    * url：/freight-waybills/id/show
