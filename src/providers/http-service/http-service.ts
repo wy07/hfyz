@@ -17,15 +17,6 @@ export class HttpService {
   }
 
   /**
-   * 登录
-   * url: /login
-   */
-  login(username: string, password: string) {
-    return this.restangular.all('login').post({username: username, password: password}).toPromise();
-    /*return this.restangular.all('login').post({username: username, password: password});*/
-  }
-
-  /**
    * 获取待办任务列表
    * url: /upcoming-tasks
    */
@@ -39,13 +30,13 @@ export class HttpService {
    * url: /rectification-orders
    */
   getRectification(company: Company, status: string, max: number, offset: number) {
-    if (company) {
+    /*if (company) {
       return this.restangular.all('rectification-orders')
         .customGET("", {companyId: company.id, status: status, max: max, offset: offset}).toPromise();
     } else {
       return this.restangular.all('rectification-orders')
         .customGET("", {status: status, max: max, offset: offset}).toPromise();
-    }
+    }*/
   }
 
   /**
@@ -53,8 +44,8 @@ export class HttpService {
    * url: /rectification-orders/:id
    */
   getRectificationDetail(id: number) {
-    return this.restangular.one('rectification-orders', id)
-      .customGET("", {id: id}).toPromise();
+    /*return this.restangular.one('rectification-orders', id)
+      .customGET("", {id: id}).toPromise();*/
   }
 
   /**
@@ -96,8 +87,8 @@ export class HttpService {
    * url: /rectification-orders/:id/feedback
    */
   rectificaionFeedback(id: number, feedback: string) {
-    return this.restangular.one('rectification-orders', id)
-      .customPOST({id: id, feedback: feedback}, 'feedback').toPromise();
+    /*return this.restangular.one('rectification-orders', id)
+      .customPOST({id: id, feedback: feedback}, 'feedback').toPromise();*/
   }
 
   /**
@@ -105,8 +96,8 @@ export class HttpService {
    * url: /rectification-orders/:id/confirm
    */
   rectificaionConfirm(id: number) {
-    return this.restangular.one('rectification-orders', id)
-      .customPOST({id: id}, 'confirm').toPromise();
+    /*return this.restangular.one('rectification-orders', id)
+      .customPOST({id: id}, 'confirm').toPromise();*/
   }
 
   /**
@@ -243,6 +234,34 @@ export class HttpService {
   }
 
   /**
+<<<<<<< HEAD
+   * 登录
+   * url: /login
+   */
+  login(username: string, password: string) {
+    return this.restangular.all('login').post({username: username, password: password}).toPromise();
+    /*return this.restangular.all('login').post({username: username, password: password});*/
+  }
+
+  /**
+   * 企业整改查询
+   * url: /hidden-rectification-orders/list
+   */
+  requestOrderList(max, offset, company, sd, ed, status, listStatus) {
+    return this.restangular.all('hidden-rectification-orders').customGET('list',
+      {max: max, offset: offset, company: company, startDate: sd, endDate: ed, status: status, listStatus: listStatus });
+  }
+
+  /**
+   * 查询企业整改详情
+   * @param id
+   * @returns {any}
+   */
+  requestOrderDetail(id) {
+    return this.restangular.one('hidden-rectification-orders', id).customGET('edit');
+  }
+
+   /**
    * 获取电子行程单详情
    * url：/freight-waybills/id/show
    */
@@ -269,4 +288,5 @@ export class HttpService {
   getLawDetail(id) {
     return this.restangular.one('infoaudits', id).customGET('edit').toPromise();
   }
+
 }

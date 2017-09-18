@@ -22,6 +22,7 @@ import {DatePipe} from "@angular/common";
 export function RestangularConfigFactory (RestangularProvider, userDataProvider) {
     /*RestangularProvider.setBaseUrl('http://localhost:7004');*/
     RestangularProvider.setBaseUrl('http://127.0.0.1:7001');
+    /*RestangularProvider.setBaseUrl('http://220.178.80.119:7001');*/
     RestangularProvider.setPlainByDefault(true);
     RestangularProvider.addFullRequestInterceptor((element, operation, path, url, headers, params, httpConfig)=> {
         if (path !== 'login' && userDataProvider.getToken() !== '') {

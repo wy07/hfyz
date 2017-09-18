@@ -42,35 +42,36 @@ export class RectificationOrdersPage extends BaseComponent implements OnDestroy 
   }
 
   doRefresh (refresher?) {
-    this.orders = [];
+
+    /*this.orders = [];
     this.offset = 0;
     this.getRectificationOrders().then((orders: Array<Rectification>) => {
       this.orders = orders;
       if (refresher) refresher.complete();
     }, err => {
       if (refresher) refresher.complete();
-    });
+    });*/
   }
 
   async getRectificationOrders () {
-    try {
+    /*try {
       let res = await this.httpService.getRectification(this.selectedCompany, this.status, this.max, this.offset);
       this.total  = res.total;
       this.offset += res.orders.length;
       return res.orders;
     } catch (error) {
       console.log(JSON.stringify(error));
-    }
+    }*/
   }
 
   doInfinite(infiniteScroll) {
-    this.getRectificationOrders().then((orders: Array<Rectification>) => {
+    /*this.getRectificationOrders().then((orders: Array<Rectification>) => {
       this.orders = this.orders.concat(orders);
       infiniteScroll.complete();
       infiniteScroll.enable(this.total > this.offset);
     }, err => {
       infiniteScroll.complete();
-    });
+    });*/
   }
 
   goToRectificationDetail (order: Rectification) {
