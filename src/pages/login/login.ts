@@ -42,8 +42,10 @@ export class LoginPage extends BaseComponent {
       if (res.result === 'success') {
         this.userData.setToken(res.token);
         this.userData.setUserName(res.sub);
+        this.userData.setPermission(res.rights);
         this.navCtrl.setRoot('TabsPage');
         this.showToast('欢迎 ' + this.userData.getUserName() + '！', 3000, this.SHOW_TOP);
+        console.log('permission---'+this.userData.getPermission());
         // console.log(res);
       }
     } catch (error) {

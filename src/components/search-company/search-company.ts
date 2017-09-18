@@ -35,7 +35,7 @@ export class SearchCompanyComponent extends BaseComponent {
       return;
     }
     this.filterCompanys = this.companys.filter(
-      (company: Company) => company.name.indexOf(this.input) > -1);
+      (company: Company) => company.ownerName.indexOf(this.input) > -1);
   }
 
   async search () {
