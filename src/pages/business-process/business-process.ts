@@ -20,9 +20,20 @@ export class BusinessProcessPage extends BaseComponent {
 
   orders: Array<Rectification>;
   waybills: Array<FreightWaybill>;
+  max:number;
+  offset:number;
+  listStatus:any;
+  status:string;
+  company:any;
+  sd:any;
+  ed:any;
 
   ionViewDidLoad() {
     this.doRefresh();
+    this.max=10;
+    this.offset=0;
+    this.listStatus=1;
+    this.status='SHZ';
   }
 
   doRefresh (refresher?) {
@@ -35,8 +46,10 @@ export class BusinessProcessPage extends BaseComponent {
 
   async getUpcomingTasks () {
     try {
-      let res = await this.httpService.getUpcomingTasks();
-      [this.orders, this.waybills] = [res.orders, res.waybills];
+      let rectification = await this.httpService.getRectification1(this.max,this.offset, this.listStatus);
+      let waybills = await this.httpService.getWaybills(this.status, this.max, this.offset);
+      [this.orders, this.waybills] = [rectification.hiddenRectificationOrderList, waybills.resultList];
+      console.log('---' + JSON.stringify(this.orders));
     } catch (error) {
       console.log(JSON.stringify(error));
     }

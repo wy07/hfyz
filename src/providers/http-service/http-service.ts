@@ -58,6 +58,18 @@ export class HttpService {
   }
 
   /**
+   * 待办事项
+   * url: /hidden-rectification-orderss/list
+   */
+  getRectification1(max: number, offset: number, listStatus: any) {
+    return this.restangular.all('hidden-rectification-orders').customGET('list', {
+      max: max,
+      offset: offset,
+      listStatus: listStatus
+    }).toPromise();
+  }
+
+  /**
    * 获取公司列表
    * url: /companys
    */
