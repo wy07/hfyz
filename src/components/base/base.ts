@@ -37,8 +37,7 @@ export class BaseComponent {
     public eventbusProvider: EventbusProvider,
     public userData: UserDataProvider,
     public mapProvider: MapProvider,
-    private toastCtrl: ToastController,
-
+    public toastCtrl: ToastController,
     public datePipe: DatePipe
     ) {
   }

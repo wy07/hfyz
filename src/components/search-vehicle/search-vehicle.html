@@ -18,7 +18,7 @@
       {{vehicle.vehicleNo}}
     </button> -->
     <ion-item *ngFor="let vehicle of filterVehicles">
-        <ion-label>{{vehicle.vehicleNo}}</ion-label>
+        <ion-label>{{vehicle.licenseNo}}({{vehicle.carPlateColor}})</ion-label>
         <ion-checkbox [(ngModel)]="vehicle.checked"></ion-checkbox>
     </ion-item>
   </ion-list>

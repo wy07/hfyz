@@ -17,13 +17,18 @@ export class HomePage extends BaseComponent {
     console.log(this.navCtrl);
     this.type = "政策法律法规";
     this.laws = [];
-    this.max = 10;
+    this.max = 3;
     this.offset = 0;
     this.getLaws();
   }
 
-  lawDetail(law:any) {
-    this.app.getRootNav().push('LawDetailPage',{id:law.id});
+  lawDetail(law: any) {
+    this.app.getRootNav().push('LawDetailPage', {id: law.id});
+  }
+
+  lawList(laws: any) {
+    console.log('----' + JSON.stringify(laws));
+    this.app.getRootNav().push('LawListPage');
   }
 
   async getLaws() {

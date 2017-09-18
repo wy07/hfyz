@@ -26,21 +26,37 @@ export class HttpService {
   }
 
   /**
+   * 待办事项
+   * url: /hidden-rectification-orderss/list
+   */
+  getRectification1(max: number, offset: number, listStatus: any) {
+    return this.restangular.all('hidden-rectification-orders').customGET('list', {
+      max: max,
+      offset: offset,
+      listStatus: listStatus
+    }).toPromise();
+  }
+
+  /**
    * 获取公司列表
    * url: /companys
    */
   searchCompanys() {
-    return this.restangular.all('companys')
-      .customGET("").toPromise();
+    return this.restangular.all('owner-identitys').customGET('list', {}).toPromise();
+    // return this.restangular.all('platform-manages').customGET('list',{}).toPromise();
+    // return this.restangular.all('companys')
+    //   .customGET("").toPromise();
   }
 
   /**
    * 根据公司获取车辆列表
    * url: /companys/:id/vehicles
    */
-  searchVehicles(id: number) {
-    return this.restangular.one('companys', {id: id})
-      .customGET("vehicles").toPromise();
+  searchVehicles(companyCode: string) {
+    return this.restangular.one('companys', companyCode).customGET('cars').toPromise();
+    // return this.restangular.all('cars').customGET('search', {    });
+    // return this.restangular.one('companys', {id: id})
+    //   .customGET("vehicles").toPromise();
   }
 
   /**
@@ -60,21 +76,6 @@ export class HttpService {
     /*return this.restangular.one('rectification-orders', id)
       .customPOST({id: id}, 'confirm').toPromise();*/
   }
-
-  /**
-   * 获取运单列表
-   * url: /freight-waybills/search
-   */
-  // getWaybills(vehicleNo, ownerName, dateBegin, dateEnd, max, offset) {
-  //   return this.restangular.all('freight-waybills').customGET('search', {
-  //     vehicleNo: vehicleNo,
-  //     ownerName: ownerName,
-  //     dateBegin: dateBegin,
-  //     dateEnd: dateEnd,
-  //     max: max,
-  //     offset: offset
-  //   })
-  // }
 
   getWaybills(status: string, max: number, offset: number) {
     return this.restangular.all('freight-waybills')
@@ -143,9 +144,13 @@ export class HttpService {
    * url: /search-track
    * params: query, startDate, endDate
    */
-  searchTrack(params: any) {
-    return this.restangular.all('search-track').customGET("", params)
-      .toPromise();
+  searchTrack(licenseNo, startDate, endDate) {
+    return this.restangular.all('cars').customGET("history-info", {
+        licenseNo: licenseNo,
+        startDate: startDate,
+        endDate: endDate
+      }
+    );
   }
 
   /**

@@ -61,7 +61,6 @@ export function RestangularConfigFactory (RestangularProvider, userDataProvider)
     HttpService,
     EventbusProvider,
     MapProvider,
-
     DatePipe
   ]
 })
