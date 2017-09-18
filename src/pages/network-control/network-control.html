@@ -1,19 +1,19 @@
 <ion-header>
   <ion-navbar>
-      <ion-searchbar [showCancelButton]="true" placeholder="车辆查询" (click)="searchCompany()">
+      <ion-searchbar [showCancelButton]="true" placeholder="车辆查询" (click)="searchCompany()" [hasPermission]="car_real_time_monitor">
         </ion-searchbar>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
     <div id="map" #map></div>
-    
+
     <!-- <ion-fab bottom right>
       <button ion-fab (click)="searchTrack()">轨迹</button>
     </ion-fab> -->
 
     <div class="buttons top">
-      <button ion-button color="white" (click)="searchTrack()">
+      <button ion-button color="white" (click)="searchTrack()" [hasPermission]="car_history">
         <ion-icon name="stats"></ion-icon>
       </button>
       <button ion-button color="white" (click)="navigateToInfoQueryPage()">

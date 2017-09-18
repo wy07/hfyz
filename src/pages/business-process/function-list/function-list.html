@@ -17,14 +17,14 @@
 
   <ion-item-divider color="light">业务办理</ion-item-divider>
   <ion-list>
-    <button ion-item (click)="navigateToWaybillPage()">电子运单</button>
-    <button ion-item (click)="navigateToRectificationPage()">企业整改</button>
+    <button ion-item (click)="navigateToWaybillPage()"  [hasPermission]="freight_router_list">电子运单</button>
+    <button ion-item (click)="navigateToRectificationPage()"  [hasPermission]="hidden_rectification_order_feedback">企业整改</button>
   </ion-list>
 
   <ion-item-divider color="light">信息查询</ion-item-divider>
   <ion-list>
-    <button ion-item (click)="navigateToCarPage()">运营企业车辆信息</button>
-    <button ion-item (click)="navigateToPeoplePage()">企业从业人员信息</button>
+    <button ion-item (click)="navigateToCarPage()" [hasPermission]="car_list" >运营企业车辆信息</button>
+    <button ion-item (click)="navigateToPeoplePage()"  [hasPermission]="people_list">企业从业人员信息</button>
     <button ion-item>车辆卫星定位对接信息</button>
   </ion-list>
 
