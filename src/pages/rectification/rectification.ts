@@ -104,7 +104,6 @@ export class RectificationPage extends BaseComponent {
     searchCompanyModal.onDidDismiss(res => {
       if (res) {
         this.mCurrSearch = res.ownerName;
-        console.log(res);
         this.initData();
         this.getOrderList(0, false);
       }

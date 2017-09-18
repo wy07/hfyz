@@ -1,8 +1,7 @@
 import {BaseComponent} from './../../../components/base/base';
 import {Component} from '@angular/core';
 import {IonicPage} from 'ionic-angular';
-import {Rectification} from "../../../models/rectification.model";
-import {SearchCompanyComponent} from "../../../components/search-company/search-company";
+import {SearchComponent} from "../../../components/search-rectification/search-rectification";
 
 @IonicPage()
 @Component({
@@ -57,17 +56,12 @@ export class RectificationAddPage extends BaseComponent {
     return true;
   }
 
-  private ngOnInit() {
-    let time = this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm');
-  }
-
   private searchCompany() {
-    let searchCompanyModal = this.modalCtrl.create(SearchCompanyComponent, {from: "RectificationEditPage"});
+    let searchCompanyModal = this.modalCtrl.create(SearchComponent, {from: "RectificationEditPage"});
     searchCompanyModal.onDidDismiss(res => {
       if (res) {
         this.mNewInfo.enterpirse = res.ownerName;
         this.mNewInfo.companyCode = res.companyCode;
-        console.log(res);
         let time = this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm').split(' ');
         this.InspectionDate.date = time[0];
         this.InspectionDate.time = time[1];
@@ -88,7 +82,7 @@ export class RectificationAddPage extends BaseComponent {
       res => {
         if (res.result === "success") {
           this.showToast('添加数据成功！', 1500, this.SHOW_TOP);
-          this.navCtrl.pop();
+          this.navCtrl.push('RectificationPage');
         } else {
           this.showToast('添加数据失败，请重试！', 1500, this.SHOW_BOTTOM);
         }
