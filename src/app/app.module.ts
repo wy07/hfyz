@@ -4,7 +4,7 @@ import { UserDataProvider } from './../providers/user-data/user-data';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { RestangularModule, Restangular } from 'ngx-restangular';
+import { RestangularModule } from 'ngx-restangular';
 import { CityPickerModule } from  "ionic2-city-picker";
 
 import { MyApp } from './app.component';
@@ -28,6 +28,7 @@ export function RestangularConfigFactory (RestangularProvider, userDataProvider)
         if (path !== 'login' && userDataProvider.getToken() !== '') {
             headers['Authorization'] = 'Bearer ' + userDataProvider.getToken();
         }
+        console.log('Request Element: ' + JSON.stringify(element));
     });
 }
 

@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>添加</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label fixed>业户名称</ion-label>
+      <ion-input readonly [(ngModel)]="mNewInfo.enterpirse" placeholder="请输入公司名称" (click)="searchCompany()"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>检查人</ion-label>
+      <ion-input [(ngModel)]="mNewInfo.examiner" placeholder="请输入检查人"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>检查地点</ion-label>
+      <ion-input [(ngModel)]="mNewInfo.insPosition" placeholder="请输入检查地点"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>检查内容</ion-label>
+      <ion-textarea [(ngModel)]="mNewInfo.insDesc" rows="6" placeholder="无"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>区域</ion-label>
+      <ion-input [(ngModel)]="mNewInfo.area" placeholder="请输入区域"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>存在问题</ion-label>
+      <ion-textarea [(ngModel)]="mNewInfo.insQuestion" rows="6" placeholder="无"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>整改意见</ion-label>
+      <ion-textarea [(ngModel)]="mNewInfo.proPosal" rows="6" placeholder="无"></ion-textarea>
+    </ion-item>
+
+    <ion-item no-lines>
+      <ion-label>检查日期</ion-label>
+      <ion-datetime [(ngModel)]="InspectionDate.date" displayFormat="YYYY年MM月DD日"
+                    doneText="确定" cancelText="取消"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>时间</ion-label>
+      <ion-datetime [(ngModel)]="InspectionDate.time" displayFormat="HH:mm"
+                    doneText="确定" cancelText="取消"></ion-datetime>
+    </ion-item>
+
+    <ion-item no-lines>
+      <ion-label>整改期限</ion-label>
+      <ion-datetime [(ngModel)]="DealineDate.date" displayFormat="YYYY年MM月DD日"
+                    doneText="确定" cancelText="取消"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>时间</ion-label>
+      <ion-datetime [(ngModel)]="DealineDate.time" displayFormat="HH:mm"
+                    doneText="确定" cancelText="取消"></ion-datetime>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <button ion-button full color="primary" (click)="submitEdit()">提交</button>
+</ion-footer>-->

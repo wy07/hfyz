@@ -26,29 +26,6 @@ export class HttpService {
   }
 
   /**
-   * 获取企业整改列表
-   * url: /rectification-orders
-   */
-  getRectification(company: Company, status: string, max: number, offset: number) {
-    /*if (company) {
-      return this.restangular.all('rectification-orders')
-        .customGET("", {companyId: company.id, status: status, max: max, offset: offset}).toPromise();
-    } else {
-      return this.restangular.all('rectification-orders')
-        .customGET("", {status: status, max: max, offset: offset}).toPromise();
-    }*/
-  }
-
-  /**
-   * 获取企业整改详情
-   * url: /rectification-orders/:id
-   */
-  getRectificationDetail(id: number) {
-    /*return this.restangular.one('rectification-orders', id)
-      .customGET("", {id: id}).toPromise();*/
-  }
-
-  /**
    * 待办事项
    * url: /hidden-rectification-orderss/list
    */
@@ -99,21 +76,6 @@ export class HttpService {
     /*return this.restangular.one('rectification-orders', id)
       .customPOST({id: id}, 'confirm').toPromise();*/
   }
-
-  /**
-   * 获取运单列表
-   * url: /freight-waybills/search
-   */
-  // getWaybills(vehicleNo, ownerName, dateBegin, dateEnd, max, offset) {
-  //   return this.restangular.all('freight-waybills').customGET('search', {
-  //     vehicleNo: vehicleNo,
-  //     ownerName: ownerName,
-  //     dateBegin: dateBegin,
-  //     dateEnd: dateEnd,
-  //     max: max,
-  //     offset: offset
-  //   })
-  // }
 
   getWaybills(status: string, max: number, offset: number) {
     return this.restangular.all('freight-waybills')
@@ -234,7 +196,6 @@ export class HttpService {
   }
 
   /**
-<<<<<<< HEAD
    * 登录
    * url: /login
    */
@@ -254,11 +215,30 @@ export class HttpService {
 
   /**
    * 查询企业整改详情
-   * @param id
-   * @returns {any}
+   * url: /hidden-rectification-orders/edit
    */
   requestOrderDetail(id) {
     return this.restangular.one('hidden-rectification-orders', id).customGET('edit');
+  }
+
+  /**
+   * 更新整改单数据
+   * url: /hidden-rectification-orders/edit
+   */
+  updateRectification(id, newMessage) {
+    return this.restangular.one('hidden-rectification-orders', id).customPOST(newMessage, 'update');
+  }
+
+  deleteRectification(id) {
+    return this.restangular.one('hidden-rectification-orders', id).customDELETE('delete', {});
+  }
+
+  addRectification(hiddenRectificationOrder) {
+    return this.restangular.all('hidden-rectification-orders').customPOST(hiddenRectificationOrder, 'save');
+  }
+
+  searchCompany(enterpirse) {
+    return this.restangular.all('hidden-rectification-orders').customGET('company-list', {enterpirse: enterpirse});
   }
 
    /**

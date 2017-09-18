@@ -14,19 +14,19 @@
     <div class="avatar">
       <img src="assets/img/avatar_1.png">
     </div>
-    <div class="name">张三</div>
+    <div class="name">{{mUserName}}</div>
   </div>
 
   <ion-list>
-    <button ion-item>
-      <ion-icon name="leaf" item-start></ion-icon>
-      我的钱包
-    </button>
+    <!--<button ion-item>-->
+      <!--<ion-icon name="leaf" item-start></ion-icon>-->
+      <!--我的钱包-->
+    <!--</button>-->
 
-    <button ion-item>
-      <ion-icon name="leaf" item-start></ion-icon>
-      历史消息
-    </button>
+    <!--<button ion-item>-->
+      <!--<ion-icon name="leaf" item-start></ion-icon>-->
+      <!--历史消息-->
+    <!--</button>-->
 
     <button ion-item (click)="goToPersonInfoPage()">
       <ion-icon name="leaf" item-start></ion-icon>
@@ -41,3 +41,7 @@
   </ion-list>
 
 </ion-content>
+
+<ion-footer>
+  <button ion-button full color="primary" (click)="loginOut()">退出</button>
+</ion-footer>-->

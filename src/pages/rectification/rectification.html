@@ -1,14 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-searchbar placeholder="查询公司" debounce="1000" (ionInput)="onInput($event)"></ion-searchbar>
-
-    <!--<ion-buttons right padding="20dp">
-      <button ion-button (click)="statusMenu()">
-        <ion-icon name="menu"></ion-icon>
-      </button>
-    </ion-buttons>-->
-
+    <ion-searchbar placeholder="业户名称" debounce="1000" (click)="searchCompany()"></ion-searchbar>
   </ion-navbar>
 
 </ion-header>
@@ -25,6 +18,10 @@
     </ion-fab-list>
   </ion-fab>
 
+  <ion-fab top right>
+    <button ion-fab color="vibrant" mini (click)="goAddPage()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingText="刷新中..."></ion-refresher-content>
   </ion-refresher>
@@ -34,15 +31,15 @@
       <ion-item-divider color="light">
         查询结果：{{this.mTotal}} 条
       </ion-item-divider>
-      <ion-item-sliding *ngFor="let order of mOrderList" (click)="goDetailPage(order.id)">
+      <ion-item-sliding *ngFor="let order of mOrderList">
         <ion-item>
           <h2>{{order.enterpirse}}</h2>
           <p>单据编号：{{order.billNo}}　　　状态：{{order.status}}</p>
         </ion-item>
         <ion-item-options side="right">
-          <button color="secondary" ion-button>编辑</button>
-          <button color="danger" ion-button>删除</button>
-          <button color="primary" ion-button>提交</button>
+          <button color="primary" ion-button (click)="goDetailPage(order.id)">详情</button>
+          <button color="secondary" ion-button (click)="goEditPage(order.id)">编辑</button>
+          <button color="danger" ion-button (click)="onDelete(order)">删除</button>
         </ion-item-options>
       </ion-item-sliding>
     </ion-item-group>

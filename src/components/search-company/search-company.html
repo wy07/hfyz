@@ -3,7 +3,7 @@
   <ion-navbar>
     <ion-buttons left>
       <button ion-button (click)="dismiss()">
-          <ion-icon name="arrow-back"></ion-icon>
+        <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
     <ion-title>筛选公司</ion-title>
@@ -12,7 +12,7 @@
 
 <ion-content>
   <ion-searchbar [showCancelButton]="true" placeholder="请输入查询条件"
-    [(ngModel)]="input" (ionInput)="onInput($event)" debounce="100">
+                 [(ngModel)]="input" (ionInput)="onInput($event)" debounce="100">
   </ion-searchbar>
   <ion-list>
     <button ion-item *ngFor="let company of filterCompanys" (click)="selected(company)">
