@@ -26,29 +26,6 @@ export class HttpService {
   }
 
   /**
-   * 获取企业整改列表
-   * url: /rectification-orders
-   */
-  getRectification(company: Company, status: string, max: number, offset: number) {
-    /*if (company) {
-      return this.restangular.all('rectification-orders')
-        .customGET("", {companyId: company.id, status: status, max: max, offset: offset}).toPromise();
-    } else {
-      return this.restangular.all('rectification-orders')
-        .customGET("", {status: status, max: max, offset: offset}).toPromise();
-    }*/
-  }
-
-  /**
-   * 获取企业整改详情
-   * url: /rectification-orders/:id
-   */
-  getRectificationDetail(id: number) {
-    /*return this.restangular.one('rectification-orders', id)
-      .customGET("", {id: id}).toPromise();*/
-  }
-
-  /**
    * 获取公司列表
    * url: /companys
    */
@@ -214,7 +191,6 @@ export class HttpService {
   }
 
   /**
-<<<<<<< HEAD
    * 登录
    * url: /login
    */
@@ -234,11 +210,30 @@ export class HttpService {
 
   /**
    * 查询企业整改详情
-   * @param id
-   * @returns {any}
+   * url: /hidden-rectification-orders/edit
    */
   requestOrderDetail(id) {
     return this.restangular.one('hidden-rectification-orders', id).customGET('edit');
+  }
+
+  /**
+   * 更新整改单数据
+   * url: /hidden-rectification-orders/edit
+   */
+  updateRectification(id, newMessage) {
+    return this.restangular.one('hidden-rectification-orders', id).customPOST(newMessage, 'update');
+  }
+
+  deleteRectification(id) {
+    return this.restangular.one('hidden-rectification-orders', id).customDELETE('delete', {});
+  }
+
+  addRectification(hiddenRectificationOrder) {
+    return this.restangular.all('hidden-rectification-orders').customPOST(hiddenRectificationOrder, 'save');
+  }
+
+  searchCompany(enterpirse) {
+    return this.restangular.all('hidden-rectification-orders').customGET('company-list', {enterpirse: enterpirse});
   }
 
    /**

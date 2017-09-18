@@ -8,6 +8,7 @@ import { BackgroundMode } from '@ionic-native/background-mode';
 import { EventbusProvider } from './../../providers/eventbus/eventbus';
 import { UserDataProvider } from './../../providers/user-data/user-data';
 import { HttpService } from './../../providers/http-service/http-service';
+import {DatePipe} from "@angular/common";
 
 /**
  * Generated class for the BaseComponent component.
@@ -36,7 +37,9 @@ export class BaseComponent {
     public eventbusProvider: EventbusProvider,
     public userData: UserDataProvider,
     public mapProvider: MapProvider,
-    public toastCtrl: ToastController
+    private toastCtrl: ToastController,
+
+    public datePipe: DatePipe
     ) {
   }
 
@@ -50,7 +53,7 @@ export class BaseComponent {
    * 显示Toast
    * @param {string} message 显示的消息
    * @param {number} duration 持续时间
-   * @param {string} position 出现位置，可接收的参数为"top", "middle", "bottom"
+   * @param {string} position 出现位置，可接收的参数为"SHOW_TOP", "SHOW_MIDDLE", "SHOW_BOTTOM"
    */
   public showToast(message:string, duration:number, position:string) {
     let toast = this.toastCtrl.create({

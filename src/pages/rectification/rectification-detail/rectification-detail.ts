@@ -11,15 +11,12 @@ import {log} from "util";
  * on Ionic pages and navigation.
  */
 
-@IonicPage({
-  segment: 'detail/:id',
-  defaultHistory: ['LoginPage']
-})
+@IonicPage()
 @Component({
   selector: 'page-rectification-detail',
   templateUrl: 'rectification-detail.html',
 })
-export class RectificationDetailPage {
+export class RectificationDetailPage extends BaseComponent{
 
 /*  rectificationId: number;
   rectification: Rectification;
@@ -59,11 +56,10 @@ export class RectificationDetailPage {
     }
   }*/
 
-  private mDetailInfo: any[];      // 详情信息
+  private mDetailInfo: Array<Rectification>;      // 详情信息
 
-  constructor(private navParams: NavParams) {
-    this.mDetailInfo = navParams.get('info');
+  ngOnInit() {
+    this.mDetailInfo = this.navParams.get('info');
   }
-
 
 }

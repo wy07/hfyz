@@ -6,17 +6,22 @@
           <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>筛选公司</ion-title>
+    <ion-searchbar [showCancelButton]="true" placeholder="请输入查询条件" (ionInput)="onInput($event)" debounce="500">
+    </ion-searchbar>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content>
-  <ion-searchbar [showCancelButton]="true" placeholder="请输入查询条件"
-    [(ngModel)]="input" (ionInput)="onInput($event)" debounce="100">
-  </ion-searchbar>
-  <ion-list>
-    <button ion-item *ngFor="let company of filterCompanys" (click)="selected(company)">
+  <!--<ion-list>
+    <button ion-item *ngFor="let company of mFiltered" (click)="selected(company)">
       {{company.name}}
     </button>
+  </ion-list>-->
+  <ion-list>
+    <ion-item *ngFor="let order of mFiltered" (click)="selected(order)">
+      <h2>{{order.ownerName}}</h2>
+      <p>公司编号：{{order.companyCode}}</p>
+    </ion-item>
   </ion-list>
 </ion-content>
