@@ -16,14 +16,6 @@ import {NavController, NavParams, IonicPage} from 'ionic-angular';
 })
 export class FunctionListPage extends BaseComponent {
 
-  navigateToRectificationPage() {
-    this.app.getRootNav().push('RectificationPage');
-  }
-
-  navigateToWaybillPage() {
-    this.app.getRootNav().push('WaybillPage');
-  }
-
   navigateToCarPage() {
     this.app.getRootNav().push('CarInfoPage');
   }
@@ -32,5 +24,8 @@ export class FunctionListPage extends BaseComponent {
     this.app.getRootNav().push('PeopleInfoPage');
   }
 
+  navigateToOwnerPage() {
+    this.app.getRootNav().push('OwnerInfoPage');
+  }
 
 }

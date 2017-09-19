@@ -10,6 +10,6 @@ export class TabsPage {
   tab1Root = 'HomePage';
   tab2Root = 'NetworkControlPage';
   tab3Root = 'BusinessProcessPage';
-  tab4Root = 'ContactPage';
-
+  tab4Root = 'FunctionListPage';
+  // tab4Root = 'ContactPage';// 我的运政
 }

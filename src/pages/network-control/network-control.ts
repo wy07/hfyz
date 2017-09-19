@@ -15,37 +15,6 @@ declare var Mapbar: any;
 })
 export class NetworkControlPage extends BaseComponent {
 
-  result = [
-    {
-      "dateStr":"2017-07-17 19:09:17",
-      "plateColor":2,
-      "plateNo":"京G79489",
-      "posEncrypt":0,
-      "geoPoint":"117.126825,31.852466",
-      "gpsSpeed":0,
-      "totalMileage":129806,
-      "recSpeed":0,
-      "direction":77,
-      "altitude":0,
-      "vehicleState":786451,
-      "alarmState":1
-    },
-    {
-      "dateStr":"2017-07-17 19:10:59",
-      "plateColor":3,
-      "plateNo":"京G00000",
-      "posEncrypt":0,
-      "geoPoint":"117.128825,31.854466",
-      "gpsSpeed":88,
-      "totalMileage":129806,
-      "recSpeed":0,
-      "direction":130,
-      "altitude":0,
-      "vehicleState":786451,
-      "alarmState":0
-    }
-  ];
-
   ionViewDidLoad () {
     this.mapProvider.initMap();
   }
@@ -101,10 +70,4 @@ export class NetworkControlPage extends BaseComponent {
   mapZoomOut () {
     this.mapProvider.zoomOut();
   }
-
-
-  navigateToInfoQueryPage () {
-    this.app.getRootNav().push('InfoQueryPage');
-  }
-
 }
