@@ -32,6 +32,7 @@ export class WaybillListPage extends BaseComponent {
 
   doRefresh(refresher?) {
     this.waybills = [];
+    this.status='';
     this.offset = 0;
     this.getWaybills().then((waybills: Array<FreightWaybill>) => {
       this.waybills = waybills;

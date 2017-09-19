@@ -29,42 +29,48 @@ export class BusinessProcessPage extends BaseComponent {
   ed:any;
 
   ionViewDidLoad() {
-    this.doRefresh();
-    this.max=10;
-    this.offset=0;
-    this.listStatus=1;
-    this.status='SHZ';
+    // this.doRefresh();
+    // this.max=10;
+    // this.offset=0;
+    // this.listStatus=1;
+    // this.status='SHZ';
   }
 
-  doRefresh (refresher?) {
-    this.getUpcomingTasks().then(() => {
-      if (refresher) refresher.complete();
-    }, err => {
-      if (refresher) refresher.complete();
-    });
+  // doRefresh (refresher?) {
+  //   this.getUpcomingTasks().then(() => {
+  //     if (refresher) refresher.complete();
+  //   }, err => {
+  //     if (refresher) refresher.complete();
+  //   });
+  // }
+
+  // async getUpcomingTasks () {
+  //   try {
+  //     let rectification = await this.httpService.getRectification1(this.max,this.offset, this.listStatus);
+  //     let waybills = await this.httpService.getWaybills(this.status, this.max, this.offset);
+  //     [this.orders, this.waybills] = [rectification.hiddenRectificationOrderList, waybills.resultList];
+  //     console.log('---' + JSON.stringify(this.orders));
+  //   } catch (error) {
+  //     console.log(JSON.stringify(error));
+  //   }
+  // }
+  navigateToWaybillPage() {
+    this.app.getRootNav().push('WaybillPage');
+  }
+  navigateToRectificationPage() {
+    this.app.getRootNav().push('RectificationPage');
   }
 
-  async getUpcomingTasks () {
-    try {
-      let rectification = await this.httpService.getRectification1(this.max,this.offset, this.listStatus);
-      let waybills = await this.httpService.getWaybills(this.status, this.max, this.offset);
-      [this.orders, this.waybills] = [rectification.hiddenRectificationOrderList, waybills.resultList];
-      console.log('---' + JSON.stringify(this.orders));
-    } catch (error) {
-      console.log(JSON.stringify(error));
-    }
+  navigateToInfoQueryPage () {
+    this.app.getRootNav().push('InfoQueryPage');
   }
 
-  navigateToRectificationDetail (order: Rectification) {
-    this.navCtrl.push('RectificationDetailPage', {id: order.id});
-  }
+  // navigateToRectificationDetail (order: Rectification) {
+  //   this.navCtrl.push('RectificationDetailPage', {id: order.id});
+  // }
 
   navigateToCreateFreightWaybillPage () {
     this.navCtrl.push('CreateFreightWaybillPage');
-  }
-
-  navigateToFunctionListPage () {
-    this.navCtrl.push('FunctionListPage');
   }
 
 }
