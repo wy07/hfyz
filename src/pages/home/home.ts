@@ -14,7 +14,7 @@ export class HomePage extends BaseComponent {
   offset: number;
 
   ionViewDidLoad() {
-    console.log(this.navCtrl);
+    /*console.log(this.navCtrl);*/
     this.type = "政策法律法规";
     this.laws = [];
     this.max = 3;
@@ -27,7 +27,7 @@ export class HomePage extends BaseComponent {
   }
 
   lawList(laws: any) {
-    console.log('----' + JSON.stringify(laws));
+    /*console.log('----' + JSON.stringify(laws));*/
     this.app.getRootNav().push('LawListPage');
   }
 
