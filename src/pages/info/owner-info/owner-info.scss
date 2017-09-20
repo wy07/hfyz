@@ -1,3 +1,20 @@
 page-owner-info {
+  ion-list {
+    background-color: white;
+    .both-side {
+      padding: 8px 16px;
 
+      .right {
+        float: right;
+      }
+    }
+
+    ion-item {
+      border-top: 1px solid #dedede !important;
+      border-bottom: 1px solid #dedede !important;
+      .item-inner {
+        border-bottom: none !important;
+      }
+    }
+  }
 }
