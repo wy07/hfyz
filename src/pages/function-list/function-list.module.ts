@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 
 import { FunctionListPage } from './function-list';
-import {DirectivesModule} from "../../../directives/directives.module";
+import {DirectivesModule} from "../../directives/directives.module";
 
 @NgModule({
     imports: [
