@@ -50,7 +50,8 @@ export class LoginPage extends BaseComponent {
         this.userData.setUserId(res.id);
         this.userData.setCompanyCode(res.companyCode);
         this.userData.setCompanyName(res.companyName);
-        this.navCtrl.setRoot('TabsPage');
+        /*this.navCtrl.setRoot('TabsPage');*/
+        this.navCtrl.setRoot('MenuPage');
         this.showToast('欢迎 ' + this.userData.getUserName() + '！', 1500, this.SHOW_TOP);
       } else {
         this.showToast('登录信息不正确，请重新输入！', 1500, this.SHOW_BOTTOM);

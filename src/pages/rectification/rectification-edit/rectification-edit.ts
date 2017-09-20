@@ -1,7 +1,7 @@
 import {BaseComponent} from './../../../components/base/base';
 import {Component} from '@angular/core';
 import {IonicPage} from 'ionic-angular';
-import {SearchCompanyComponent} from "../../../components/search-company/search-company";
+import {SearchComponent} from "../../../components/search-rectification/search-rectification";
 
 @IonicPage()
 @Component({
@@ -73,7 +73,7 @@ export class RectificationEditPage extends BaseComponent {
   }
 
   private searchCompany() {
-    let searchCompanyModal = this.modalCtrl.create(SearchCompanyComponent, {from: "RectificationEditPage"});
+    let searchCompanyModal = this.modalCtrl.create(SearchComponent, {from: "RectificationEditPage"});
     searchCompanyModal.onDidDismiss(res => {
       if (res) {
         this.mOldMessage.enterpirse = res.ownerName;
