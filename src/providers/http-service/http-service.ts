@@ -276,11 +276,28 @@ export class HttpService {
   getWorkOrders(max, offset) {
     return this.restangular.all('work-orders').customGET('list', {max: max, offset: offset}).toPromise();
   }
+
   /**
    * 获取报警信息详情（工单）
    * url：work-orders/list
    */
   getWorkOrderDetail(id) {
     return this.restangular.one('work-orders', id).customGET('show').toPromise();
+  }
+
+  /*
+   * 获取业户列表
+   * url:owner-identitys/list
+   */
+  getOwners(max, offset) {
+    return this.restangular.all('owner-identitys').customGET('list', {max: max, offset: offset}).toPromise();
+  }
+
+  /*
+   * 获取业户详情
+   * url:owner-identitys/:id/view
+   */
+  getOwnerDetail(id) {
+    return this.restangular.one('owner-identitys',id).customGET('view').toPromise();
   }
 }
