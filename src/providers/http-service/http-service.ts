@@ -65,7 +65,7 @@ export class HttpService {
    */
   rectificaionFeedback(id: number, feedback: string) {
     /*return this.restangular.one('rectification-orders', id)
-      .customPOST({id: id, feedback: feedback}, 'feedback').toPromise();*/
+     .customPOST({id: id, feedback: feedback}, 'feedback').toPromise();*/
   }
 
   /**
@@ -74,7 +74,7 @@ export class HttpService {
    */
   rectificaionConfirm(id: number) {
     /*return this.restangular.one('rectification-orders', id)
-      .customPOST({id: id}, 'confirm').toPromise();*/
+     .customPOST({id: id}, 'confirm').toPromise();*/
   }
 
   getWaybills(status: string, max: number, offset: number) {
@@ -210,7 +210,7 @@ export class HttpService {
    */
   requestOrderList(max, offset, company, sd, ed, status, listStatus) {
     return this.restangular.all('hidden-rectification-orders').customGET('list',
-      {max: max, offset: offset, company: company, startDate: sd, endDate: ed, status: status, listStatus: listStatus });
+      {max: max, offset: offset, company: company, startDate: sd, endDate: ed, status: status, listStatus: listStatus});
   }
 
   /**
@@ -241,7 +241,7 @@ export class HttpService {
     return this.restangular.all('hidden-rectification-orders').customGET('company-list', {enterpirse: enterpirse});
   }
 
-   /**
+  /**
    * 获取电子行程单详情
    * url：/freight-waybills/id/show
    */
@@ -269,4 +269,18 @@ export class HttpService {
     return this.restangular.one('infoaudits', id).customGET('edit').toPromise();
   }
 
+  /**
+   * 获取报警信息列表（工单）
+   * url：work-orders/list
+   */
+  getWorkOrders(max, offset) {
+    return this.restangular.all('work-orders').customGET('list', {max: max, offset: offset}).toPromise();
+  }
+  /**
+   * 获取报警信息详情（工单）
+   * url：work-orders/list
+   */
+  getWorkOrderDetail(id) {
+    return this.restangular.one('work-orders', id).customGET('show').toPromise();
+  }
 }

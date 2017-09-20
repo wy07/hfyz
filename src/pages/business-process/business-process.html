@@ -18,13 +18,8 @@
   <ion-list>
     <button ion-item (click)="navigateToWaybillPage()"  [hasPermission]="freight_router_list">电子运单</button>
     <button ion-item (click)="navigateToRectificationPage()"  [hasPermission]="hidden_rectification_order_feedback">企业整改</button>
-    <button ion-item (click)="navigateToInfoQueryPage()"  [hasPermission]="">违章信息</button>
+    <button ion-item (click)="navigateToInfoQueryPage()"  [hasPermission]="">监管工单</button>
   </ion-list>
-
-  <!--<ion-refresher (ionRefresh)="doRefresh($event)">-->
-    <!--<ion-refresher-content pullingText="下拉刷新" refreshingText="刷新中..."></ion-refresher-content>-->
-  <!--</ion-refresher>-->
-
   <ion-fab bottom right>
     <button ion-fab mini (click)="navigateToCreateFreightWaybillPage()">
       <ion-icon name="add"></ion-icon>
