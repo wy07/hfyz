@@ -35,27 +35,18 @@
 
   <ion-list>
     <ion-item-divider color="white" tappable>
-      交通设施信息
-      <span item-right>更多</span>
+      消息中心
+      <span item-right (click)="moreMessage()">更多</span>
     </ion-item-divider>
-    <button ion-item detail-none>
-      设施信息1
-      <span item-right>2017-01-02</span>
-    </button>
-    <button ion-item detail-none>
-      设施信息2
-      <span item-right>2017-01-02</span>
-    </button>
-    <button ion-item detail-none>
-      设施信息3
-      <span item-right>2017-01-02</span>
+    <button ion-item detail-none *ngFor="let mes of message " (click)="messageDetail(mes)">
+      <span mesTitle>{{mes.title}}</span>
     </button>
   </ion-list>
 
   <ion-list>
     <ion-item-divider color="white" tappable>
       法律法规
-      <span item-right (click)="lawList(laws)">更多</span>
+      <span item-right (click)="lawList()">更多</span>
     </ion-item-divider>
     <button ion-item detail-none *ngFor="let law of laws" (click)="lawDetail(law)" >
      {{law.title}}
