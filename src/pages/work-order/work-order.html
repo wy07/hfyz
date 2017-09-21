@@ -1,5 +1,5 @@
 <!--
-  Generated template for the OwnerInfoPage page.
+  Generated template for the WorkOrderPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,40 +7,36 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-navbar>
-      <ion-searchbar [showCancelButton]="true" placeholder="输入公司名称查询" [(ngModel)]="input" (ionInput)="onInput($event)"
-                     debounce="100">
-      </ion-searchbar>
-    </ion-navbar>
+    <ion-searchbar [showCancelButton]="true" placeholder="输入公司名称查询" [(ngModel)]="input" (ionInput)="onInput($event)"
+                   debounce="100">
+    </ion-searchbar>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingText="下拉刷新" refreshingText="刷新中..."></ion-refresher-content>
   </ion-refresher>
 
   <p>查询结果：{{this.count}}/{{this.total}} 条</p>
-  <ion-list *ngFor="let owner of searchOwners" (click)="gotoOwnerDetails(owner)">
+  <ion-list *ngFor="let workOrder of searchWorkOrders" (click)="workOrderDetail(workOrder)">
     <div class="both-side">
-      <span>业户代码：{{owner?.ownerCode||'无'}}</span>
-      <span class="right">{{owner?.economicType}}</span>
+      <span>{{workOrder?.ownerName}}</span>
+      <span class="right">{{workOrder?.status}}</span>
     </div>
     <ion-item>
-      <p>业户名称：{{owner?.ownerName}}</p>
-      <p>组织机构代码：{{owner?.companyCode}}</p>
-      <p>法人代表：{{owner?.legalRepresentative}}</p>
+      <p>报警类型：{{workOrder.alarmType}}</p>
+      <p>报警等级：{{workOrder.alarmLevel}}</p>
     </ion-item>
     <div class="both-side">
-      <span>{{owner?.phone}}</span>
-      <span class="right">资格有效期至：{{owner.endTime}}</span>
+      <span>检查时间：{{workOrder.checkTime}}</span>
+      <span class="right">编号：{{workOrder.sn}}</span>
     </div>
   </ion-list>
-
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
     <ion-infinite-scroll-content pullingText="上拉加载中" refreshingText="加载中..."></ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>
+

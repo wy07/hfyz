@@ -1,4 +1,4 @@
-import {BaseComponent} from './../../../components/base/base';
+import {BaseComponent} from '../../components/base/base';
 import {Component} from '@angular/core';
 import {NavController, NavParams, IonicPage} from 'ionic-angular';
 
