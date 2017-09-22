@@ -8,7 +8,7 @@
 
   <ion-navbar>
     <button ion-button menuToggle start>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="contact"></ion-icon>
     </button>
     <ion-title>信息查询</ion-title>
   </ion-navbar>
@@ -20,9 +20,18 @@
 
   <ion-item-divider color="light">信息查询</ion-item-divider>
   <ion-list>
-    <button ion-item (click)="navigateToCarPage()" [hasPermission]="car_list" >运营企业车辆信息</button>
-    <button ion-item (click)="navigateToOwnerPage()" >业户信息</button>
-    <button ion-item (click)="navigateToPeoplePage()"  [hasPermission]="people_list">企业从业人员信息</button>
+    <button ion-item (click)="navigateToCarPage()" [hasPermission]="car_list">
+      <ion-icon name="car"></ion-icon>
+      运营企业车辆信息
+    </button>
+    <button ion-item (click)="navigateToOwnerPage()">
+      <ion-icon name="calendar"></ion-icon>
+      业户信息
+    </button>
+    <button ion-item (click)="navigateToPeoplePage()" [hasPermission]="people_list">
+      <ion-icon name="people"></ion-icon>
+      企业从业人员信息
+    </button>
   </ion-list>
 
 </ion-content>

@@ -8,7 +8,7 @@
 
   <ion-navbar>
     <button ion-button menuToggle start>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="contact"></ion-icon>
     </button>
     <ion-title>业务办理</ion-title>
   </ion-navbar>
@@ -19,9 +19,18 @@
 
   <ion-item-divider color="light">业务办理</ion-item-divider>
   <ion-list>
-    <button ion-item (click)="navigateToWaybillPage()"  [hasPermission]="freight_router_list">电子运单</button>
-    <button ion-item (click)="navigateToRectificationPage()"  [hasPermission]="hidden_rectification_order_feedback">企业整改</button>
-    <button ion-item (click)="navigateToInfoQueryPage()"  [hasPermission]="">监管工单</button>
+    <button ion-item (click)="navigateToWaybillPage()" [hasPermission]="freight_router_list">
+      <ion-icon name="list-box"></ion-icon>
+      电子运单
+    </button>
+    <button ion-item (click)="navigateToRectificationPage()" [hasPermission]="hidden_rectification_order_feedback">
+      <ion-icon name="hand"></ion-icon>
+      企业整改
+    </button>
+    <button ion-item (click)="navigateToInfoQueryPage()" [hasPermission]="">
+      <ion-icon name="document"></ion-icon>
+      监管工单
+    </button>
   </ion-list>
 
 
