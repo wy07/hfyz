@@ -27,12 +27,12 @@ export class WaybillListPage extends BaseComponent {
   ionViewDidLoad() {
     console.log('ionViewDidLoad WaybillListPage');
     this.status = this.navParams.data;
+    console.log('----this.status--' + this.status);
     this.doRefresh();
   }
 
   doRefresh(refresher?) {
     this.waybills = [];
-    this.status='';
     this.offset = 0;
     this.getWaybills().then((waybills: Array<FreightWaybill>) => {
       this.waybills = waybills;
@@ -74,6 +74,14 @@ export class WaybillListPage extends BaseComponent {
   }
 
   goToWaybillDetail(waybill: FreightWaybill) {
-    this.app.getRootNav().push('WaybillDetailPage',{id:waybill.id});
+    this.app.getRootNav().push('WaybillDetailPage', {id: waybill.id});
+  }
+
+  submit(id) {
+    console.log('---list.id--' + id);
+  }
+
+  navigateToCreateFreightWaybillPage() {
+    this.app.getRootNav().push('CreateFreightWaybillPage');
   }
 }

@@ -9,13 +9,18 @@
     </ion-avatar>
     <p>类别: {{waybill?.dangerousType}}</p>
     <p>危险品名称：{{waybill?.dangerousName}}</p>
-    <p>始发地: {{waybill?.departArea}}</p>
-    <p>目的地: {{waybill?.arriveArea}}</p>
+    <p>始发地: {{waybill?.departArea}}<--->目的地: {{waybill?.arriveArea}}</p>
+    <ion-avatar item-end>
+      <button ion-button color="primary" (click)="submit(waybill.id)">提交</button>
+    </ion-avatar>
   </ion-item>
   <div class="both-side">
       <span>
         {{waybill?.departTime}}
       </span>
-    <span class="right">{{waybill?.status}}</span>
+    <span class="right" *ngIf="waybill.status === 'CG'">未审核</span>
+    <span class="right" *ngIf="waybill.status === 'SHZ'">审核中</span>
+    <span class="right" *ngIf="waybill.status === 'YJJ'">审核拒绝</span>
+    <span class="right" *ngIf="waybill.status === 'YJS'">审核通过</span>
   </div>
 </ion-list>

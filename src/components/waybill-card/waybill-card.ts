@@ -1,5 +1,5 @@
-import { FreightWaybill } from './../../models/freightWaybill.model';
-import { Component, Input } from '@angular/core';
+import {FreightWaybill} from './../../models/freightWaybill.model';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 /**
  * Generated class for the WaybillCardComponent component.
@@ -14,5 +14,11 @@ import { Component, Input } from '@angular/core';
 export class WaybillCardComponent {
 
   @Input() waybill: FreightWaybill;
+  @Output() parentClick = new EventEmitter()
+
+  submit(id) {
+    this.parentClick.emit(id);
+    console.log('--id--' + id);
+  }
 
 }

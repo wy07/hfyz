@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController, NavParams, IonicPage} from 'ionic-angular';
 
 /**
  * Generated class for the WaybillPage page.
@@ -15,14 +15,15 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 })
 export class WaybillPage {
 
-  tabs: Array<{title: string, page: string, status: string}>;
+  tabs: Array<{ title: string, page: string, status: string }>;
 
-  constructor () {
+  constructor() {
     this.tabs = [
-      {title: '全部', page: 'WaybillListPage', status: 'all'},
-      {title: '待审批', page: 'WaybillListPage', status: 'DSP'},
-      {title: '已驳回', page: 'WaybillListPage', status: 'YBH'},
-      {title: '已完成', page: 'WaybillListPage', status: 'YWC'}
+      {title: '全部', page: 'WaybillListPage', status: ''},
+      {title: '未审核', page: 'WaybillListPage', status: 'CG'},
+      {title: '审核中', page: 'WaybillListPage', status: 'SHZ'},
+      {title: '审核拒绝', page: 'WaybillListPage', status: 'YJJ'},
+      {title: '审核通过', page: 'WaybillListPage', status: 'YJS'}
     ];
   }
 
