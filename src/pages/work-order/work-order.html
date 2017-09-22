@@ -24,15 +24,15 @@
   <ion-list *ngFor="let workOrder of searchWorkOrders" (click)="workOrderDetail(workOrder)">
     <div class="both-side">
       <span>{{workOrder?.ownerName}}</span>
-      <span class="right">{{workOrder?.status}}</span>
     </div>
     <ion-item>
       <p>报警类型：{{workOrder.alarmType}}</p>
       <p>报警等级：{{workOrder.alarmLevel}}</p>
+      <p>整改意见：{{workOrder.note}}</p>
     </ion-item>
     <div class="both-side">
       <span>检查时间：{{workOrder.checkTime}}</span>
-      <span class="right">编号：{{workOrder.sn}}</span>
+      <span class="right">{{workOrder?.status}}</span>
     </div>
   </ion-list>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">

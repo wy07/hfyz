@@ -1,25 +1,8 @@
-page-home {
-
-  .div-charts{
-    width:100%;
-    height:180px;
-
-  }
-  ion-slides {
-    height: auto;
-
-    ion-slide {
-      img {
-        height: 150px !important;
-      }
-    }
-  }
-
+page-others {
   .item-divider {
     border-bottom: 1px solid #dedede;
     color: #666666;
     font-size: $font-normal-size;
-
     ion-label {
       color: #666666 !important;
     }
@@ -28,31 +11,23 @@ page-home {
   ion-list {
     background-color: white;
     margin-bottom: 16px !important;
-    .mesTitle{
+    .mesTitle {
       font-size: 8px;
     }
-
     .item {
       min-height: 2.4rem;
-
       .item-inner {
         border-bottom-style: none !important;
-
         ion-label {
           font-size: $font-normal-size;
           white-space: normal;
           color: #333333;
           margin: 5px 8px 5px 0 !important;
         }
-
         span {
           font-size: 12px;
         }
       }
-    }
-    .lawItem {
-      border-top: 1px solid #dedede !important;
-      border-bottom: 1px solid #dedede !important;
     }
   }
 }

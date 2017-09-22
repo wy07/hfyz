@@ -87,9 +87,9 @@ export class HomePage extends BaseComponent {
 
   async getMessage() {
     try {
-      let res = this.httpService.getMessage(this.max,this.offset);
-      console.log('--INFO-1-'+JSON.stringify(res));
-      console.log('--INFO-2-'+JSON.stringify(res.list));
+      let res = this.httpService.getMessage(this.max, this.offset);
+      console.log('--INFO-1-' + JSON.stringify(res));
+      console.log('--INFO-2-' + JSON.stringify(res.list));
       this.message = res.list;
     } catch (error) {
       console.log('--getMessage Error--' + JSON.stringify(error));
@@ -104,7 +104,7 @@ export class HomePage extends BaseComponent {
         color: '#000000',
         textStyle: {
           fontSize: 14,
-          fontWeight:'normal',
+          fontWeight: 'normal',
 
         },
         left: 'center',
@@ -121,9 +121,9 @@ export class HomePage extends BaseComponent {
           type: 'gauge',
           parent: ['100%', '70%'],
           radius: '100%',
-/*          axisLabel: {
-            fontSize: 8
-          },*/
+          /*          axisLabel: {
+                      fontSize: 8
+                    },*/
           detail: {
             formatter: '{value}%',
             fontSize: 10
@@ -155,7 +155,7 @@ export class HomePage extends BaseComponent {
         textStyle: {
           fontStyle: {
             fontSize: 14,
-            fontWeight:'normal',
+            fontWeight: 'normal',
           }
         },
         left: 'center',
@@ -184,17 +184,20 @@ export class HomePage extends BaseComponent {
         }
       ]
     };
-
   }
 
   showDanger(data: any) {
-/*    document.getElementById(data.name).setAttribute('color', 'primary');
-    let color = document.getElementById(data.name).getAttribute('color');
-    console.log(color);*/
+    /*    document.getElementById(data.name).setAttribute('color', 'primary');
+        let color = document.getElementById(data.name).getAttribute('color');
+        console.log(color);*/
     this.mDangerChartTitle = data.name;
     this.mDangerChartValue = data.data;
     let ctx = this.dangerChart.nativeElement;
     this.mDangerChart = echarts.init(ctx);
     this.mDangerChart.setOption(this.getDangerChart());
+  }
+
+  showOthers() {
+    this.app.getRootNav().push('OthersPage');
   }
 }
