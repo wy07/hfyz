@@ -273,7 +273,7 @@ export class HttpService {
    * 获取消息列表（前三）
    */
   getMessage(max, offset) {
-    return this.restangular.all('in-boxs').customGET('list', {max: max, offset: offset}).toPromise();
+    return this.restangular.all('in-boxs').customGET('list', {max: max, offset: offset})
   }
 
   /**
