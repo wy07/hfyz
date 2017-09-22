@@ -30,7 +30,30 @@ export class MenuPage extends BaseComponent {
 
   private loginOut() {
     this.userData.clearLoginData();
-    this.navCtrl.push('LoginPage');
+    this.navCtrl.setRoot('LoginPage');
+  }
+  private showConfirm() {
+    console.log('--退出-');
+    let confirm = this.alertCtrl.create({
+      title: '确认退出?',
+      message: '你是否确认退出登录?',
+      buttons: [
+        {
+          text: '取消',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: '确认',
+          handler: () => {
+            console.log('Agree clicked');
+            this.loginOut();
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
 }

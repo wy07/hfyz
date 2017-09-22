@@ -38,8 +38,6 @@ export class BusinessProcessPage extends BaseComponent {
     this.app.getRootNav().push('WorkOrderPage');
   }
 
-  navigateToCreateFreightWaybillPage() {
-    this.navCtrl.push('CreateFreightWaybillPage');
-  }
+
 
 }

@@ -19,7 +19,8 @@
     <ion-list>
       <ion-item>
         <ion-label>所属公司</ion-label>
-        <ion-input type="text" value="合肥中环货运" disabled></ion-input>
+        <ion-input type="text" readonly  placeholder="请选择公司"
+                   (click)="searchCompany()"></ion-input>
       </ion-item>
     </ion-list>
 
@@ -27,11 +28,11 @@
       <ion-item>
         <ion-label>车牌号</ion-label>
         <ion-select interface="popover" placeholder="请选择" okText="确认" cancelText="取消"
-          formControlName="vehicle">
+                    formControlName="vehicle">
           <ion-option *ngFor="let vehicle of vehicles" [value]="vehicle">{{vehicle.vehicleNo}}</ion-option>
         </ion-select>
       </ion-item>
-      
+
       <ion-item>
         <ion-label>车辆颜色</ion-label>
         <ion-input type="text" [value]="waybillForm.controls.vehicle.value.color" disabled></ion-input>
@@ -97,7 +98,7 @@
       <ion-item>
         <ion-label>装载/卸载</ion-label>
         <ion-select interface="popover" placeholder="请选择" okText="确认" cancelText="取消"
-          formControlName="loadedType">
+                    formControlName="loadedType">
           <ion-option value="装载">装载</ion-option>
           <ion-option value="卸载">卸载</ion-option>
         </ion-select>
@@ -105,7 +106,7 @@
       <ion-item>
         <ion-label>是否满载</ion-label>
         <ion-select interface="popover" placeholder="请选择" okText="确认" cancelText="取消"
-          formControlName="fullLoaded">
+                    formControlName="fullLoaded">
           <ion-option value="是">是</ion-option>
           <ion-option value="否">否</ion-option>
         </ion-select>
@@ -114,32 +115,34 @@
       <ion-item>
         <ion-label>运输出厂时间</ion-label>
         <ion-datetime displayFormat="YYYY-MM-DD HH:mm"
-          placeholder="请选择" doneText="确认" cancelText="取消" formControlName="departTime"></ion-datetime>
+                      placeholder="请选择" doneText="确认" cancelText="取消" formControlName="departTime"></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label>运输回厂时间</ion-label>
         <ion-datetime displayFormat="YYYY-MM-DD HH:mm"
-          placeholder="请选择" doneText="确认" cancelText="取消" formControlName="backTime"></ion-datetime>
+                      placeholder="请选择" doneText="确认" cancelText="取消" formControlName="backTime"></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label>托运单位</ion-label>
         <ion-select interface="popover" placeholder="请选择" okText="确认" cancelText="取消"
-          formControlName="consignCompany">
-          <ion-option [value]="consignCompany.id" *ngFor="let consignCompany of consignCompanys">{{consignCompany.name}}</ion-option>
+                    formControlName="consignCompany">
+          <ion-option [value]="consignCompany.id" *ngFor="let consignCompany of consignCompanys">
+            {{consignCompany.name}}
+          </ion-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-label>始发地名称</ion-label>
         <city-picker item-content
-                    [cancelText]="'取消'"
-                    [doneText]="'完成'"
-                    [separator]="' - '"
-                    [citiesData]="cityData"
-                    formControlName="departArea"
-                    (ionChange)="cityChange($event)">
+                     [cancelText]="'取消'"
+                     [doneText]="'完成'"
+                     [separator]="' - '"
+                     [citiesData]="cityData"
+                     formControlName="departArea"
+                     (ionChange)="cityChange($event)">
 
         </city-picker>
       </ion-item>
@@ -147,12 +150,12 @@
       <ion-item>
         <ion-label>目的地名称</ion-label>
         <city-picker item-content
-                    [cancelText]="'取消'"
-                    [doneText]="'完成'"
-                    [separator]="' - '"
-                    [citiesData]="cityData"
-                    formControlName="arriveArea"
-                    (ionChange)="cityChange($event)">
+                     [cancelText]="'取消'"
+                     [doneText]="'完成'"
+                     [separator]="' - '"
+                     [citiesData]="cityData"
+                     formControlName="arriveArea"
+                     (ionChange)="cityChange($event)">
 
         </city-picker>
       </ion-item>
@@ -160,7 +163,7 @@
       <ion-item>
         <ion-label>途径</ion-label>
         <ion-select interface="popover" placeholder="请选择" okText="确认" cancelText="取消"
-          formControlName="wayId">
+                    formControlName="wayId">
           <ion-option [value]="way.id" *ngFor="let way of ways">{{way.name}}</ion-option>
         </ion-select>
       </ion-item>
@@ -170,7 +173,7 @@
       <ion-item>
         <ion-label>驾驶员姓名</ion-label>
         <ion-select interface="popover" placeholder="请选择" okText="确认" cancelText="取消"
-          formControlName="driver">
+                    formControlName="driver">
           <ion-option [value]="driver" *ngFor="let driver of drivers">{{driver.name}}</ion-option>
         </ion-select>
       </ion-item>
@@ -190,7 +193,7 @@
       <ion-item>
         <ion-label>押运员姓名</ion-label>
         <ion-select interface="popover" placeholder="请选择" okText="确认" cancelText="取消"
-          formControlName="escort">
+                    formControlName="escort">
           <ion-option [value]="escort" *ngFor="let escort of escorts">{{escort.name}}</ion-option>
         </ion-select>
       </ion-item>
@@ -210,5 +213,5 @@
 </ion-content>
 
 <ion-footer>
-    <button ion-button full color="primary" (click)="submit()">提交</button>
+  <button ion-button full color="primary" (click)="submit()">提交</button>
 </ion-footer>
