@@ -30,7 +30,7 @@ export class MenuPage extends BaseComponent {
 
   private loginOut() {
     this.userData.clearLoginData();
-    this.navCtrl.push('LoginPage');
+    this.navCtrl.setRoot('LoginPage');
   }
 
 }

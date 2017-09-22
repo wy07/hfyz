@@ -63,4 +63,49 @@
     </button>
   </ion-list>
 
+  <ion-list>
+    <ion-item-group>
+
+      <ion-item-divider color="light">
+        数据比率
+      </ion-item-divider>
+
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-8 #dataRateChart style="height: 180px"></ion-col>
+            <ion-col col-4 col-auto style="height: 180px" no-padding>
+              <ion-grid>
+                <ion-row *ngFor="let chart of mRateChartArrays" style="height:20px; margin-bottom: 10px;">
+                  <button clear ion-button style="height:20px;" (click)="showDataRate(chart)">{{chart.name}}</button>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item-divider color="light">
+        两客一危情况
+      </ion-item-divider>
+
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-8 #dangerChart style="height: 180px"></ion-col>
+            <ion-col col-4 col-auto style="height: 180px" no-padding>
+              <ion-grid>
+                <ion-row *ngFor="let chart of mDangerChartArrays" style="height:20px; margin-bottom: 10px;">
+                  <button id="{{chart.name}}" color="primary"
+                           clear ion-button style="height:20px;" (click)="showDanger(chart)">{{chart.name}}</button>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+    </ion-item-group>
+  </ion-list>
+
 </ion-content>
