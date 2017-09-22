@@ -81,7 +81,7 @@
         <p>
           审核人：{{data.approver}}<br/>
           审核日期：{{data.approveTime}}<br/>
-          审核结果：{{data.approvalResult}}<br/>
+          审核结果：{{data.approvalResult? '通过':'拒绝'}}<br/>
           审核内容：{{data.approveDesc}}
         </p>
       </ion-item>
