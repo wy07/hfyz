@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle start>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="contact"></ion-icon>
     </button>
     <ion-title>合肥运政</ion-title>
   </ion-navbar>
@@ -16,57 +16,20 @@
 
   <ion-list>
     <ion-item-divider color="white" tappable>
-      交通路况实时信息
-      <span item-right>更多</span>
+      <ion-icon name="alert"></ion-icon>
+      消息中心
+      <span item-right (click)="moreMessage()">更多</span>
     </ion-item-divider>
-    <button ion-item detail-none>
-      路况信息1
-      <span item-right>2017-01-02</span>
-    </button>
-    <button ion-item detail-none>
-      路况信息2
-      <span item-right>2017-01-02</span>
-    </button>
-    <button ion-item detail-none>
-      路况信息3
-      <span item-right>2017-01-02</span>
-    </button>
-  </ion-list>
-
-  <ion-list>
-    <ion-item-divider color="white" tappable>
-      交通设施信息
-      <span item-right>更多</span>
-    </ion-item-divider>
-    <button ion-item detail-none>
-      设施信息1
-      <span item-right>2017-01-02</span>
-    </button>
-    <button ion-item detail-none>
-      设施信息2
-      <span item-right>2017-01-02</span>
-    </button>
-    <button ion-item detail-none>
-      设施信息3
-      <span item-right>2017-01-02</span>
-    </button>
-  </ion-list>
-
-  <ion-list>
-    <ion-item-divider color="white" tappable>
-      法律法规
-      <span item-right (click)="lawList(laws)">更多</span>
-    </ion-item-divider>
-    <button ion-item detail-none *ngFor="let law of laws" (click)="lawDetail(law)" >
-     {{law.title}}
-      <span item-right>{{law.dateCreated|date:'yyyy-MM-dd'}}</span>
+    <button ion-item detail-none *ngFor="let mes of message " (click)="messageDetail(mes)">
+      <span mesTitle>{{mes.title}}</span>
     </button>
   </ion-list>
 
   <ion-list>
     <ion-item-group>
 
-      <ion-item-divider color="light">
+      <ion-item-divider color="white">
+        <ion-icon name="stats"></ion-icon>
         数据比率
       </ion-item-divider>
 
@@ -85,7 +48,8 @@
         </ion-grid>
       </ion-item>
 
-      <ion-item-divider color="light">
+      <ion-item-divider color="white">
+        <ion-icon name="bus"></ion-icon>
         两客一危情况
       </ion-item-divider>
 
@@ -106,6 +70,18 @@
       </ion-item>
 
     </ion-item-group>
+  </ion-list>
+
+  <ion-list>
+    <ion-item-divider color="white" tappable>
+      <ion-icon name="book"></ion-icon>
+      法律法规
+      <span item-right (click)="lawList()">更多</span>
+    </ion-item-divider>
+    <button ion-item detail-none *ngFor="let law of laws" (click)="lawDetail(law)" >
+      {{law.title}}
+      <span item-right>{{law.dateCreated|date:'yyyy-MM-dd'}}</span>
+    </button>
   </ion-list>
 
 </ion-content>

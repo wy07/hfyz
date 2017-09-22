@@ -294,11 +294,18 @@ export class HttpService {
   }
 
   /**
-   * 获取法律法规
+   * 获取法律法规详情
    * url:/infoaudits/:id/edit
    */
   getLawDetail(id) {
     return this.restangular.one('infoaudits', id).customGET('edit').toPromise();
+  }
+
+  /**
+   * 获取消息列表（前三）
+   */
+  getMessage(max, offset) {
+    return this.restangular.all('in-boxs').customGET('list', {max: max, offset: offset})
   }
 
   /**
@@ -330,6 +337,6 @@ export class HttpService {
    * url:owner-identitys/:id/view
    */
   getOwnerDetail(id) {
-    return this.restangular.one('owner-identitys',id).customGET('view').toPromise();
+    return this.restangular.one('owner-identitys', id).customGET('view').toPromise();
   }
 }

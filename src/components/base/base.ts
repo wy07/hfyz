@@ -1,6 +1,9 @@
 import { MapProvider } from './../../providers/map/map';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import {NavController, NavParams, App, ViewController, Events, ModalController, ToastController, MenuController} from 'ionic-angular';
+import {
+  NavController, NavParams, App, ViewController, Events, ModalController, ToastController, MenuController,
+  AlertController
+} from 'ionic-angular';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { BackgroundMode } from '@ionic-native/background-mode';
@@ -39,7 +42,8 @@ export class BaseComponent {
     public userData: UserDataProvider,
     public mapProvider: MapProvider,
     public toastCtrl: ToastController,
-    public datePipe: DatePipe
+    public datePipe: DatePipe,
+    public alertCtrl: AlertController
     ) {
   }
 

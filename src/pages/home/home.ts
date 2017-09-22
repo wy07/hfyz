@@ -43,6 +43,8 @@ export class HomePage extends BaseComponent {
 
   laws: any;
   type: string;
+  message: any;
+
   max: number;
   offset: number;
 
@@ -52,6 +54,7 @@ export class HomePage extends BaseComponent {
     this.max = 3;
     this.offset = 0;
     this.getLaws();
+    // this.getMessage();
     this.showDataRate(this.mRateChartArrays[0]);
     this.showDanger(this.mDangerChartArrays[0]);
   }
@@ -60,7 +63,7 @@ export class HomePage extends BaseComponent {
     this.app.getRootNav().push('LawDetailPage', {id: law.id});
   }
 
-  lawList(laws: any) {
+  lawList() {
     /*console.log('----' + JSON.stringify(laws));*/
     this.app.getRootNav().push('LawListPage');
   }
@@ -71,6 +74,25 @@ export class HomePage extends BaseComponent {
       this.laws = res.publishList.publishList;
     } catch (error) {
       console.log(JSON.stringify(error));
+    }
+  }
+
+  moreMessage() {
+    this.app.getRootNav().push('');
+  }
+
+  messageDetail(mes) {
+    this.app.getRootNav().push('', {id: mes.id});
+  }
+
+  async getMessage() {
+    try {
+      let res = this.httpService.getMessage(this.max,this.offset);
+      console.log('--INFO-1-'+JSON.stringify(res));
+      console.log('--INFO-2-'+JSON.stringify(res.list));
+      this.message = res.list;
+    } catch (error) {
+      console.log('--getMessage Error--' + JSON.stringify(error));
     }
   }
 
@@ -175,8 +197,4 @@ export class HomePage extends BaseComponent {
     this.mDangerChart = echarts.init(ctx);
     this.mDangerChart.setOption(this.getDangerChart());
   }
-
-
-
-
 }

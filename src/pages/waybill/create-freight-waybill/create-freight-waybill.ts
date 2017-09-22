@@ -1,11 +1,11 @@
-import { Company } from './../../../models/company.model';
-import { Escort } from './../../../models/escort.model';
-import { Driver } from './../../../models/driver.model';
-import { FormGroup, Validators } from '@angular/forms';
-import { Vehicle } from './../../../models/vehicle.model';
-import { BaseComponent } from './../../../components/base/base';
-import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import {Company} from './../../../models/company.model';
+import {Escort} from './../../../models/escort.model';
+import {Driver} from './../../../models/driver.model';
+import {FormGroup, Validators} from '@angular/forms';
+import {Vehicle} from './../../../models/vehicle.model';
+import {BaseComponent} from './../../../components/base/base';
+import {Component, OnInit} from '@angular/core';
+import {NavController, NavParams, IonicPage} from 'ionic-angular';
 
 /**
  * Generated class for the CreateFreightWaybillPage page.
@@ -29,7 +29,7 @@ export class CreateFreightWaybillPage extends BaseComponent implements OnInit {
   consignCompanys: Array<Company>;
   ways: Array<any>;
 
-  ngOnInit () {
+  ngOnInit() {
     this.waybillForm = this.formBuilder.group({
       vehicle: ['', Validators.required],
 
@@ -57,7 +57,7 @@ export class CreateFreightWaybillPage extends BaseComponent implements OnInit {
     this.initData();
   }
 
-  async initData () {
+  async initData() {
     try {
       let [cityDataRes, vehiclesRes, driversRes, escortsRes, consignCompanysRes] = await Promise.all([
         this.httpService.getCityPickerData(),
@@ -79,11 +79,11 @@ export class CreateFreightWaybillPage extends BaseComponent implements OnInit {
    */
   cityChange(event) {
     console.log(JSON.stringify(event));
-    if(this.waybillForm.controls['departArea'].value !== '' &&
+    if (this.waybillForm.controls['departArea'].value !== '' &&
       this.waybillForm.controls['arriveArea'].value !== '') this.getWays();
   }
 
-  async getWays () {
+  async getWays() {
     try {
       let res = await this.httpService.getWays(
         this.waybillForm.controls['departArea'].value, this.waybillForm.controls['arriveArea'].value);
@@ -96,11 +96,11 @@ export class CreateFreightWaybillPage extends BaseComponent implements OnInit {
   /**
    * 请求参数格式化
    */
-  requestParamsFormat () {
+  requestParamsFormat() {
     let params = this.waybillForm.value;
     params["vehicleId"] = params.vehicle.id;
-    params["driverId"]  = params.driver.id;
-    params["escortId"]  = params.escort.id;
+    params["driverId"] = params.driver.id;
+    params["escortId"] = params.escort.id;
     delete params['vehicle'];
     delete params['driver'];
     delete params['escort'];
@@ -108,7 +108,7 @@ export class CreateFreightWaybillPage extends BaseComponent implements OnInit {
     return params;
   }
 
-  async createFreightWaybill () {
+  async createFreightWaybill() {
     try {
       let res = await this.httpService.createFreightWaybill(this.requestParamsFormat());
       console.log("========createFreightWaybill SUCCESS==========");
@@ -118,11 +118,15 @@ export class CreateFreightWaybillPage extends BaseComponent implements OnInit {
     }
   }
 
-  submit () {
+  submit() {
     console.log(this.waybillForm);
     console.log(JSON.stringify(this.waybillForm.value));
     if (this.waybillForm.valid) {
       this.createFreightWaybill();
     }
+  }
+
+  searchCompany() {
+
   }
 }

@@ -5,7 +5,6 @@ page-home {
     height:180px;
 
   }
-
   ion-slides {
     height: auto;
 
@@ -28,6 +27,9 @@ page-home {
 
   ion-list {
     margin-bottom: 16px !important;
+    .mesTitle{
+      font-size: 8px;
+    }
 
     .item {
       min-height: 2.4rem;

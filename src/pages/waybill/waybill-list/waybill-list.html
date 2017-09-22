@@ -19,7 +19,13 @@
     <ion-refresher-content pullingText="下拉刷新" refreshingText="刷新中..."></ion-refresher-content>
   </ion-refresher>
 
-  <waybill-card [waybill]="waybill" *ngFor="let waybill of searchWaybills" (click)="goToWaybillDetail(waybill)"></waybill-card>
+  <waybill-card [waybill]="waybill" *ngFor="let waybill of searchWaybills" (click)="goToWaybillDetail(waybill)" (parentClick)="submit($event)"></waybill-card>
+
+  <ion-fab bottom right>
+    <button ion-fab mini (click)="navigateToCreateFreightWaybillPage()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
