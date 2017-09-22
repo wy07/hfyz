@@ -83,11 +83,16 @@ export class RectificationAddPage extends BaseComponent {
         if (res.result === "success") {
           this.showToast('添加数据成功！', 1500, this.SHOW_TOP);
           this.navCtrl.push('RectificationPage');
+          this.viewCtrl.dismiss();
         } else {
           this.showToast('添加数据失败，请重试！', 1500, this.SHOW_BOTTOM);
         }
       }
     );
+  }
+
+  private backPage() {
+    this.viewCtrl.dismiss();
   }
 
 }
