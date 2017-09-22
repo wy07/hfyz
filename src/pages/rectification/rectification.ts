@@ -111,7 +111,6 @@ export class RectificationPage extends BaseComponent {
     searchCompanyModal.present();
   }
 
-
   /**
    * 根据状态过滤
    * @param {string} lable
@@ -159,8 +158,60 @@ export class RectificationPage extends BaseComponent {
     );
   }
 
+  private onCommit(order: any) {
+    this.httpService.commitRectification(order.id).subscribe(
+      res => {
+        this.initData();
+        this.getOrderList(0, false);
+        this.showToast('数据提交成功！', 1000, this.SHOW_TOP);
+      }
+    );
+  }
+
   private goAddPage() {
     this.navCtrl.push('RectificationAddPage');
+  }
+
+  private goAudit(id: any) {
+    this.httpService.requestOrderDetail(id).subscribe(
+      res => {
+        if (res.result === 'success') {
+          this.navCtrl.push("RectificationAuditPage", {
+            info: res.hiddenRectificationOrder,
+          });
+        } else {
+          this.showToast('获取数据失败！', 1000, this.SHOW_BOTTOM);
+        }
+      }
+    );
+  }
+
+  private goFeedback(id: any) {
+    this.httpService.requestOrderDetail(id).subscribe(
+      res => {
+        if (res.result === 'success') {
+          this.navCtrl.push("RectificationFeedbackPage", {
+            info: res.hiddenRectificationOrder,
+          });
+        } else {
+          this.showToast('获取数据失败！', 1000, this.SHOW_BOTTOM);
+        }
+      }
+    );
+  }
+
+  private goConfirm(id: any) {
+    this.httpService.requestOrderDetail(id).subscribe(
+      res => {
+        if (res.result === 'success') {
+          this.navCtrl.push("RectificationConfirmPage", {
+            info: res.hiddenRectificationOrder,
+          });
+        } else {
+          this.showToast('获取数据失败！', 1000, this.SHOW_BOTTOM);
+        }
+      }
+    );
   }
 
 }

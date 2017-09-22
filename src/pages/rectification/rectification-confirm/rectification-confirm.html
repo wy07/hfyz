@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>确认</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label fixed>业户名称</ion-label>
+      <ion-input readonly value="{{mConfirm.enterpirse}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>区域</ion-label>
+      <ion-input readonly value="{{mConfirm.area}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>状态</ion-label>
+      <ion-input readonly value="{{mConfirm.status}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>检查人</ion-label>
+      <ion-input readonly value="{{mConfirm.examiner}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>检查地点</ion-label>
+      <ion-input readonly value="{{mConfirm.insPosition}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>检查内容</ion-label>
+      <ion-textarea value="{{mConfirm.insDesc}}" rows="6" placeholder="无"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>检查日期</ion-label>
+      <ion-input readonly value="{{mConfirm.inspectionDate}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>整改期限</ion-label>
+      <ion-input readonly value="{{mConfirm.dealineDate}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>存在问题</ion-label>
+      <ion-textarea readonly rows="6" value="{{mConfirm.insQuestion}}"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>整改意见</ion-label>
+      <ion-textarea rows="6" readonly value="{{mConfirm.proPosal}}"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>企业反馈</ion-label>
+      <ion-textarea rows="6" readonly value="{{mConfirm.replyDesc}}"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>反馈日期</ion-label>
+      <ion-input readonly value="{{mConfirm.replyDate}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>确认结果</ion-label>
+      <ion-select [(ngModel)]="mOpinion" interface="popover">
+        <ion-option value="true">合格</ion-option>
+        <ion-option value="false">不合格</ion-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <button ion-button full color="primary" (click)="submitEdit()">提交</button>
+  <button ion-button full color="primary" (click)="backPage()">返回</button>
+</ion-footer>-->
