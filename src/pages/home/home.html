@@ -17,12 +17,29 @@
   <ion-list>
     <ion-item-divider color="white" tappable>
       <ion-icon name="alert"></ion-icon>
-      消息中心
+      消息中心有{{mTotal}} 条新消息
       <span item-right (click)="moreMessage()">更多</span>
     </ion-item-divider>
-    <button ion-item detail-none *ngFor="let mes of message " (click)="messageDetail(mes)">
-      <span mesTitle>{{mes.title}}</span>
-    </button>
+    <ion-item *ngFor="let mes of message" (click)="messageDetail(mes)">
+      <h2 *ngIf="mes.sourceType=== 'GD'">
+        <label style="font-size: 3px; color: red">{{mes.isRead? '':'new　'}}</label>
+        工单
+      </h2>
+      <h2 *ngIf="mes.sourceType=== 'YHZGD'">
+        <label style="font-size: 3px; color: red">{{mes.isRead? '':'new　'}}</label>
+        隐患整改单
+      </h2>
+      <h2 *ngIf="mes.sourceType=== 'DZLD'">
+        <label style="font-size: 3px; color: red">{{mes.isRead? '':'new　'}}</label>
+        电子路单
+      </h2>
+      <p *ngIf="mes.action==='DSH'">时间：{{mes.dateCreated}}　　状态：待审核</p>
+      <p *ngIf="mes.action==='DYR'">时间：{{mes.dateCreated}}　　状态：待确认</p>
+      <p *ngIf="mes.action==='DFK'">时间：{{mes.dateCreated}}　　状态：待反馈</p>
+      <p *ngIf="mes.action==='HG'">时间：{{mes.dateCreated}}　　状态：合格</p>
+      <p *ngIf="mes.action==='BHG'">时间：{{mes.dateCreated}}　　状态：不合格</p>
+    </ion-item>
+
   </ion-list>
 
   <ion-list>
@@ -61,7 +78,7 @@
               <ion-grid>
                 <ion-row *ngFor="let chart of mDangerChartArrays" style="height:20px; margin-bottom: 10px;">
                   <button id="{{chart.name}}" color="primary"
-                           clear ion-button style="height:20px;" (click)="showDanger(chart)">{{chart.name}}</button>
+                          clear ion-button style="height:20px;" (click)="showDanger(chart)">{{chart.name}}</button>
                 </ion-row>
               </ion-grid>
             </ion-col>

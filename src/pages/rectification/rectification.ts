@@ -1,9 +1,9 @@
 /*import {Company} from './../../models/company.model';*/
 import {BaseComponent} from './../../components/base/base';
-import {Component, ViewChild} from '@angular/core';
-import {IonicPage, Tabs} from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage} from 'ionic-angular';
 import {Rectification} from "../../models/rectification.model";
-import {SearchCompanyComponent} from "../../components/search-company/search-company";
+import {SearchComponent} from "../../components/search-rectification/search-rectification";
 
 /**
  * Generated class for the RectificationPage page.
@@ -79,8 +79,6 @@ export class RectificationPage extends BaseComponent {
       this.getOrderList(0, false);
       refresher.complete();
     }, 1000);
-
-
   }
 
   /**
@@ -89,7 +87,7 @@ export class RectificationPage extends BaseComponent {
    */
   private doInfinite(refresher?) {
     setTimeout(() => {
-      if (this.mTotal < this.mOrderList.length) {
+      if (this.mTotal <= this.mOrderList.length) {
         refresher.complete();
         this.showToast('没有更多数据！', 1000, this.SHOW_BOTTOM);
       } else {
@@ -100,7 +98,7 @@ export class RectificationPage extends BaseComponent {
   }
 
   private searchCompany() {
-    let searchCompanyModal = this.modalCtrl.create(SearchCompanyComponent, {from: "RectificationPage"});
+    let searchCompanyModal = this.modalCtrl.create(SearchComponent, {from: "RectificationPage"});
     searchCompanyModal.onDidDismiss(res => {
       if (res) {
         this.mCurrSearch = res.ownerName;
