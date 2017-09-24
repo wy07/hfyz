@@ -9,7 +9,9 @@ import {_switch} from "rxjs/operator/switch";
 })
 export class MessageDetailPage extends BaseComponent {
 
-  private mMessageList: any;
+  private mMessageList: Array<{ id: number, sourceId: number, sourceType: string,
+                                content: string, isRead: boolean, dateCreated: string,
+                                action: string}>;
 
   private mMaxRow: number = 8;     // 最多一次请求的行数
 
@@ -33,12 +35,12 @@ export class MessageDetailPage extends BaseComponent {
           } else {
             if (res.total !== 0) {
               this.mTotal = res.total;
-              this.mMessageList += res.list;
+              this.mMessageList = this.mMessageList.concat(res.list);
             }
           }
           this.mCurrCount += this.mTotal;
-  /*        console.log('数据： \r' + JSON.stringify(res));
-          console.log('数量： \r' + this.mTotal);*/
+          console.log('数据： \r' + JSON.stringify(res));
+          console.log('数量： \r' + res.total);
         }
       );
     } catch (error) {
@@ -92,6 +94,9 @@ export class MessageDetailPage extends BaseComponent {
       case 'DFK':
         result = 'RectificationFeedbackPage';
         break;
+      case 'HG':case 'BHG':
+        result = 'RectificationDetailPage';
+        break
     }
     return result;
   }
@@ -113,8 +118,13 @@ export class MessageDetailPage extends BaseComponent {
    */
   private doInfinite(refresher?) {
     setTimeout(() => {
-      this.getMessage(this.mMaxRow * ++this.mCurrCount, true);
-      refresher.complete();
+      if (this.mTotal <= this.mMessageList.length) {
+        refresher.complete();
+        this.showToast('没有更多数据！', 1000, this.SHOW_BOTTOM);
+      } else {
+        this.getMessage(this.mMaxRow * ++this.mCurrCount, true);
+        refresher.complete();
+      }
     }, 1000);
   }
 

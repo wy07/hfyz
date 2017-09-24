@@ -87,7 +87,7 @@ export class RectificationPage extends BaseComponent {
    */
   private doInfinite(refresher?) {
     setTimeout(() => {
-      if (this.mTotal < this.mOrderList.length) {
+      if (this.mTotal <= this.mOrderList.length) {
         refresher.complete();
         this.showToast('没有更多数据！', 1000, this.SHOW_BOTTOM);
       } else {
