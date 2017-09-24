@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>信息中心</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingText="刷新中..."></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider color="light">
+        查询结果：{{mTotal}} 条
+      </ion-item-divider>
+      <ion-item *ngFor="let mes of mMessageList " (click)="dealwithWork(mes)">
+        <h2 *ngIf="mes.sourceType=== 'GD'">
+          <label style="font-size: 3px; color: red">{{mes.isRead? '':'new　'}}</label>
+          工单
+        </h2>
+        <h2 *ngIf="mes.sourceType=== 'YHZGD'">
+          <label style="font-size: 3px; color: red">{{mes.isRead? '':'new　'}}</label>
+          隐患整改单
+        </h2>
+        <h2 *ngIf="mes.sourceType=== 'DZLD'">
+          <label style="font-size: 3px; color: red">{{mes.isRead? '':'new　'}}</label>
+          电子路单
+        </h2>
+        <p *ngIf="mes.action==='DSH'">时间：{{mes.dateCreated}}　　状态：待审核</p>
+        <p *ngIf="mes.action==='DYR'">时间：{{mes.dateCreated}}　　状态：待确认</p>
+        <p *ngIf="mes.action==='DFK'">时间：{{mes.dateCreated}}　　状态：待反馈</p>
+        <p *ngIf="mes.action==='HG'">时间：{{mes.dateCreated}}　　状态：合格</p>
+        <p *ngIf="mes.action==='BHG'">时间：{{mes.dateCreated}}　　状态：不合格</p>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

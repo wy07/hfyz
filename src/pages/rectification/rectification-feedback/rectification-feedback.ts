@@ -26,7 +26,7 @@ export class RectificationFeedbackPage extends BaseComponent {
       res => {
         if (res.result === 'success') {
           this.showToast('反馈数据提交成功！', 1000, this.SHOW_TOP);
-          this.navCtrl.push('RectificationPage');
+          /*this.navCtrl.push('RectificationPage');*/
           this.viewCtrl.dismiss();
         } else {
           this.showToast('反馈数据提交失败，请重试！', 1000, this.SHOW_BOTTOM);

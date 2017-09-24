@@ -40,6 +40,10 @@ export class HomePage extends BaseComponent {
     {name: '按从业人员', data: [{name: '危货', value: 200}, {name: '班车', value: 150}, {name: '旅游包车', value: 360}]}
   ];
 
+  mCurrentStatus: boolean;
+
+  mTotal: number = 0;
+
 
   laws: any;
   type: string;
@@ -54,7 +58,14 @@ export class HomePage extends BaseComponent {
     this.max = 3;
     this.offset = 0;
     this.getLaws();
-    // this.getMessage();
+  }
+
+  ionViewWillEnter() {
+    this.initChart();
+    this.getMessage();
+  }
+
+  initChart() {
     this.showDataRate(this.mRateChartArrays[0]);
     this.showDanger(this.mDangerChartArrays[0]);
   }
@@ -78,21 +89,73 @@ export class HomePage extends BaseComponent {
   }
 
   moreMessage() {
-    this.app.getRootNav().push('');
+    this.app.getRootNav().push('MessageDetailPage');
   }
 
   messageDetail(mes) {
-    this.app.getRootNav().push('', {id: mes.id});
+    switch (mes.sourceType) {
+      case 'GD' :
+
+        break;
+      case 'YHZGD':
+        this.httpService.changeState(mes.id).subscribe(
+          res => {
+            this.goRectification(mes.sourceId, mes.action);
+          }
+        );
+
+        break;
+      case 'DZLD':
+
+        break;
+      default:
+        break;
+    }
+  }
+
+  private goRectification(id: number, status: any) {
+    this.httpService.requestOrderDetail(id).subscribe(
+      res => {
+        if (res.result === 'success') {
+          this.navCtrl.push(this.judgmentRectification(status), {
+            info: res.hiddenRectificationOrder,
+          });
+        } else {
+          this.showToast('获取数据失败！', 1000, this.SHOW_BOTTOM);
+        }
+      }
+    );
+  }
+
+  private judgmentRectification(status: any) {
+    let result = '';
+    switch (status) {
+      case 'DSH' :
+        result = 'RectificationAuditPage';
+        break;
+      case 'DYR':
+        result = 'RectificationConfirmPage';
+        break;
+      case 'DFK':
+        result = 'RectificationFeedbackPage';
+        break;
+    }
+    return result;
   }
 
   async getMessage() {
     try {
-      let res = this.httpService.getMessage(this.max,this.offset);
-      console.log('--INFO-1-'+JSON.stringify(res));
-      console.log('--INFO-2-'+JSON.stringify(res.list));
-      this.message = res.list;
+      this.httpService.getMessage(this.max,this.offset).subscribe(
+        res => {
+          if (res.total !== 0) {
+            this.mTotal = res.total;
+            this.message = res.list;
+          }
+          console.log(JSON.stringify(res));
+        }
+      );
     } catch (error) {
-      console.log('--getMessage Error--' + JSON.stringify(error));
+      console.log(JSON.stringify(error));
     }
   }
 
@@ -121,9 +184,9 @@ export class HomePage extends BaseComponent {
           type: 'gauge',
           parent: ['100%', '70%'],
           radius: '100%',
-/*          axisLabel: {
-            fontSize: 8
-          },*/
+          /*          axisLabel: {
+                      fontSize: 8
+                    },*/
           detail: {
             formatter: '{value}%',
             fontSize: 10
@@ -188,9 +251,6 @@ export class HomePage extends BaseComponent {
   }
 
   showDanger(data: any) {
-/*    document.getElementById(data.name).setAttribute('color', 'primary');
-    let color = document.getElementById(data.name).getAttribute('color');
-    console.log(color);*/
     this.mDangerChartTitle = data.name;
     this.mDangerChartValue = data.data;
     let ctx = this.dangerChart.nativeElement;

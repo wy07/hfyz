@@ -18,7 +18,7 @@ export class RectificationConfirmPage extends BaseComponent {
       res => {
         if (res.result === 'success') {
           this.showToast('数据确认成功！', 1000, this.SHOW_TOP);
-          this.navCtrl.push('RectificationPage');
+          /*this.navCtrl.push('RectificationPage');*/
           this.viewCtrl.dismiss();
         } else {
           this.showToast('数据确认失败，请重试！', 1000, this.SHOW_BOTTOM);

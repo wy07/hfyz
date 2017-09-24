@@ -305,7 +305,16 @@ export class HttpService {
    * 获取消息列表（前三）
    */
   getMessage(max, offset) {
-    return this.restangular.all('in-boxs').customGET('list', {max: max, offset: offset})
+    return this.restangular.all('in-boxs').customGET('list', {max: max, offset: offset});
+  }
+
+  /**
+   * 改变状态
+   * @param id
+   * @returns {any}
+   */
+  changeState(id) {
+    return this.restangular.one('in-boxs', id).customGET('change-state');
   }
 
   /**
