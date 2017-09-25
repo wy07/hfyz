@@ -72,6 +72,21 @@
       <ion-input readonly value="{{mDetailInfo.replyDate}}"></ion-input>
     </ion-item>
 
+    <ion-item-group *ngIf="isHaveAudit">
+      <ion-item-divider color="danger">
+        审核结果
+      </ion-item-divider>
+
+      <ion-item *ngFor="let data of mAudit">
+        <p>
+          审核人：{{data.approver}}<br/>
+          审核日期：{{data.approveTime}}<br/>
+          审核结果：{{data.approvalResult? '通过':'拒绝'}}<br/>
+          审核内容：{{data.approveDesc}}
+        </p>
+      </ion-item>
+    </ion-item-group>
+
   </ion-list>
 
 </ion-content>

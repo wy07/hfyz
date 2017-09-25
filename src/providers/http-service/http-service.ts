@@ -204,6 +204,16 @@ export class HttpService {
     /*return this.restangular.all('login').post({username: username, password: password});*/
   }
 
+  commitRectificationFeedback(id, reply, replyDesc) {
+    return this.restangular.one('hidden-rectification-orders', id).customPOST(
+      {reply: reply , replyDesc: replyDesc}
+      , 'enterprise-feedback');
+  }
+
+  getApprovalList(id) {
+    return this.restangular.one('hidden-rectification-orders', id).customGET('review-approval-list');
+  }
+
   /**
    * 企业整改查询
    * url: /hidden-rectification-orders/list
@@ -241,6 +251,28 @@ export class HttpService {
     return this.restangular.all('hidden-rectification-orders').customGET('company-list', {enterpirse: enterpirse});
   }
 
+  commitRectification(id) {
+    return this.restangular.one('hidden-rectification-orders', id).customGET('submit-order');
+  }
+
+  /**
+   * 隐患整改单审核
+   * @param billId 订单号
+   * @param time 当前时间
+   * @param approveDesc 审核意见
+   * @param opinion 是否同意 'true'和'false'
+   * @returns {any}
+   */
+  commitRectificationApproval(billId, curTime, approveDesc, opinion) {
+    return this.restangular.all('review-and-approvals').customPOST(
+      {billId: billId , time: curTime , approveDesc: approveDesc, tempStatus: opinion}, 'save');
+  }
+
+  confirmRectification(id, tempStatus) {
+    return this.restangular.one('review-and-approvals', id).customPOST({tempStatus: tempStatus}
+      , 'give-result');
+  }
+
   /**
    * 获取电子行程单详情
    * url：/freight-waybills/id/show
@@ -273,7 +305,16 @@ export class HttpService {
    * 获取消息列表（前三）
    */
   getMessage(max, offset) {
-    return this.restangular.all('in-boxs').customGET('list', {max: max, offset: offset})
+    return this.restangular.all('in-boxs').customGET('list', {max: max, offset: offset});
+  }
+
+  /**
+   * 改变状态
+   * @param id
+   * @returns {any}
+   */
+  changeState(id) {
+    return this.restangular.one('in-boxs', id).customGET('change-state');
   }
 
   /**

@@ -38,8 +38,12 @@
         </ion-item>
         <ion-item-options side="right">
           <button color="primary" ion-button (click)="goDetailPage(order.id)">详情</button>
-          <button color="secondary" ion-button (click)="goEditPage(order.id)">编辑</button>
-          <button color="danger" ion-button (click)="onDelete(order)">删除</button>
+          <button *ngIf="order.status === '起草'" color="secondary" ion-button (click)="goEditPage(order.id)">编辑</button>
+          <button *ngIf="order.status === '起草'" color="danger" ion-button (click)="onDelete(order)">删除</button>
+          <button *ngIf="order.status === '起草'" color="primary" ion-button (click)="onCommit(order)">提交</button>
+          <button *ngIf="order.status === '待反馈'" color="secondary" ion-button (click)="goFeedback(order.id)">反馈</button>
+          <button *ngIf="order.status === '待审核'" color="secondary" ion-button (click)="goAudit(order.id)">审核</button>
+          <button *ngIf="order.status === '待确认'" color="secondary" ion-button (click)="goConfirm(order.id)">确认</button>
         </ion-item-options>
       </ion-item-sliding>
     </ion-item-group>

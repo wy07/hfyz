@@ -1,65 +1,35 @@
-import { Rectification } from './../../../models/rectification.model';
 import { BaseComponent } from './../../../components/base/base';
 import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
-import {log} from "util";
-
-/**
- * Generated class for the RectificationDetailPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { IonicPage } from 'ionic-angular';
 
 @IonicPage()
 @Component({
   selector: 'page-rectification-detail',
   templateUrl: 'rectification-detail.html',
 })
-export class RectificationDetailPage extends BaseComponent{
+export class RectificationDetailPage extends BaseComponent {
 
-/*  rectificationId: number;
-  rectification: Rectification;
-  feedback: string;*/
+  private mDetailInfo: any;      // 详情信息
 
-  /*ionViewDidLoad() {
-/!*    console.log('ionViewDidLoad RectificationDetailPage');
-    console.log('navParams ---> '+this.navParams.get("id"));*!/
-    this.rectificationId = this.navParams.get("id");
-    this.getDetail();
-  }*/
+  private mAudit: any;
 
-  /*async getDetail() {
-    /!*try {
-      let res = await this.httpService.getRectificationDetail(this.rectificationId);
-      this.rectification = res.data;
-    } catch (error) {
-      console.log(JSON.stringify(error));
-    }*!/
-  }
-
-  async submitFeedback () {
-    try {
-      await this.httpService.rectificaionFeedback(this.rectificationId, this.feedback);
-      this.app.getRootNav().pop();
-    } catch (error) {
-      console.log(JSON.stringify(error));
-    }
-  }
-
-  async confirmFeedback () {
-    try {
-      await this.httpService.rectificaionConfirm(this.rectificationId);
-      this.getDetail();
-    } catch (error) {
-      console.log(JSON.stringify(error));
-    }
-  }*/
-
-  private mDetailInfo: Array<Rectification>;      // 详情信息
+  private isHaveAudit: boolean = false;
 
   ngOnInit() {
     this.mDetailInfo = this.navParams.get('info');
+    if (this.mDetailInfo.status === '合格' || this.mDetailInfo.status === '不合格') {
+      this.isHaveAudit = true;
+      this.httpService.getApprovalList(this.mDetailInfo.id).subscribe(
+        res => {
+          if (!this.isBlank(res) &&
+            res.result === 'success' &&
+            res.totalOfReviewAndApproval > 0) {
+            this.mAudit = res.reviewAndApprovalList;
+          }
+        }
+      );
+    }
+
   }
 
 }
